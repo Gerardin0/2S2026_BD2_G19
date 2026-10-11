@@ -1,0 +1,152 @@
+Changed database context to 'db_olimpiadas_deportista'.
+===============================================================
+CARGA 2 / 4 - Deportista - PEKIN 2008
+Ejecutado: 2026-10-11 02:17:29
+===============================================================
+=== Carga del deportista 105512 para la edicion 2008 (id_edicion 49) ===
+  region        -> 0 filas
+  edicion_juego -> 1 filas
+  disciplina    -> 2 filas
+  atleta        -> 0 filas
+  roles         -> 0 filas
+  atleta_roles  -> 0 filas
+  participacion -> 3 filas
+  resultado     -> 3 filas
+  poblacion     -> 0 filas
+--- Carga de 2008 finalizada. ---
+tabla      noc_code   country_name                                                                                                                                                                                             region                                                                                                                                                                                                   notas                                                                                                                                                                                                                                                           
+---------- ---------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+dbo.region JAM        Jamaica                                                                                                                                                                                                  Jamaica                                                                                                                                                                                                  NULL                                                                                                                                                                                                                                                            
+
+(1 rows affected)
+tabla             id          year        season               games_name                                                                                                                                                                                               city                                                                                                                                                                                                    
+----------------- ----------- ----------- -------------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+dbo.edicion_juego          47        2004 Summer               2004 Summer                                                                                                                                                                                              Athina                                                                                                                                                                                                  
+dbo.edicion_juego          49        2008 Summer               2008 Summer                                                                                                                                                                                              Beijing                                                                                                                                                                                                 
+
+(2 rows affected)
+tabla          id          sport                                                                                                                                                                                                    event_name                                                                                                                                                                                                                                                                                                  
+-------------- ----------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+dbo.disciplina         236 Athletics                                                                                                                                                                                                "100 metres, Men (Olympic)"                                                                                                                                                                                                                                                                                 
+dbo.disciplina         263 Athletics                                                                                                                                                                                                "200 metres, Men (Olympic)"                                                                                                                                                                                                                                                                                 
+dbo.disciplina         282 Athletics                                                                                                                                                                                                "4 ├ù 100 metres Relay, Men (Olympic)"                                                                                                                                                                                                                                                                      
+
+(3 rows affected)
+tabla      id          source_athlete_id                                  full_name                                                                                                                                                                                                                                                                                                    used_name                                                                                                                                                                                                                                                                                                    sex        born_date        born_city                                                                                                                                                                                                nacionalidad                                                                                                                                                                                             noc_code  
+---------- ----------- -------------------------------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ ---------- ---------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ----------
+dbo.atleta      105512 105512                                             Usain St. LeoΓÇóBolt                                                                                                                                                                                                                                                                                         Usain St. LeoΓÇóBolt                                                                                                                                                                                                                                                                                         Male                   NULL 1986-08-21                                                                                                                                                                                               NULL                                                                                                                                                                                                     JAM       
+
+(1 rows affected)
+tabla     id          nombre                                                                                              
+--------- ----------- ----------------------------------------------------------------------------------------------------
+dbo.roles           2 Administrator                                                                                       
+dbo.roles           8 Coach                                                                                               
+dbo.roles           9 Competed in Forerunners to the Olympic Games                                                        
+dbo.roles           3 Competed in Intercalated Games                                                                      
+dbo.roles           1 Competed in Olympic Games                                                                           
+dbo.roles           5 Competed in Olympic Games (non-medal events)                                                        
+dbo.roles          10 Competed in Youth Olympic Games                                                                     
+dbo.roles           4 Non-starter                                                                                         
+dbo.roles           6 Other                                                                                               
+dbo.roles           7 Referee                                                                                             
+dbo.roles          11 ΓÇö                                                                                                 
+
+(11 rows affected)
+tabla            id_atleta   id_rol     
+---------------- ----------- -----------
+dbo.atleta_roles      105512           1
+dbo.atleta_roles      105512           6
+
+(2 rows affected)
+tabla             id          id_atleta   id_edicion  id_disciplina noc_code   age     height_cm weight_kg
+----------------- ----------- ----------- ----------- ------------- ---------- ------- --------- ---------
+dbo.participacion      228168      105512          47           263 JAM           NULL    196.00     95.00
+dbo.participacion      228169      105512          49           236 JAM           NULL    196.00     95.00
+dbo.participacion      228170      105512          49           263 JAM           NULL    196.00     95.00
+dbo.participacion      228171      105512          49           282 JAM           NULL    196.00     95.00
+
+(4 rows affected)
+tabla         id_participacion place                tied medal     
+------------- ---------------- -------------------- ---- ----------
+dbo.resultado           228168 5                       0 NULL      
+dbo.resultado           228169 1                       0 Gold      
+dbo.resultado           228170 1                       0 Gold      
+dbo.resultado           228171 NULL                    0 NULL      
+
+(4 rows affected)
+tabla         noc_code   anio        poblacion           
+------------- ---------- ----------- --------------------
+dbo.poblacion JAM               1960              1642331
+dbo.poblacion JAM               1961              1663754
+dbo.poblacion JAM               1962              1683761
+dbo.poblacion JAM               1963              1703868
+dbo.poblacion JAM               1964              1725181
+dbo.poblacion JAM               1965              1746977
+dbo.poblacion JAM               1966              1768803
+dbo.poblacion JAM               1967              1790580
+dbo.poblacion JAM               1968              1812209
+dbo.poblacion JAM               1969              1834615
+dbo.poblacion JAM               1970              1859091
+dbo.poblacion JAM               1971              1886143
+dbo.poblacion JAM               1972              1915299
+dbo.poblacion JAM               1973              1945320
+dbo.poblacion JAM               1974              1974880
+dbo.poblacion JAM               1975              2003094
+dbo.poblacion JAM               1976              2029486
+dbo.poblacion JAM               1977              2054927
+dbo.poblacion JAM               1978              2080485
+dbo.poblacion JAM               1979              2106937
+
+(20 rows affected)
+tabla             filas      
+----------------- -----------
+dbo.atleta                  1
+dbo.atleta_roles            2
+dbo.disciplina              3
+dbo.edicion_juego           2
+dbo.participacion           4
+dbo.poblacion              65
+dbo.region                  1
+dbo.resultado               4
+dbo.roles                  11
+
+(9 rows affected)
+tabla                                                                                                                            indice                                                                                                                           tipo_indice                                                  fragmentacion_pct       
+-------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------- ------------------------------------------------------------ ------------------------
+atleta                                                                                                                           NULL                                                                                                                             HEAP                                                                             25.0
+atleta                                                                                                                           ix_atleta_names                                                                                                                  NONCLUSTERED                                                                      0.0
+atleta                                                                                                                           pk_atleta                                                                                                                        CLUSTERED                                                                         0.0
+atleta_rol                                                                                                                       NULL                                                                                                                             HEAP                                                                             20.0
+atleta_roles                                                                                                                     pk_atleta_roles                                                                                                                  CLUSTERED                                                                         0.0
+disciplina                                                                                                                       NULL                                                                                                                             HEAP                                                                              0.0
+disciplina                                                                                                                       pk_disciplina                                                                                                                    CLUSTERED                                                                         0.0
+disciplina                                                                                                                       uq_disciplina_evento                                                                                                             NONCLUSTERED                                                                      0.0
+edicion_juego                                                                                                                    NULL                                                                                                                             HEAP                                                                              0.0
+edicion_juego                                                                                                                    ix_edicion_noc                                                                                                                   NONCLUSTERED                                                                      0.0
+edicion_juego                                                                                                                    ix_edicion_year                                                                                                                  NONCLUSTERED                                                                      0.0
+edicion_juego                                                                                                                    pk_edicion_juego                                                                                                                 CLUSTERED                                                                         0.0
+edicion_juego                                                                                                                    uq_edicion_juego                                                                                                                 NONCLUSTERED                                                                      0.0
+participacion                                                                                                                    NULL                                                                                                                             HEAP                                                                            43.75
+participacion                                                                                                                    ix_participacion_busqueda                                                                                                        NONCLUSTERED                                                                      0.0
+participacion                                                                                                                    ix_participacion_noc                                                                                                             NONCLUSTERED                                                                      0.0
+participacion                                                                                                                    pk_participacion                                                                                                                 CLUSTERED                                                                         0.0
+poblacion                                                                                                                        NULL                                                                                                                             HEAP                                                                             50.0
+poblacion                                                                                                                        pk_poblacion                                                                                                                     CLUSTERED                                                                         0.0
+region                                                                                                                           NULL                                                                                                                             HEAP                                                                              0.0
+region                                                                                                                           pk_region                                                                                                                        CLUSTERED                                                                         0.0
+resultado                                                                                                                        NULL                                                                                                                             HEAP                                                               88.888888888888886
+resultado                                                                                                                        ix_resultado_medal                                                                                                               NONCLUSTERED                                                                      0.0
+resultado                                                                                                                        pk_resultado                                                                                                                     CLUSTERED                                                                         0.0
+resultado                                                                                                                        uq_resultado_particip                                                                                                            NONCLUSTERED                                                                      0.0
+rol                                                                                                                              NULL                                                                                                                             HEAP                                                                              0.0
+roles                                                                                                                            pk_roles                                                                                                                         CLUSTERED                                                                         0.0
+roles                                                                                                                            uq_roles_nombre                                                                                                                  NONCLUSTERED                                                                      0.0
+
+(28 rows affected)
+archivo_logico                                                                                                                   tamano_mb            archivo_fisico                                                                                                                                                                                                                                                      
+-------------------------------------------------------------------------------------------------------------------------------- -------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+db_olimpiadas_deportista                                                                                                                   136.000000 /var/opt/mssql/data/db_olimpiadas_deportista.mdf                                                                                                                                                                                                                    
+db_olimpiadas_deportista_log                                                                                                               328.000000 /var/opt/mssql/data/db_olimpiadas_deportista_log.ldf                                                                                                                                                                                                                
+
+(2 rows affected)
+Carga 2 completada. Continuar con backup/02_dif_deportista_1.sql

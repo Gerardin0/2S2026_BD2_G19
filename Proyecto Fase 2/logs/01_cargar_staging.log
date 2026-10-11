@@ -1,0 +1,34 @@
+Changed database context to 'db_olimpiadas_deportista'.
+--- Cargando CSVs en stg ---
+
+(234 rows affected)
+
+(17195 rows affected)
+
+(2087 rows affected)
+
+(63 rows affected)
+
+(153325 rows affected)
+
+(11 rows affected)
+
+(154438 rows affected)
+
+(323143 rows affected)
+
+(323143 rows affected)
+tabla_staging     filas      
+----------------- -----------
+stg.atleta             153325
+stg.atleta_rol         154438
+stg.disciplina           2087
+stg.edicion_juego          63
+stg.participacion      323143
+stg.poblacion           17195
+stg.region                234
+stg.resultado          323143
+stg.rol                    11
+
+(9 rows affected)
+--- Staging cargado. Continuar con 02_proc_cargar_deportista.sql ---
