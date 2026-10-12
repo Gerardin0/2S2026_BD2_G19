@@ -1,0 +1,60 @@
+Changed database context to 'db_olimpiadas_anio'.
+===============================================================
+CARGA 1 / 4 - Por Año - PARIS 2024
+Ejecutado: 2026-10-12 02:28:51
+===============================================================
+=== Carga masiva para la edición 2024 ===
+--- Preparando datos en RAM ---
+--- Migrando a DBO ---
+  region        -> 206 filas
+  edicion_juego -> 0 filas
+  disciplina    -> 0 filas
+  atleta        -> 0 filas
+  roles_atleta  -> 3558 filas
+  participacion -> 0 filas
+  resultado     -> 14735 filas
+  poblacion     -> 7800 filas
+--- Purgando staging ---
+--- Carga de 2024 finalizada y Staging purgado ---
+tabla             filas      
+----------------- -----------
+dbo.atleta              11092
+dbo.disciplina            356
+dbo.edicion_juego           1
+dbo.participacion       14735
+dbo.region                206
+dbo.resultado           14735
+
+(6 rows affected)
+tabla                                                                                                                            indice                                                                                                                           fragmentacion_pct       
+-------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------- ------------------------
+region                                                                                                                           NULL                                                                                                                                                  0.0
+poblacion                                                                                                                        NULL                                                                                                                                   46.153846153846153
+disciplina                                                                                                                       NULL                                                                                                                                                  0.0
+edicion_juego                                                                                                                    NULL                                                                                                                                                  0.0
+atleta                                                                                                                           NULL                                                                                                                                  0.14814814814814814
+rol                                                                                                                              NULL                                                                                                                                                  0.0
+atleta_rol                                                                                                                       NULL                                                                                                                                                  0.0
+participacion                                                                                                                    NULL                                                                                                                                                  0.0
+resultado                                                                                                                        NULL                                                                                                                                                  0.0
+region                                                                                                                           pk_region                                                                                                                                            50.0
+edicion_juego                                                                                                                    pk_edicion_juego                                                                                                                                      0.0
+edicion_juego                                                                                                                    uq_edicion_juego                                                                                                                                      0.0
+edicion_juego                                                                                                                    ix_edicion_noc                                                                                                                                        0.0
+edicion_juego                                                                                                                    ix_edicion_year                                                                                                                                       0.0
+disciplina                                                                                                                       pk_disciplina                                                                                                                                        20.0
+disciplina                                                                                                                       uq_disciplina_evento                                                                                                                                 20.0
+atleta                                                                                                                           pk_atleta                                                                                                                             0.40650406504065045
+atleta                                                                                                                           ix_atleta_names                                                                                                                       0.95238095238095244
+participacion                                                                                                                    pk_participacion                                                                                                                      0.55865921787709494
+participacion                                                                                                                    ix_participacion_busqueda                                                                                                              2.4390243902439024
+participacion                                                                                                                    ix_participacion_noc                                                                                                                   2.7027027027027026
+resultado                                                                                                                        pk_resultado                                                                                                                                          2.0
+resultado                                                                                                                        uq_resultado_particip                                                                                                                  3.8461538461538463
+resultado                                                                                                                        ix_resultado_medal                                                                                                                     4.3478260869565215
+poblacion                                                                                                                        pk_poblacion                                                                                                                           97.674418604651152
+roles                                                                                                                            pk_roles                                                                                                                                              0.0
+roles                                                                                                                            uq_roles_nombre                                                                                                                                       0.0
+atleta_roles                                                                                                                     pk_atleta_roles                                                                                                                                      12.5
+
+(28 rows affected)
