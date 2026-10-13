@@ -1,0 +1,192 @@
+Changed database context to 'db_olimpiadas_anio'.
+===============================================================
+CARGA 3 / 4 - Por Año - RIO 2016
+Ejecutado: 2026-10-13 03:26:04
+===============================================================
+Warning: Null value is eliminated by an aggregate or other SET operation.
+=== Carga masiva para la edición 2016 (id_edicion 56) ===
+--- Preparando datos en RAM ---
+--- Migrando a DBO ---
+  region        -> 2 filas
+  edicion_juego -> 1 filas
+  disciplina    -> 17 filas
+  atleta        -> 7417 filas
+  roles         -> 0 filas
+  atleta_roles  -> 8107 filas
+  participacion -> 13742 filas
+  resultado     -> 13742 filas
+  poblacion     -> 65 filas
+--- Purgando staging ---
+--- Carga de 2016 finalizada y Staging purgado ---
+tabla      noc_code   country_name              region                   
+---------- ---------- ------------------------- -------------------------
+dbo.region AFG        Afghanistan               Afghanistan              
+dbo.region AIN        Individual Neutral Athlet Individual Neutral Athlet
+dbo.region ALB        Albania                   Albania                  
+dbo.region ALG        Algeria                   Algeria                  
+dbo.region AND        Andorra                   Andorra                  
+dbo.region ANG        Angola                    Angola                   
+dbo.region ANT        Antigua                   Antigua                  
+dbo.region ARG        Argentina                 Argentina                
+dbo.region ARM        Armenia                   Armenia                  
+dbo.region ARU        Aruba                     Aruba                    
+
+(10 rows affected)
+tabla             id          year        season               games_name                                                                                                                                                                                               city                                                                                                                                                                                                    
+----------------- ----------- ----------- -------------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+dbo.edicion_juego          63        2024 Summer               2024 Summer                                                                                                                                                                                              Paris                                                                                                                                                                                                   
+dbo.edicion_juego          60        2020 Summer               2020 Summer                                                                                                                                                                                              Tokyo                                                                                                                                                                                                   
+dbo.edicion_juego          56        2016 Summer               2016 Summer                                                                                                                                                                                              Rio de Janeiro                                                                                                                                                                                          
+
+(3 rows affected)
+tabla          id          sport                     event_name                         
+-------------- ----------- ------------------------- -----------------------------------
+dbo.disciplina           4 3x3 Basketball (Basketbal "3x3 Basketball, Men (Olympic)"    
+dbo.disciplina           5 3x3 Basketball (Basketbal "3x3 Basketball, Women (Olympic)"  
+dbo.disciplina          61 Archery                   "Individual, Men (Olympic)"        
+dbo.disciplina          62 Archery                   "Individual, Women (Olympic)"      
+dbo.disciplina          77 Archery                   "Team, Men (Olympic)"              
+dbo.disciplina          78 Archery                   "Team, Mixed (Olympic)"            
+dbo.disciplina          80 Archery                   "Team, Women (Olympic)"            
+dbo.disciplina         111 Artistic Gymnastics (Gymn "All-Around, Men (Olympic)"        
+dbo.disciplina         112 Artistic Gymnastics (Gymn "All-Around, Women (Olympic)"      
+dbo.disciplina         113 Artistic Gymnastics (Gymn "Artistic Gymnastics, Men (Olympic)
+
+(10 rows affected)
+tabla      id          source_athlete_id                                  full_name                      sex        born_date        noc_code  
+---------- ----------- -------------------------------------------------- ------------------------------ ---------- ---------------- ----------
+dbo.atleta         287 287                                                Leander Paes                   M                1973-06-17 IND       
+dbo.atleta         693 693                                                ╨ú╨╗╨░╨┤╨╖                     M                      NULL BLR       
+dbo.atleta         757 757                                                Daniel MarkΓÇóNestor           M                      NULL CAN       
+dbo.atleta        1014 1014                                               "Olufunke ""Funke""ΓÇóOshon    F                      NULL NGR       
+dbo.atleta        1027 1027                                               Segun MosesΓÇóToriola          M                      NULL NGR       
+dbo.atleta        2069 2069                                               S┼éawomir KazimierzΓÇóNa       M                      NULL POL       
+dbo.atleta        2249 2249                                               "William Henry ""Will""ΓÇóT    Male                   NULL AUS       
+dbo.atleta        2563 2563                                               "MartinaΓÇóHingis (-Hutin      F                      NULL SUI       
+dbo.atleta        2820 2820                                               AleksandarΓÇóKaraka┼íevi       M                      NULL SRB       
+dbo.atleta        2864 2864                                               Rafael Lozano                  Male             1970-01-25 ESP       
+
+(10 rows affected)
+tabla     id          nombre                        
+--------- ----------- ------------------------------
+dbo.roles           1 Competed in Olympic Games     
+dbo.roles           2 Administrator                 
+dbo.roles           3 Competed in Intercalated Games
+dbo.roles           4 Non-starter                   
+dbo.roles           5 Competed in Olympic Games (non
+dbo.roles           6 Other                         
+dbo.roles           7 Referee                       
+dbo.roles           8 Coach                         
+dbo.roles           9 Competed in Forerunners to the
+dbo.roles          10 Competed in Youth Olympic Game
+dbo.roles          11 ΓÇö                           
+
+(11 rows affected)
+tabla            id_atleta   id_rol     
+---------------- ----------- -----------
+dbo.atleta_roles         287           1
+dbo.atleta_roles         287           6
+dbo.atleta_roles         693           1
+dbo.atleta_roles         757           1
+dbo.atleta_roles        1014           1
+dbo.atleta_roles        1014           6
+dbo.atleta_roles        1027           1
+dbo.atleta_roles        2069           1
+dbo.atleta_roles        2249           1
+dbo.atleta_roles        2563           1
+
+(10 rows affected)
+tabla             id          id_atleta   id_edicion  id_disciplina noc_code   age     height_cm weight_kg
+----------------- ----------- ----------- ----------- ------------- ---------- ------- --------- ---------
+dbo.participacion         824         287          56          1875 IND           NULL    178.00     77.00
+dbo.participacion        1728         693          56          1828 BLR           NULL    189.00     83.00
+dbo.participacion        1909         757          56          1875 CAN           NULL    191.00     87.00
+dbo.participacion        2558        1014          56          1829 NGR           NULL    167.00     59.00
+dbo.participacion        2559        1014          60          1829 NGR           NULL    167.00     59.00
+dbo.participacion        2594        1027          56          1828 NGR           NULL    182.00     70.00
+dbo.participacion        2595        1027          56          1830 NGR           NULL    182.00     70.00
+dbo.participacion        4110        2069          60            78 POL           NULL    185.00     82.00
+dbo.participacion        4111        2069          60            61 POL           NULL    185.00     82.00
+dbo.participacion        5266        2563          56          1879 SUI           NULL    170.00     59.00
+
+(10 rows affected)
+tabla         id_participacion place                tied medal     
+------------- ---------------- -------------------- ---- ----------
+dbo.resultado              824 17                      1 NULL      
+dbo.resultado             1728 4                       0 NULL      
+dbo.resultado             1909 4                       0 NULL      
+dbo.resultado             2558 49                      1 NULL      
+dbo.resultado             2559 65                      1 NULL      
+dbo.resultado             2594 33                      1 NULL      
+dbo.resultado             2595 9                       1 NULL      
+dbo.resultado             4110 24                      0 NULL      
+dbo.resultado             4111 33                      1 NULL      
+dbo.resultado             5266 2                       0 Silver    
+
+(10 rows affected)
+tabla         noc_code   anio        poblacion           
+------------- ---------- ----------- --------------------
+dbo.poblacion AFG               1960              8622466
+dbo.poblacion AFG               1961              8790140
+dbo.poblacion AFG               1962              8969047
+dbo.poblacion AFG               1963              9157465
+dbo.poblacion AFG               1964              9355514
+dbo.poblacion AFG               1965              9565147
+dbo.poblacion AFG               1966              9783147
+dbo.poblacion AFG               1967             10010030
+dbo.poblacion AFG               1968             10247780
+dbo.poblacion AFG               1969             10494489
+
+(10 rows affected)
+tabla             filas      
+----------------- -----------
+dbo.atleta              26579
+dbo.atleta_roles        20359
+dbo.disciplina            555
+dbo.edicion_juego           3
+dbo.participacion       42428
+dbo.poblacion            7930
+dbo.region                211
+dbo.resultado           42428
+dbo.roles                  11
+
+(9 rows affected)
+tabla                  indice                       tipo_indice        fragmentacion_pct
+---------------------- ---------------------------- ------------------ -----------------
+atleta                 NULL                         HEAP                             .30
+atleta                 ix_atleta_names              NONCLUSTERED                   98.88
+atleta                 pk_atleta                    CLUSTERED                      79.22
+atleta_rol             NULL                         HEAP                             .00
+atleta_roles           pk_atleta_roles              CLUSTERED                      71.62
+disciplina             NULL                         HEAP                             .00
+disciplina             pk_disciplina                CLUSTERED                      90.00
+disciplina             uq_disciplina_evento         NONCLUSTERED                   90.00
+edicion_juego          NULL                         HEAP                             .00
+edicion_juego          ix_edicion_noc               NONCLUSTERED                     .00
+edicion_juego          ix_edicion_year              NONCLUSTERED                     .00
+edicion_juego          pk_edicion_juego             CLUSTERED                        .00
+edicion_juego          uq_edicion_juego             NONCLUSTERED                     .00
+participacion          NULL                         HEAP                             .48
+participacion          ix_participacion_busqueda    NONCLUSTERED                   81.48
+participacion          ix_participacion_noc         NONCLUSTERED                   95.71
+participacion          pk_participacion             CLUSTERED                      45.00
+poblacion              NULL                         HEAP                           46.15
+poblacion              pk_poblacion                 CLUSTERED                      97.73
+region                 NULL                         HEAP                             .00
+region                 pk_region                    CLUSTERED                      66.67
+resultado              NULL                         HEAP                             .37
+resultado              ix_resultado_medal           NONCLUSTERED                   47.14
+resultado              pk_resultado                 CLUSTERED                      12.77
+resultado              uq_resultado_particip        NONCLUSTERED                   51.02
+rol                    NULL                         HEAP                             .00
+roles                  pk_roles                     CLUSTERED                        .00
+roles                  uq_roles_nombre              NONCLUSTERED                     .00
+
+(28 rows affected)
+archivo_logico               tamano_mb    archivo_fisico                                  
+---------------------------- ------------ ------------------------------------------------
+db_olimpiadas_anio                 136.00 /var/opt/mssql/data/db_olimpiadas_anio.mdf      
+db_olimpiadas_anio_log             200.00 /var/opt/mssql/data/db_olimpiadas_anio_log.ldf  
+
+(2 rows affected)
+Carga 3 completada. Continuar con backup/anio/03_dif_anio_2.sql
