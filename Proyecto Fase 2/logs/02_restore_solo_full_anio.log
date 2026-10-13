@@ -1,0 +1,95 @@
+Changed database context to 'master'.
+===============================================================
+RESTAURACION 1/4 - SOLO FULL (estado tras carga 1: Paris 2024)
+Ejecutado: 2026-10-13 22:31:07
+===============================================================
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+100 percent processed.
+Processed 15120 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio' on file 1.
+Processed 2 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio_log' on file 1.
+RESTORE DATABASE successfully processed 15122 pages in 0.373 seconds (316.720 MB/sec).
+>>> TIEMPO_MOTOR_RESTORE_MS: 965 ms (0.965 s)
+database_name          tipo         tamano_mb    archivo                                    finalizado          
+---------------------- ------------ ------------ ------------------------------------------ --------------------
+db_olimpiadas_anio     FULL               119.10 /var/opt/mssql/backups/full_anio.bak       2026-10-13 22:29:58 
+db_olimpiadas_anio     DIFERENCIAL         35.10 /var/opt/mssql/backups/diff_anio_1.bak     2026-10-13 22:30:18 
+db_olimpiadas_anio     DIFERENCIAL         51.10 /var/opt/mssql/backups/diff_anio_2.bak     2026-10-13 22:30:33 
+db_olimpiadas_anio     DIFERENCIAL         68.10 /var/opt/mssql/backups/diff_anio_3.bak     2026-10-13 22:30:45 
+
+(4 rows affected)
+Changed database context to 'db_olimpiadas_anio'.
+--- Conteos restaurados (solo FULL) ---
+tabla             filas      
+----------------- -----------
+dbo.atleta              11092
+dbo.atleta_roles         3558
+dbo.disciplina            356
+dbo.edicion_juego           1
+dbo.participacion       14735
+dbo.poblacion            7800
+dbo.region                207
+dbo.resultado           14735
+dbo.roles                  11
+
+(9 rows affected)
+Solo debe aparecer la edicion de PARIS 2024:
+id          anio        edicion                                                                                                                                                                                                  city                                                                                                                                                                                                     total_participaciones
+----------- ----------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------
+         63        2024 2024 Summer                                                                                                                                                                                              Paris                                                                                                                                                                                                                    14735
+
+(1 rows affected)
+--- Muestra de datos restaurados (SELECT de validacion) ---
+tabla      noc_code   country_name             
+---------- ---------- -------------------------
+dbo.region AFG        Afghanistan              
+dbo.region AIN        Individual Neutral Athlet
+dbo.region ALB        Albania                  
+dbo.region ALG        Algeria                  
+dbo.region AND        Andorra                  
+
+(5 rows affected)
+tabla          id          sport                  event_name                    
+-------------- ----------- ---------------------- ------------------------------
+dbo.disciplina           4 3x3 Basketball (Basket "3x3 Basketball, Men (Olympic)
+dbo.disciplina           5 3x3 Basketball (Basket "3x3 Basketball, Women (Olympi
+dbo.disciplina          61 Archery                "Individual, Men (Olympic)"   
+dbo.disciplina          62 Archery                "Individual, Women (Olympic)" 
+dbo.disciplina          77 Archery                "Team, Men (Olympic)"         
+
+(5 rows affected)
+tabla      id          full_name                      sex        noc_code  
+---------- ----------- ------------------------------ ---------- ----------
+dbo.atleta        2249 "William Henry ""Will""ΓÇóT    M          AUS       
+dbo.atleta        2864 Rafael Lozano                  M          ESP       
+dbo.atleta        5460 Adriana AparecidaΓÇódos San    F          BRA       
+dbo.atleta        6313 AdelΓÇóIbrahim Ismail          M          EGY       
+dbo.atleta        6973 "Robert Lloyd Jackson ""Jack"" M          AUS       
+
+(5 rows affected)
+tabla             id          id_atleta   id_edicion  id_disciplina noc_code  
+----------------- ----------- ----------- ----------- ------------- ----------
+dbo.participacion      308409      120952          63          2053 ARM       
+dbo.participacion      308410      140551          63          2037 ARM       
+dbo.participacion      308411      140554          63          2040 ARM       
+dbo.participacion      308412      121218          63          1916 MEX       
+dbo.participacion      308413      122493          63          1915 MEX       
+
+(5 rows affected)
+tabla         id_participacion place                tied medal     
+------------- ---------------- -------------------- ---- ----------
+dbo.resultado           308409 2                    NULL Silver    
+dbo.resultado           308410 6                    NULL NULL      
+dbo.resultado           308411 5                    NULL NULL      
+dbo.resultado           308412 25                   NULL NULL      
+dbo.resultado           308413 22                   NULL NULL      
+
+(5 rows affected)
+Restauracion 1/4 completada.

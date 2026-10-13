@@ -135,10 +135,10 @@ Cada persona llena su tabla con los segundos medidos por consola.
 
 | Tipo de carga | Restauración | Tiempo (s) | Filas restauradas | Tamaño del .bak |
 |---|---|---|---|---|
-| Año | Full | | | |
-| Año | Full + Diff 1 | | | |
-| Año | Full + Diff 2 | | | |
-| Año | Full + Diff 3 | | | |
+| Año | Full | 0.965 | 14735 | 119.10 MB |
+| Año | Full + Diff 1 | 1.582 | 13951 | 35.10 MB |
+| Año | Full + Diff 2 | 1.681 | 13742 | 51.10 MB |
+| Año | Full + Diff 3 | 1.555 | 12975 | 68.10 MB |
 | Deporte | Full | | | |
 | Deporte | Full + Diff 1 | | | |
 | Deporte | Full + Diff 2 | | | |

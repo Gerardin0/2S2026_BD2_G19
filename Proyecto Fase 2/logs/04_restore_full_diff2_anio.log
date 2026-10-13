@@ -1,0 +1,102 @@
+Changed database context to 'master'.
+===============================================================
+RESTAURACION 3/4 - FULL + DIFF 2 (hasta Rio 2016)
+Ejecutado: 2026-10-13 22:31:10
+===============================================================
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+100 percent processed.
+Processed 15120 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio' on file 1.
+Processed 2 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio_log' on file 1.
+RESTORE DATABASE successfully processed 15122 pages in 0.364 seconds (324.551 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+100 percent processed.
+Processed 6352 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio' on file 1.
+Processed 2 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio_log' on file 1.
+RESTORE DATABASE successfully processed 6354 pages in 0.363 seconds (136.740 MB/sec).
+>>> TIEMPO_MOTOR_RESTORE_MS: 1681 ms (1.681 s)
+Changed database context to 'db_olimpiadas_anio'.
+--- Conteos restaurados (FULL + DIFF 2) ---
+tabla             filas      
+----------------- -----------
+dbo.atleta              26579
+dbo.atleta_roles        20359
+dbo.disciplina            555
+dbo.edicion_juego           3
+dbo.participacion       42428
+dbo.poblacion            7930
+dbo.region                211
+dbo.resultado           42428
+dbo.roles                  11
+
+(9 rows affected)
+Deben aparecer las ediciones de PARIS 2024, TOKIO 2020 y RIO 2016:
+id          anio        edicion                                                                                                                                                                                                  city                                                                                                                                                                                                     total_participaciones
+----------- ----------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------
+         63        2024 2024 Summer                                                                                                                                                                                              Paris                                                                                                                                                                                                                    14735
+         60        2020 2020 Summer                                                                                                                                                                                              Tokyo                                                                                                                                                                                                                    13951
+         56        2016 2016 Summer                                                                                                                                                                                              Rio de Janeiro                                                                                                                                                                                                           13742
+
+(3 rows affected)
+--- Muestra de datos restaurados (SELECT de validacion) ---
+tabla      noc_code   country_name             
+---------- ---------- -------------------------
+dbo.region AFG        Afghanistan              
+dbo.region AIN        Individual Neutral Athlet
+dbo.region ALB        Albania                  
+dbo.region ALG        Algeria                  
+dbo.region AND        Andorra                  
+
+(5 rows affected)
+tabla          id          sport                  event_name                    
+-------------- ----------- ---------------------- ------------------------------
+dbo.disciplina           4 3x3 Basketball (Basket "3x3 Basketball, Men (Olympic)
+dbo.disciplina           5 3x3 Basketball (Basket "3x3 Basketball, Women (Olympi
+dbo.disciplina          61 Archery                "Individual, Men (Olympic)"   
+dbo.disciplina          62 Archery                "Individual, Women (Olympic)" 
+dbo.disciplina          77 Archery                "Team, Men (Olympic)"         
+
+(5 rows affected)
+tabla      id          full_name                      sex        noc_code  
+---------- ----------- ------------------------------ ---------- ----------
+dbo.atleta         287 Leander Paes                   M          IND       
+dbo.atleta         693 ╨ú╨╗╨░╨┤╨╖                     M          BLR       
+dbo.atleta         757 Daniel MarkΓÇóNestor           M          CAN       
+dbo.atleta        1014 "Olufunke ""Funke""ΓÇóOshon    F          NGR       
+dbo.atleta        1027 Segun MosesΓÇóToriola          M          NGR       
+
+(5 rows affected)
+tabla             id          id_atleta   id_edicion  id_disciplina noc_code  
+----------------- ----------- ----------- ----------- ------------- ----------
+dbo.participacion         824         287          56          1875 IND       
+dbo.participacion        1728         693          56          1828 BLR       
+dbo.participacion        1909         757          56          1875 CAN       
+dbo.participacion        2558        1014          56          1829 NGR       
+dbo.participacion        2559        1014          60          1829 NGR       
+
+(5 rows affected)
+tabla         id_participacion place                tied medal     
+------------- ---------------- -------------------- ---- ----------
+dbo.resultado              824 17                      1 NULL      
+dbo.resultado             1728 4                       0 NULL      
+dbo.resultado             1909 4                       0 NULL      
+dbo.resultado             2558 49                      1 NULL      
+dbo.resultado             2559 65                      1 NULL      
+
+(5 rows affected)
+Restauracion 3/4 completada.

@@ -1,12 +1,13 @@
 Changed database context to 'db_olimpiadas_anio'.
 ===============================================================
 CARGA 1 / 4 - Por Año - PARIS 2024
-Ejecutado: 2026-10-13 02:53:28
+Ejecutado: 2026-10-13 22:29:43
 ===============================================================
+Warning: Null value is eliminated by an aggregate or other SET operation.
 === Carga masiva para la edición 2024 (id_edicion 63) ===
 --- Preparando datos en RAM ---
 --- Migrando a DBO ---
-  region        -> 206 filas
+  region        -> 207 filas
   edicion_juego -> 1 filas
   disciplina    -> 356 filas
   atleta        -> 11092 filas
@@ -52,16 +53,16 @@ dbo.disciplina         113 Artistic Gymnastics (Gymn "Artistic Gymnastics, Men (
 (10 rows affected)
 tabla      id          source_athlete_id                                  full_name                      sex        born_date        noc_code  
 ---------- ----------- -------------------------------------------------- ------------------------------ ---------- ---------------- ----------
-dbo.atleta        2249 2249                                               "William Henry ""Will""ΓÇóT    Male                   NULL AUS       
-dbo.atleta        2864 2864                                               Rafael Lozano                  Male             1970-01-25 ESP       
-dbo.atleta        5460 5460                                               Adriana AparecidaΓÇódos San    Female                 NULL BRA       
-dbo.atleta        6313 6313                                               AdelΓÇóIbrahim Ismail          Male                   NULL EGY       
-dbo.atleta        6973 6973                                               "Robert Lloyd Jackson ""Jack"" Male                   NULL AUS       
-dbo.atleta        7246 7246                                               Boubacar Traor├⌐               Male             1946-12-17 MLI       
-dbo.atleta        7856 7856                                               V├¡ctor P├⌐rez                 Male             1971-02-09 FRA       
-dbo.atleta        7864 7864                                               Jos├⌐ Rodr├¡guez               Male             1967-07-18 VEN       
-dbo.atleta        8272 8272                                               Miloslav P┼Ö├¡hoda             Male             1923-02-16 CZE       
-dbo.atleta        9367 9367                                               Joaqu├¡n Garc├¡a               Male             1962-06-05 ARG       
+dbo.atleta        2249 2249                                               "William Henry ""Will""ΓÇóT    M                      NULL AUS       
+dbo.atleta        2864 2864                                               Rafael Lozano                  M                1970-01-25 ESP       
+dbo.atleta        5460 5460                                               Adriana AparecidaΓÇódos San    F                      NULL BRA       
+dbo.atleta        6313 6313                                               AdelΓÇóIbrahim Ismail          M                      NULL EGY       
+dbo.atleta        6973 6973                                               "Robert Lloyd Jackson ""Jack"" M                      NULL AUS       
+dbo.atleta        7246 7246                                               Boubacar Traor├⌐               M                1946-12-17 MLI       
+dbo.atleta        7856 7856                                               V├¡ctor P├⌐rez                 M                1971-02-09 FRA       
+dbo.atleta        7864 7864                                               Jos├⌐ Rodr├¡guez               M                1967-07-18 VEN       
+dbo.atleta        8272 8272                                               Miloslav P┼Ö├¡hoda             M                1923-02-16 CZE       
+dbo.atleta        9367 9367                                               Joaqu├¡n Garc├¡a               M                1962-06-05 ARG       
 
 (10 rows affected)
 tabla     id          nombre                        
@@ -143,7 +144,7 @@ dbo.disciplina            356
 dbo.edicion_juego           1
 dbo.participacion       14735
 dbo.poblacion            7800
-dbo.region                206
+dbo.region                207
 dbo.resultado           14735
 dbo.roles                  11
 
@@ -152,9 +153,9 @@ tabla                  indice                       tipo_indice        fragmenta
 ---------------------- ---------------------------- ------------------ -----------------
 atleta                 NULL                         HEAP                             .15
 atleta                 ix_atleta_names              NONCLUSTERED                     .95
-atleta                 pk_atleta                    CLUSTERED                        .41
+atleta                 pk_atleta                    CLUSTERED                        .43
 atleta_rol             NULL                         HEAP                             .00
-atleta_roles           pk_atleta_roles              CLUSTERED                      12.50
+atleta_roles           pk_atleta_roles              CLUSTERED                      66.67
 disciplina             NULL                         HEAP                             .00
 disciplina             pk_disciplina                CLUSTERED                      20.00
 disciplina             uq_disciplina_evento         NONCLUSTERED                   20.00
@@ -168,7 +169,7 @@ participacion          ix_participacion_busqueda    NONCLUSTERED                
 participacion          ix_participacion_noc         NONCLUSTERED                    2.70
 participacion          pk_participacion             CLUSTERED                        .56
 poblacion              NULL                         HEAP                           46.15
-poblacion              pk_poblacion                 CLUSTERED                      97.67
+poblacion              pk_poblacion                 CLUSTERED                      97.14
 region                 NULL                         HEAP                             .00
 region                 pk_region                    CLUSTERED                      50.00
 resultado              NULL                         HEAP                             .00

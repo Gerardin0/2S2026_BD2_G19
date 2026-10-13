@@ -1,7 +1,7 @@
 Changed database context to 'db_olimpiadas_anio'.
 ===============================================================
 CARGA 2 / 4 - Por Año - TOKIO 2020
-Ejecutado: 2026-10-13 03:17:17
+Ejecutado: 2026-10-13 22:30:05
 ===============================================================
 Warning: Null value is eliminated by an aggregate or other SET operation.
 === Carga masiva para la edición 2020 (id_edicion 60) ===
@@ -15,7 +15,7 @@ Warning: Null value is eliminated by an aggregate or other SET operation.
   atleta_roles  -> 8694 filas
   participacion -> 13951 filas
   resultado     -> 13951 filas
-  poblacion     -> 0 filas
+  poblacion     -> 65 filas
 --- Purgando staging ---
 --- Carga de 2020 finalizada y Staging purgado ---
 tabla      noc_code   country_name              region                   
@@ -56,14 +56,14 @@ tabla      id          source_athlete_id                                  full_n
 ---------- ----------- -------------------------------------------------- ------------------------------ ---------- ---------------- ----------
 dbo.atleta        1014 1014                                               "Olufunke ""Funke""ΓÇóOshon    F                      NULL NGR       
 dbo.atleta        2069 2069                                               S┼éawomir KazimierzΓÇóNa       M                      NULL POL       
-dbo.atleta        2249 2249                                               "William Henry ""Will""ΓÇóT    Male                   NULL AUS       
-dbo.atleta        2864 2864                                               Rafael Lozano                  Male             1970-01-25 ESP       
-dbo.atleta        5460 5460                                               Adriana AparecidaΓÇódos San    Female                 NULL BRA       
-dbo.atleta        6313 6313                                               AdelΓÇóIbrahim Ismail          Male                   NULL EGY       
-dbo.atleta        6973 6973                                               "Robert Lloyd Jackson ""Jack"" Male                   NULL AUS       
-dbo.atleta        7246 7246                                               Boubacar Traor├⌐               Male             1946-12-17 MLI       
-dbo.atleta        7856 7856                                               V├¡ctor P├⌐rez                 Male             1971-02-09 FRA       
-dbo.atleta        7864 7864                                               Jos├⌐ Rodr├¡guez               Male             1967-07-18 VEN       
+dbo.atleta        2249 2249                                               "William Henry ""Will""ΓÇóT    M                      NULL AUS       
+dbo.atleta        2864 2864                                               Rafael Lozano                  M                1970-01-25 ESP       
+dbo.atleta        5460 5460                                               Adriana AparecidaΓÇódos San    F                      NULL BRA       
+dbo.atleta        6313 6313                                               AdelΓÇóIbrahim Ismail          M                      NULL EGY       
+dbo.atleta        6973 6973                                               "Robert Lloyd Jackson ""Jack"" M                      NULL AUS       
+dbo.atleta        7246 7246                                               Boubacar Traor├⌐               M                1946-12-17 MLI       
+dbo.atleta        7856 7856                                               V├¡ctor P├⌐rez                 M                1971-02-09 FRA       
+dbo.atleta        7864 7864                                               Jos├⌐ Rodr├¡guez               M                1967-07-18 VEN       
 
 (10 rows affected)
 tabla     id          nombre                        
@@ -154,29 +154,29 @@ tabla                  indice                       tipo_indice        fragmenta
 ---------------------- ---------------------------- ------------------ -----------------
 atleta                 NULL                         HEAP                             .30
 atleta                 ix_atleta_names              NONCLUSTERED                   98.89
-atleta                 pk_atleta                    CLUSTERED                      70.07
+atleta                 pk_atleta                    CLUSTERED                      73.41
 atleta_rol             NULL                         HEAP                             .00
-atleta_roles           pk_atleta_roles              CLUSTERED                      83.33
+atleta_roles           pk_atleta_roles              CLUSTERED                      48.00
 disciplina             NULL                         HEAP                             .00
-disciplina             pk_disciplina                CLUSTERED                      90.00
-disciplina             uq_disciplina_evento         NONCLUSTERED                   90.00
+disciplina             pk_disciplina                CLUSTERED                      81.82
+disciplina             uq_disciplina_evento         NONCLUSTERED                   81.82
 edicion_juego          NULL                         HEAP                             .00
 edicion_juego          ix_edicion_noc               NONCLUSTERED                     .00
 edicion_juego          ix_edicion_year              NONCLUSTERED                     .00
 edicion_juego          pk_edicion_juego             CLUSTERED                        .00
 edicion_juego          uq_edicion_juego             NONCLUSTERED                     .00
 participacion          NULL                         HEAP                             .48
-participacion          ix_participacion_busqueda    NONCLUSTERED                   71.84
+participacion          ix_participacion_busqueda    NONCLUSTERED                   72.64
 participacion          ix_participacion_noc         NONCLUSTERED                   93.52
-participacion          pk_participacion             CLUSTERED                       4.29
+participacion          pk_participacion             CLUSTERED                       3.71
 poblacion              NULL                         HEAP                           46.15
-poblacion              pk_poblacion                 CLUSTERED                      97.73
+poblacion              pk_poblacion                 CLUSTERED                      97.22
 region                 NULL                         HEAP                             .00
 region                 pk_region                    CLUSTERED                      66.67
 resultado              NULL                         HEAP                             .37
 resultado              ix_resultado_medal           NONCLUSTERED                   40.82
 resultado              pk_resultado                 CLUSTERED                      12.50
-resultado              uq_resultado_particip        NONCLUSTERED                   18.46
+resultado              uq_resultado_particip        NONCLUSTERED                   54.84
 rol                    NULL                         HEAP                             .00
 roles                  pk_roles                     CLUSTERED                        .00
 roles                  uq_roles_nombre              NONCLUSTERED                     .00
