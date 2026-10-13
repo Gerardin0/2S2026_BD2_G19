@@ -1,0 +1,24 @@
+﻿Changed database context to 'db_olimpiadas_deporte'.
+===============================================================
+BACKUP DIFERENCIAL 3 - Deporte (tras carga 4, Londres 2012)
+Ejecutado: 2026-10-13 02:48:53
+===============================================================
+13 percent processed.
+21 percent processed.
+33 percent processed.
+41 percent processed.
+61 percent processed.
+73 percent processed.
+98 percent processed.
+100 percent processed.
+Processed 416 pages for database 'db_olimpiadas_deporte', file 'db_olimpiadas_deporte' on file 1.
+Processed 2 pages for database 'db_olimpiadas_deporte', file 'db_olimpiadas_deporte_log' on file 1.
+BACKUP DATABASE WITH DIFFERENTIAL successfully processed 418 pages in 0.195 seconds (16.726 MB/sec).
+database_name tipo archivo finalizado
+------------- ---- ------- ----------
+db_olimpiadas_deporte DIFERENCIAL /var/opt/mssql/backups/diff_deporte_3.bak 2026-10-12 23:03:16
+db_olimpiadas_deporte DIFERENCIAL /var/opt/mssql/backups/diff_deporte_3.bak 2026-10-13 02:48:53
+
+(2 rows affected)
+The backup set on file 1 is valid.
+Diferencial 3 creado: /var/opt/mssql/backups/diff_deporte_3.bak

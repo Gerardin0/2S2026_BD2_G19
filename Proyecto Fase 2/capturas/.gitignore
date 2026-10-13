@@ -1,0 +1,16 @@
+# Jose (carga por deporte): solo se suben las capturas que usa README_deporte.md.
+# El resto se regenera con docs/deporte/capturar_ciclo.ps1 -SoloCapturas.
+deporte_*.png
+CAPTURAS_deporte.md
+!deporte_002_01_staging_01.png
+!deporte_003_02_carga1_01.png
+!deporte_009_02_carga1_07.png
+!deporte_010_02_carga1_08.png
+!deporte_011_03_full_01.png
+!deporte_039_08_carga4_08.png
+!deporte_041_09_diff3_01.png
+!deporte_042_10_eliminar_antes_full_01.png
+!deporte_043_11_restore_full_01.png
+!deporte_052_17_restore_full_diff3_01.png
+!deporte_053_17_restore_full_diff3_02.png
+!deporte_054_tiempos.png

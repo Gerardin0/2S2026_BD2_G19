@@ -1,0 +1,6 @@
+﻿La base db_olimpiadas_deporte ya existe. Se procede a recrearla.
+Base de datos db_olimpiadas_deporte creada.
+Changed database context to 'db_olimpiadas_deporte'.
+Esquema stg creado con 9 tablas de staging.
+Changed database context to 'db_olimpiadas_deporte'.
+Modelo relacional dbo.* creado (identico al DDL de la Fase 1).

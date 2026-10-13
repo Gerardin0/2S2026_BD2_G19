@@ -1,0 +1,3 @@
+# BULK INSERT en el contenedor Linux parte las filas por LF: con CRLF el 
+# queda pegado a la ultima columna de cada CSV (rol_id, weight_kg, medal...).
+"Proyecto Fase 2/CSVs/*.csv" text eol=lf
