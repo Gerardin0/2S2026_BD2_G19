@@ -1,0 +1,30 @@
+Changed database context to 'master'.
+===============================================================
+ELIMINACION DE LA BASE DE DATOS (db_olimpiadas_anio)
+Ejecutado: 2026-10-13 22:31:10
+===============================================================
+tabla             filas      
+----------------- -----------
+dbo.atleta              19162
+dbo.atleta_roles        12252
+dbo.disciplina            538
+dbo.edicion_juego           2
+dbo.participacion       28686
+dbo.poblacion            7865
+dbo.region                209
+dbo.resultado           28686
+dbo.roles                  11
+
+(9 rows affected)
+Respaldos disponibles en el volumen externo:
+database_name          tipo         tamano_mb    archivo                                    finalizado          
+---------------------- ------------ ------------ ------------------------------------------ --------------------
+db_olimpiadas_anio     FULL               119.10 /var/opt/mssql/backups/full_anio.bak       2026-10-13 22:29:58 
+db_olimpiadas_anio     DIFERENCIAL         35.10 /var/opt/mssql/backups/diff_anio_1.bak     2026-10-13 22:30:18 
+db_olimpiadas_anio     DIFERENCIAL         51.10 /var/opt/mssql/backups/diff_anio_2.bak     2026-10-13 22:30:33 
+db_olimpiadas_anio     DIFERENCIAL         68.10 /var/opt/mssql/backups/diff_anio_3.bak     2026-10-13 22:30:45 
+
+(4 rows affected)
+Base de datos db_olimpiadas_anio eliminada correctamente.
+Verificar que los .bak siguen en /var/opt/mssql/backups:
+  docker exec -it sqlserver_olimpiadas ls -lh /var/opt/mssql/backups

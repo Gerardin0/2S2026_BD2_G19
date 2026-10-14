@@ -1,0 +1,101 @@
+Changed database context to 'master'.
+===============================================================
+RESTAURACION 2/4 - FULL + DIFF 1 (Paris 2024 + Tokio 2020)
+Ejecutado: 2026-10-13 22:31:08
+===============================================================
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+100 percent processed.
+Processed 15120 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio' on file 1.
+Processed 2 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio_log' on file 1.
+RESTORE DATABASE successfully processed 15122 pages in 0.380 seconds (310.886 MB/sec).
+11 percent processed.
+20 percent processed.
+32 percent processed.
+41 percent processed.
+50 percent processed.
+62 percent processed.
+71 percent processed.
+80 percent processed.
+92 percent processed.
+100 percent processed.
+Processed 4296 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio' on file 1.
+Processed 2 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio_log' on file 1.
+RESTORE DATABASE successfully processed 4298 pages in 0.336 seconds (99.923 MB/sec).
+>>> TIEMPO_MOTOR_RESTORE_MS: 1582 ms (1.582 s)
+Changed database context to 'db_olimpiadas_anio'.
+--- Conteos restaurados (FULL + DIFF 1) ---
+tabla             filas      
+----------------- -----------
+dbo.atleta              19162
+dbo.atleta_roles        12252
+dbo.disciplina            538
+dbo.edicion_juego           2
+dbo.participacion       28686
+dbo.poblacion            7865
+dbo.region                209
+dbo.resultado           28686
+dbo.roles                  11
+
+(9 rows affected)
+Deben aparecer las ediciones de PARIS 2024 y TOKIO 2020:
+id          anio        edicion                                                                                                                                                                                                  city                                                                                                                                                                                                     total_participaciones
+----------- ----------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------
+         63        2024 2024 Summer                                                                                                                                                                                              Paris                                                                                                                                                                                                                    14735
+         60        2020 2020 Summer                                                                                                                                                                                              Tokyo                                                                                                                                                                                                                    13951
+
+(2 rows affected)
+--- Muestra de datos restaurados (SELECT de validacion) ---
+tabla      noc_code   country_name             
+---------- ---------- -------------------------
+dbo.region AFG        Afghanistan              
+dbo.region AIN        Individual Neutral Athlet
+dbo.region ALB        Albania                  
+dbo.region ALG        Algeria                  
+dbo.region AND        Andorra                  
+
+(5 rows affected)
+tabla          id          sport                  event_name                    
+-------------- ----------- ---------------------- ------------------------------
+dbo.disciplina           4 3x3 Basketball (Basket "3x3 Basketball, Men (Olympic)
+dbo.disciplina           5 3x3 Basketball (Basket "3x3 Basketball, Women (Olympi
+dbo.disciplina          61 Archery                "Individual, Men (Olympic)"   
+dbo.disciplina          62 Archery                "Individual, Women (Olympic)" 
+dbo.disciplina          77 Archery                "Team, Men (Olympic)"         
+
+(5 rows affected)
+tabla      id          full_name                      sex        noc_code  
+---------- ----------- ------------------------------ ---------- ----------
+dbo.atleta        1014 "Olufunke ""Funke""ΓÇóOshon    F          NGR       
+dbo.atleta        2069 S┼éawomir KazimierzΓÇóNa       M          POL       
+dbo.atleta        2249 "William Henry ""Will""ΓÇóT    M          AUS       
+dbo.atleta        2864 Rafael Lozano                  M          ESP       
+dbo.atleta        5460 Adriana AparecidaΓÇódos San    F          BRA       
+
+(5 rows affected)
+tabla             id          id_atleta   id_edicion  id_disciplina noc_code  
+----------------- ----------- ----------- ----------- ------------- ----------
+dbo.participacion        2559        1014          60          1829 NGR       
+dbo.participacion        4110        2069          60            78 POL       
+dbo.participacion        4111        2069          60            61 POL       
+dbo.participacion       18091       11260          60           942 SWE       
+dbo.participacion       18092       11260          60           948 SWE       
+
+(5 rows affected)
+tabla         id_participacion place                tied medal     
+------------- ---------------- -------------------- ---- ----------
+dbo.resultado             2559 65                      1 NULL      
+dbo.resultado             4110 24                      0 NULL      
+dbo.resultado             4111 33                      1 NULL      
+dbo.resultado            18091 5                       0 NULL      
+dbo.resultado            18092 1                       0 Gold      
+
+(5 rows affected)
+Restauracion 2/4 completada.

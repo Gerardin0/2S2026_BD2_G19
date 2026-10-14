@@ -1,0 +1,103 @@
+Changed database context to 'master'.
+===============================================================
+RESTAURACION 4/4 - FULL + DIFF 3 (hasta Londres 2012)
+Ejecutado: 2026-10-13 22:31:12
+===============================================================
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+100 percent processed.
+Processed 15120 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio' on file 1.
+Processed 2 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio_log' on file 1.
+RESTORE DATABASE successfully processed 15122 pages in 0.372 seconds (317.571 MB/sec).
+10 percent processed.
+20 percent processed.
+31 percent processed.
+40 percent processed.
+50 percent processed.
+61 percent processed.
+70 percent processed.
+80 percent processed.
+91 percent processed.
+100 percent processed.
+Processed 8576 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio' on file 1.
+Processed 2 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio_log' on file 1.
+RESTORE DATABASE successfully processed 8578 pages in 0.362 seconds (185.115 MB/sec).
+>>> TIEMPO_MOTOR_RESTORE_MS: 1555 ms (1.555 s)
+Changed database context to 'db_olimpiadas_anio'.
+--- Conteos restaurados (FULL + DIFF 3) ---
+tabla             filas      
+----------------- -----------
+dbo.atleta              33124
+dbo.atleta_roles        27362
+dbo.disciplina            561
+dbo.edicion_juego           4
+dbo.participacion       55403
+dbo.poblacion            7930
+dbo.region                211
+dbo.resultado           55403
+dbo.roles                  11
+
+(9 rows affected)
+Deben aparecer las 4 ediciones (2024, 2020, 2016 y 2012):
+id          anio        edicion                                                                                                                                                                                                  city                                                                                                                                                                                                     total_participaciones
+----------- ----------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------
+         63        2024 2024 Summer                                                                                                                                                                                              Paris                                                                                                                                                                                                                    14735
+         60        2020 2020 Summer                                                                                                                                                                                              Tokyo                                                                                                                                                                                                                    13951
+         56        2016 2016 Summer                                                                                                                                                                                              Rio de Janeiro                                                                                                                                                                                                           13742
+         52        2012 2012 Summer                                                                                                                                                                                              London                                                                                                                                                                                                                   12975
+
+(4 rows affected)
+--- Muestra de datos restaurados (SELECT de validacion) ---
+tabla      noc_code   country_name             
+---------- ---------- -------------------------
+dbo.region AFG        Afghanistan              
+dbo.region AIN        Individual Neutral Athlet
+dbo.region ALB        Albania                  
+dbo.region ALG        Algeria                  
+dbo.region AND        Andorra                  
+
+(5 rows affected)
+tabla          id          sport                  event_name                    
+-------------- ----------- ---------------------- ------------------------------
+dbo.disciplina           4 3x3 Basketball (Basket "3x3 Basketball, Men (Olympic)
+dbo.disciplina           5 3x3 Basketball (Basket "3x3 Basketball, Women (Olympi
+dbo.disciplina          61 Archery                "Individual, Men (Olympic)"   
+dbo.disciplina          62 Archery                "Individual, Women (Olympic)" 
+dbo.disciplina          77 Archery                "Team, Men (Olympic)"         
+
+(5 rows affected)
+tabla      id          full_name                      sex        noc_code  
+---------- ----------- ------------------------------ ---------- ----------
+dbo.atleta         179 C─âlin Creang─â                M          GRE       
+dbo.atleta         213 KrisztinaΓÇóT├│th              F          HUN       
+dbo.atleta         279 Mahesh Bhupathi                M          IND       
+dbo.atleta         287 Leander Paes                   M          IND       
+dbo.atleta         504 KhatunaΓÇóKvrivishvili-Lori    F          USA       
+
+(5 rows affected)
+tabla             id          id_atleta   id_edicion  id_disciplina noc_code  
+----------------- ----------- ----------- ----------- ------------- ----------
+dbo.participacion         560         179          52          1828 GRE       
+dbo.participacion         648         213          52          1829 HUN       
+dbo.participacion         796         279          52          1875 IND       
+dbo.participacion         822         287          52          1877 IND       
+dbo.participacion         823         287          52          1875 IND       
+
+(5 rows affected)
+tabla         id_participacion place                tied medal     
+------------- ---------------- -------------------- ---- ----------
+dbo.resultado              560 17                      1 NULL      
+dbo.resultado              648 33                      1 NULL      
+dbo.resultado              796 9                       1 NULL      
+dbo.resultado              822 5                       1 NULL      
+dbo.resultado              823 9                       1 NULL      
+
+(5 rows affected)
+Restauracion 4/4 completada.

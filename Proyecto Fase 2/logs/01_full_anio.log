@@ -1,0 +1,25 @@
+Changed database context to 'db_olimpiadas_anio'.
+===============================================================
+BACKUP COMPLETO (FULL) - Por Año (Paris 2024)
+Ejecutado: 2026-10-13 22:29:58
+===============================================================
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+100 percent processed.
+Processed 15120 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio' on file 1.
+Processed 2 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio_log' on file 1.
+BACKUP DATABASE successfully processed 15122 pages in 0.546 seconds (216.367 MB/sec).
+database_name          tipo         tamano_mb    duracion_ms archivo                                    finalizado          
+---------------------- ------------ ------------ ----------- ------------------------------------------ --------------------
+db_olimpiadas_anio     FULL               119.10           0 /var/opt/mssql/backups/full_anio.bak       2026-10-13 22:29:58 
+
+(1 rows affected)
+The backup set on file 1 is valid.
+FULL creado: /var/opt/mssql/backups/full_anio.bak

@@ -1,0 +1,2 @@
+Changed database context to 'db_olimpiadas_anio'.
+Procedimiento dbo.sp_cargar_anio creado.
