@@ -1,0 +1,67 @@
+﻿Changed database context to 'master'.
+===============================================================
+RESTAURACION 3/4 - FULL + DIFERENCIAL 2 (estado tras la carga 3)
+Ejecutado: 2026-10-13 02:49:05
+===============================================================
+11 percent processed.
+22 percent processed.
+30 percent processed.
+41 percent processed.
+50 percent processed.
+61 percent processed.
+72 percent processed.
+80 percent processed.
+91 percent processed.
+100 percent processed.
+Processed 4608 pages for database 'db_olimpiadas_deporte', file 'db_olimpiadas_deporte' on file 1.
+Processed 2 pages for database 'db_olimpiadas_deporte', file 'db_olimpiadas_deporte_log' on file 1.
+RESTORE DATABASE successfully processed 4610 pages in 0.178 seconds (202.313 MB/sec).
+33 percent processed.
+66 percent processed.
+99 percent processed.
+100 percent processed.
+Processed 400 pages for database 'db_olimpiadas_deporte', file 'db_olimpiadas_deporte' on file 1.
+Processed 2 pages for database 'db_olimpiadas_deporte', file 'db_olimpiadas_deporte_log' on file 1.
+RESTORE DATABASE successfully processed 402 pages in 0.198 seconds (15.842 MB/sec).
+database_name backup_start_date backup_finish_date duracion_backup_s tipo archivo
+------------- ----------------- ------------------ ----------------- ---- -------
+db_olimpiadas_deporte 2026-10-12 23:02:36.000 2026-10-12 23:02:36.000 0 FULL /var/opt/mssql/backups/full_deporte.bak
+db_olimpiadas_deporte 2026-10-12 23:02:49.000 2026-10-12 23:02:49.000 0 DIFERENCIAL /var/opt/mssql/backups/diff_deporte_1.bak
+db_olimpiadas_deporte 2026-10-12 23:03:02.000 2026-10-12 23:03:02.000 0 DIFERENCIAL /var/opt/mssql/backups/diff_deporte_2.bak
+db_olimpiadas_deporte 2026-10-12 23:03:16.000 2026-10-12 23:03:16.000 0 DIFERENCIAL /var/opt/mssql/backups/diff_deporte_3.bak
+db_olimpiadas_deporte 2026-10-13 02:47:42.000 2026-10-13 02:47:42.000 0 FULL /var/opt/mssql/backups/full_deporte.bak
+db_olimpiadas_deporte 2026-10-13 02:48:05.000 2026-10-13 02:48:05.000 0 DIFERENCIAL /var/opt/mssql/backups/diff_deporte_1.bak
+db_olimpiadas_deporte 2026-10-13 02:48:29.000 2026-10-13 02:48:29.000 0 DIFERENCIAL /var/opt/mssql/backups/diff_deporte_2.bak
+db_olimpiadas_deporte 2026-10-13 02:48:53.000 2026-10-13 02:48:53.000 0 DIFERENCIAL /var/opt/mssql/backups/diff_deporte_3.bak
+
+(8 rows affected)
+--- Conteos restaurados (FULL + DIFERENCIAL 2) ---
+Changed database context to 'db_olimpiadas_deporte'.
+tabla filas
+----- -----
+dbo.atleta 206
+dbo.atleta_roles 169
+dbo.disciplina 1
+dbo.edicion_juego 3
+dbo.participacion 239
+dbo.poblacion 4225
+dbo.region 114
+dbo.resultado 239
+dbo.roles 11
+
+(9 rows affected)
+Debe aparecer el podio de cada edicion hasta Rio 2016 inclusive.
+anio edicion sport event_name posicion medal
+---- ------- ----- ---------- -------- -----
+2016 2016 Summer Athletics "100 metres, Women (Olympic)" 1 Gold
+2016 2016 Summer Athletics "100 metres, Women (Olympic)" 2 Silver
+2016 2016 Summer Athletics "100 metres, Women (Olympic)" 3 Bronze
+2020 2020 Summer Athletics "100 metres, Women (Olympic)" 1 Gold
+2020 2020 Summer Athletics "100 metres, Women (Olympic)" 2 Silver
+2020 2020 Summer Athletics "100 metres, Women (Olympic)" 3 Bronze
+2024 2024 Summer Athletics "100 metres, Women (Olympic)" 1 Gold
+2024 2024 Summer Athletics "100 metres, Women (Olympic)" 2 Silver
+2024 2024 Summer Athletics "100 metres, Women (Olympic)" 2 Bronze
+
+(9 rows affected)
+Restauracion 3/4 completada.

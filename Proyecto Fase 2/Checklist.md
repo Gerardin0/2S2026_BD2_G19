@@ -139,10 +139,10 @@ Cada persona llena su tabla con los segundos medidos por consola.
 | Año | Full + Diff 1 | | | |
 | Año | Full + Diff 2 | | | |
 | Año | Full + Diff 3 | | | |
-| Deporte | Full | | | |
-| Deporte | Full + Diff 1 | | | |
-| Deporte | Full + Diff 2 | | | |
-| Deporte | Full + Diff 3 | | | |
+| Deporte | Full | 0.870 | 3 176 | 37.13 MB |
+| Deporte | Full + Diff 1 | 1.415 | 3 992 | 37.13 MB + 4.13 MB |
+| Deporte | Full + Diff 2 | 1.302 | 5 207 | 37.13 MB + 4.13 MB |
+| Deporte | Full + Diff 3 | 1.338 | 6 285 | 37.13 MB + 5.13 MB |
 | Deportista | Full | | | |
 | Deportista | Full + Diff 1 | | | |
 | Deportista | Full + Diff 2 | | | |
