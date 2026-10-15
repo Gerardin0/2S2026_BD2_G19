@@ -23,7 +23,7 @@ GO
 /* --- 1. MARCA DE TIEMPO (el checklist exige fecha/hora del SO visible) --- */
 PRINT '===============================================================';
 PRINT 'CARGA 1 / 4 - Deportista - ATENAS 2004';
-PRINT 'Ejecutado: ' + CONVERT(VARCHAR(20), SYSDATETIME(), 120);
+PRINT 'Ejecutado: ' + CONVERT(VARCHAR(20), SYSDATETIME() AT TIME ZONE 'UTC' AT TIME ZONE 'Central America Standard Time', 120);
 PRINT '===============================================================';
 GO
 

@@ -143,10 +143,24 @@ Cada persona llena su tabla con los segundos medidos por consola.
 | Deporte | Full + Diff 1 | 1.415 | 3 992 | 37.13 MB + 4.13 MB |
 | Deporte | Full + Diff 2 | 1.302 | 5 207 | 37.13 MB + 4.13 MB |
 | Deporte | Full + Diff 3 | 1.338 | 6 285 | 37.13 MB + 5.13 MB |
-| Deportista | Full | | | |
-| Deportista | Full + Diff 1 | | | |
-| Deportista | Full + Diff 2 | | | |
-| Deportista | Full + Diff 3 | | | |
+| Deportista | Full | 0.759 | 84 | 13.00 MB |
+| Deportista | Full + Diff 1 | 2.506 | 93 | 13.00 MB + 3.20 MB |
+| Deportista | Full + Diff 2 | 11.481 | 100 | 13.00 MB + 3.20 MB |
+| Deportista | Full + Diff 3 | 10.441 | 107 | 13.00 MB + 3.20 MB |
+
+> "Filas restauradas" es la suma de las nueve tablas `dbo.*` tras la
+> restauracion (participaciones y resultados de Usain Bolt incluidos).
+
+> Tiempos de "Deportista" medidos con `docs/deportista/medir_tiempos_restore.ps1`
+> el 2026-10-14 (UTC−6), sobre `sqlserver_olimpiadas`. Son los tiempos **de
+> pared** del ciclo completo: `DROP DATABASE` + restauracion. El detalle por
+> paso esta en la seccion 8 del README_deportista.md.
+>
+> Ojo con la lectura: con un solo atleta los `.bak` son de pocos MB y el tiempo
+> no crece con el numero de diferenciales (Diff 3 es mas rapido que Diff 2).
+> A este volumen manda el I/O del volumen del host, no la cantidad de paginas,
+> asi que los tiempos no son comparables con los de "Año" y "Deporte" en
+> cuanto a la relacion full/diferencial.
 
 ---
 

@@ -48,5 +48,24 @@ CREATE DATABASE $(DbNombre)
     COLLATE Latin1_General_100_CI_AS_SC_UTF8;
 GO
 
+/* Se repite el COLLATE como ALTER por si el motor lo hubiera dejado en la
+   collation del servidor (MSSQL_COLLATION del contenedor). Es idempotente y
+   evita el Msg 468 "Cannot resolve the collation conflict" mas adelante:
+   las columnas de stg.* llevan la collation UTF-8 EXPLICITA y las de dbo.*
+   heredan la de la base; si difieren, toda comparacion entre ambas falla. */
+ALTER DATABASE $(DbNombre) COLLATE Latin1_General_100_CI_AS_SC_UTF8;
+GO
+
+/* DATABASEPROPERTYEX devuelve sql_variant: hay que convertirlo a NVARCHAR
+   antes de concatenarlo con PRINT. */
+DECLARE @coll_db NVARCHAR(128) =
+    CONVERT(NVARCHAR(128), DATABASEPROPERTYEX('$(DbNombre)', 'Collation'));
+
+IF @coll_db <> 'Latin1_General_100_CI_AS_SC_UTF8'
+    PRINT 'AVISO: la collation de la base no es UTF-8. Las cargas fallaran con Msg 468.';
+ELSE
+    PRINT 'Collation de la base: ' + @coll_db;
+GO
+
 PRINT 'Base de datos $(DbNombre) creada.';
 GO

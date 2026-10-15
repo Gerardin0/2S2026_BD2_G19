@@ -35,7 +35,7 @@ GO
 
 PRINT '===============================================================';
 PRINT 'BACKUP DIFERENCIAL 1 - Deportista (tras carga 2, Pekin 2008)';
-PRINT 'Ejecutado: ' + CONVERT(VARCHAR(20), SYSDATETIME(), 120);
+PRINT 'Ejecutado: ' + CONVERT(VARCHAR(20), SYSDATETIME() AT TIME ZONE 'UTC' AT TIME ZONE 'Central America Standard Time', 120);
 PRINT '===============================================================';
 GO
 
@@ -52,7 +52,7 @@ SELECT
     CASE WHEN bs.differential_base_lsn IS NULL THEN 'FULL'
          ELSE 'DIFERENCIAL' END              AS tipo,
     bfm.physical_device_name                  AS archivo,
-    CONVERT(VARCHAR(20), bs.backup_finish_date, 120) AS finalizado
+    CONVERT(VARCHAR(20), bs.backup_finish_date AT TIME ZONE 'UTC' AT TIME ZONE 'Central America Standard Time', 120) AS finalizado
 FROM msdb.dbo.backupmediafamily bfm
 INNER JOIN msdb.dbo.backupset bs ON bs.media_set_id = bfm.media_set_id
 WHERE bfm.physical_device_name LIKE '%diff_deportista_1%'

@@ -24,7 +24,7 @@ GO
 
 PRINT '===============================================================';
 PRINT 'RESTAURACION 1/4 - SOLO FULL (estado tras la carga 1)';
-PRINT 'Ejecutado: ' + CONVERT(VARCHAR(20), SYSDATETIME(), 120);
+PRINT 'Ejecutado: ' + CONVERT(VARCHAR(20), SYSDATETIME() AT TIME ZONE 'UTC' AT TIME ZONE 'Central America Standard Time', 120);
 PRINT '===============================================================';
 GO
 
@@ -36,8 +36,8 @@ GO
 /* --- Validacion: que lote se restauro y cuando --- */
 SELECT
     bs.database_name,
-    bs.backup_start_date,
-    bs.backup_finish_date,
+    CONVERT(VARCHAR(20), bs.backup_start_date AT TIME ZONE 'UTC' AT TIME ZONE 'Central America Standard Time', 120),
+    CONVERT(VARCHAR(20), bs.backup_finish_date AT TIME ZONE 'UTC' AT TIME ZONE 'Central America Standard Time', 120),
     DATEDIFF(SECOND, bs.backup_start_date, bs.backup_finish_date) AS duracion_backup_s,
     CASE WHEN bs.differential_base_lsn IS NULL THEN 'FULL'
          ELSE 'DIFERENCIAL' END AS tipo,

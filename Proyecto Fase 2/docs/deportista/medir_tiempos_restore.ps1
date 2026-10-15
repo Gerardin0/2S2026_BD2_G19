@@ -10,7 +10,11 @@
 # dentro del .sql (SQL Server no expone un temporizador por sentencia).
 #
 # Uso (desde la carpeta "Proyecto Fase 2"):
+#   export PATH="/opt/mssql-tools18/bin:$PATH"
 #   pwsh -File docs/deportista/medir_tiempos_restore.ps1
+#
+# Todas las marcas de tiempo (PRINT de los .sql, cronometro y CSV) se
+# emiten en hora de Guatemala (UTC-6, America/Guatemala).
 # ==========================================================================
 
 param(
@@ -22,6 +26,16 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
+
+# --- Hora de Guatemala ------------------------------------------------------
+# Los PRINT de los .sql usan AT TIME ZONE 'Central America'; aca se hace lo
+# mismo para que las marcas del cronometro y del CSV coincidan con ellas.
+$ZonaHoraria = [System.TimeZoneInfo]::FindSystemTimeZoneById('America/Guatemala')
+function Get-HoraGuatemala {
+    param([datetime]$Instante = [datetime]::UtcNow)
+    [System.TimeZoneInfo]::ConvertTimeFromUtc(
+        $Instante.ToUniversalTime(), $ZonaHoraria).ToString('yyyy-MM-dd HH:mm:ss')
+}
 
 # Pares (etiqueta, script) en el orden en que hay que correrlos.
 # Cada restauracion va precedida de la eliminacion de la base, porque el
@@ -38,6 +52,7 @@ function Invoke-SqlFile {
     Write-Host "`n>>> sqlcmd -i $Ruta" -ForegroundColor Cyan
     $args = @(
         '-S', $Servidor, '-U', $Usuario, '-P', $Password,
+        '-C',                       # confiar el certificado autofirmado (ODBC 18)
         '-b',                       # salir con codigo de error si el SQL falla
         '-i', $Ruta
     )
@@ -53,7 +68,7 @@ foreach ($Paso in $Pasos) {
     Write-Host ""
     Write-Host "===========================================================" -ForegroundColor Yellow
     Write-Host "  $($Paso.Etiqueta)" -ForegroundColor Yellow
-    Write-Host "  $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor DarkGray
+    Write-Host "  $(Get-HoraGuatemala)" -ForegroundColor DarkGray
     Write-Host "===========================================================" -ForegroundColor Yellow
 
     if ($Paso.Eliminar) {
@@ -73,7 +88,7 @@ foreach ($Paso in $Pasos) {
     $Resultados += [pscustomobject]@{
         tipo_carga          = 'Deportista'
         restauracion        = $Paso.Etiqueta
-        fecha_hora          = (Get-Date -Format 'yyyy-MM-dd HH:mm:ss')
+        fecha_hora          = (Get-HoraGuatemala)
         tiempo_s            = $Segundos
         filas_restauradas   = 'ver capturas'
         tamano_bak          = 'ver logs'

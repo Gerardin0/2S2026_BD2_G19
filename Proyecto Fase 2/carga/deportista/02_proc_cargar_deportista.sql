@@ -32,6 +32,43 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
+    /* ---------------------------------------------------------------
+       GUARDA DE COLLATION.
+       ddl/02_esquema_staging.sql declara TODAS las columnas de stg.* con
+       COLLATE Latin1_General_100_CI_AS_SC_UTF8 explicito, mientras que las
+       de dbo.* heredan la collation de la BASE. Si la base se creo (o se
+       restauro de un .bak) con la collation por defecto del servidor
+       SQL_Latin1_General_CP1_CI_AS, quedan dos collations distintas en la
+       misma base y cualquier comparacion entre stg y dbo, o entre una
+       columna de stg y un literal (los literales toman la collation de la
+       base), falla con:
+
+           Msg 468: Cannot resolve the collation conflict between
+                    "Latin1_General_100_CI_AS_SC_UTF8" and
+                    "SQL_Latin1_General_CP1_CI_AS" in the equal to operation.
+
+       Es exactamente lo que pasa si el contenedor se levanta sin
+       -e MSSQL_COLLATION=... y luego se restaura un .bak hecho en otro
+       entorno. Se avisa con un mensaje claro en vez de dejar el error 468
+       a mitad de la carga.
+       --------------------------------------------------------------- */
+    DECLARE @coll_stg NVARCHAR(128) = (
+        SELECT c.collation_name
+        FROM sys.columns c
+        WHERE c.object_id = OBJECT_ID('stg.edicion_juego')
+          AND c.name = '[year]');
+    DECLARE @coll_db NVARCHAR(128) =
+        CONVERT(NVARCHAR(128), DATABASEPROPERTYEX(DB_NAME(), 'Collation'));
+
+    IF @coll_stg IS NOT NULL AND @coll_db <> @coll_stg
+    BEGIN
+        PRINT 'ERROR: la base de datos tiene collation ' + @coll_db
+            + ' y stg.* tiene ' + @coll_stg + '.';
+        PRINT 'Solucion: recrear la base con ddl/01_crear_base_datos.sql, '
+            + 'que la crea con COLLATE Latin1_General_100_CI_AS_SC_UTF8.';
+        RETURN 1;
+    END
+
     DECLARE @id_edicion INT;
     DECLARE @n INT;   -- filas afectadas por la ultima sentencia
 

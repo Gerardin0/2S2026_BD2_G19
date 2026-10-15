@@ -34,7 +34,7 @@ GO
 
 PRINT '===============================================================';
 PRINT 'RESTAURACION 4/4 - FULL + DIFERENCIAL 3 (estado tras la carga 4)';
-PRINT 'Ejecutado: ' + CONVERT(VARCHAR(20), SYSDATETIME(), 120);
+PRINT 'Ejecutado: ' + CONVERT(VARCHAR(20), SYSDATETIME() AT TIME ZONE 'UTC' AT TIME ZONE 'Central America Standard Time', 120);
 PRINT '===============================================================';
 GO
 
@@ -53,8 +53,8 @@ GO
 /* --- Validacion: que lote se restauro y cuando --- */
 SELECT
     bs.database_name,
-    bs.backup_start_date,
-    bs.backup_finish_date,
+    CONVERT(VARCHAR(20), bs.backup_start_date AT TIME ZONE 'UTC' AT TIME ZONE 'Central America Standard Time', 120),
+    CONVERT(VARCHAR(20), bs.backup_finish_date AT TIME ZONE 'UTC' AT TIME ZONE 'Central America Standard Time', 120),
     DATEDIFF(SECOND, bs.backup_start_date, bs.backup_finish_date) AS duracion_backup_s,
     CASE WHEN bs.differential_base_lsn IS NULL THEN 'FULL'
          ELSE 'DIFERENCIAL' END AS tipo,
@@ -86,6 +86,11 @@ GO
 PRINT 'Deben aparecer las participaciones hasta Rio 2016 inclusive.';
 GO
 
+/* Se filtra por athlete_id (105512 = Usain Bolt) y no por LIKE '%Usain Bolt%':
+   el nombre viene del CSV como "Usain St. Leo<BULLET>Bolt" y el caracter
+   multibyte queda corrupto por el tema de codificacion (ver README seccion 3),
+   asi que el LIKE sobre el nombre no encuentra nada. El id no depende de la
+   codificacion. */
 SELECT ej.[year] AS anio, ej.games_name AS edicion, d.sport, d.event_name,
        res.place AS posicion, res.medal
 FROM dbo.participacion p
@@ -93,7 +98,7 @@ INNER JOIN dbo.edicion_juego ej ON ej.id = p.id_edicion
 INNER JOIN dbo.disciplina    d  ON d.id  = p.id_disciplina
 INNER JOIN dbo.atleta        a  ON a.id  = p.id_atleta
 LEFT JOIN dbo.resultado     res ON res.id_participacion = p.id
-WHERE a.full_name LIKE '%Usain Bolt%'
+WHERE a.source_athlete_id = 105512
 ORDER BY ej.[year], d.event_name;
 GO
 
