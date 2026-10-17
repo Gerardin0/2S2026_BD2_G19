@@ -125,11 +125,11 @@ Por eso la disciplina se identifica por **id** (237) y no por nombre.
 ## 4. Puesta en marcha
 
 ```bash
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Password123!" \
+sudo docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Password123!" \
   -e "MSSQL_COLLATION=Latin1_General_100_CI_AS_SC_UTF8" \
   -p 1433:1433 --name sqlserver_olimpiadas \
-  -v /ruta/host/ProyectoFase2/CSVs:/var/opt/mssql/csv:ro \
-  -v /ruta/host/backups:/var/opt/mssql/backups \
+  -v "$PWD/CSVs:/var/opt/mssql/csv:ro" \
+  -v "$PWD/backups:/var/opt/mssql/backups" \
   -d mcr.microsoft.com/mssql/server:2022-latest
 ```
 
@@ -147,7 +147,7 @@ enunciado.
 
 ```bash
 DB=db_olimpiadas_deporte
-S="sqlcmd -S localhost,1433 -U sa -P Password123!"
+S="sqlcmd -S localhost,1433 -U sa -P Password123! -C"   # -C: trusts the self-signed cert
 
 # 1. Base y esquema  (ddl es COMPARTIDO: se pasa la base con -v DbNombre)
 $S -v DbNombre=$DB -i ddl/01_crear_base_datos.sql

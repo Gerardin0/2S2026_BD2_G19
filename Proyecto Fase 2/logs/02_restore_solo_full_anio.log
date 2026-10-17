@@ -1,7 +1,7 @@
 Changed database context to 'master'.
 ===============================================================
 RESTAURACION 1/4 - SOLO FULL (estado tras carga 1: Paris 2024)
-Ejecutado: 2026-10-13 22:31:07
+Ejecutado: 2026-10-17 02:43:37
 ===============================================================
 10 percent processed.
 20 percent processed.
@@ -15,14 +15,14 @@ Ejecutado: 2026-10-13 22:31:07
 100 percent processed.
 Processed 15120 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio' on file 1.
 Processed 2 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio_log' on file 1.
-RESTORE DATABASE successfully processed 15122 pages in 0.373 seconds (316.720 MB/sec).
->>> TIEMPO_MOTOR_RESTORE_MS: 965 ms (0.965 s)
+RESTORE DATABASE successfully processed 15122 pages in 0.438 seconds (269.718 MB/sec).
+>>> TIEMPO_MOTOR_RESTORE_MS: 942 ms (0.942 s)
 database_name          tipo         tamano_mb    archivo                                    finalizado          
 ---------------------- ------------ ------------ ------------------------------------------ --------------------
-db_olimpiadas_anio     FULL               119.10 /var/opt/mssql/backups/full_anio.bak       2026-10-13 22:29:58 
-db_olimpiadas_anio     DIFERENCIAL         35.10 /var/opt/mssql/backups/diff_anio_1.bak     2026-10-13 22:30:18 
-db_olimpiadas_anio     DIFERENCIAL         51.10 /var/opt/mssql/backups/diff_anio_2.bak     2026-10-13 22:30:33 
-db_olimpiadas_anio     DIFERENCIAL         68.10 /var/opt/mssql/backups/diff_anio_3.bak     2026-10-13 22:30:45 
+db_olimpiadas_anio     FULL               119.10 /var/opt/mssql/backups/full_anio.bak       2026-10-17 02:42:54 
+db_olimpiadas_anio     DIFERENCIAL         35.10 /var/opt/mssql/backups/diff_anio_1.bak     2026-10-17 02:43:13 
+db_olimpiadas_anio     DIFERENCIAL         51.10 /var/opt/mssql/backups/diff_anio_2.bak     2026-10-17 02:43:18 
+db_olimpiadas_anio     DIFERENCIAL         68.10 /var/opt/mssql/backups/diff_anio_3.bak     2026-10-17 02:43:23 
 
 (4 rows affected)
 Changed database context to 'db_olimpiadas_anio'.

@@ -23,12 +23,12 @@ chmod -R 755 CSVs/
 Se levanta el motor de base de datos mapeando los volúmenes locales. La bandera :z indica a SELinux que comparta el directorio con el contenedor Docker.
 
 ```bash
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Password123!" \
+sudo docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Password123!" \
   -e "MSSQL_COLLATION=Latin1_General_100_CI_AS_SC_UTF8" \
   -p 1433:1433 --name sqlserver_olimpiadas \
-  -v "$(pwd)/CSVs:/var/opt/mssql/csv:ro,z" \
-  -v "$(pwd)/backups_fisicos:/var/opt/mssql/backups:z" \
-  -d [mcr.microsoft.com/mssql/server:2022-latest](https://mcr.microsoft.com/mssql/server:2022-latest)
+  -v "$PWD/CSVs:/var/opt/mssql/csv:ro" \
+  -v "$PWD/backups:/var/opt/mssql/backups" \
+  -d mcr.microsoft.com/mssql/server:2022-latest
 
 # Nota: Esperar ~15 segundos antes de avanzar al siguiente paso para que el motor SQL Server inicie correctamente.
 ```

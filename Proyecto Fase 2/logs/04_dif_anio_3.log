@@ -1,7 +1,7 @@
 Changed database context to 'db_olimpiadas_anio'.
 ===============================================================
 BACKUP DIFERENCIAL 3 - Por Año (tras carga 4, Londres 2012)
-Ejecutado: 2026-10-13 22:30:45
+Ejecutado: 2026-10-17 03:27:03
 ===============================================================
 10 percent processed.
 20 percent processed.
@@ -13,12 +13,12 @@ Ejecutado: 2026-10-13 22:30:45
 81 percent processed.
 90 percent processed.
 100 percent processed.
-Processed 8576 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio' on file 1.
+Processed 8592 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio' on file 1.
 Processed 2 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio_log' on file 1.
-BACKUP DATABASE WITH DIFFERENTIAL successfully processed 8578 pages in 0.265 seconds (252.874 MB/sec).
+BACKUP DATABASE WITH DIFFERENTIAL successfully processed 8594 pages in 0.131 seconds (512.494 MB/sec).
 database_name          tipo         tamano_mb    duracion_ms archivo                                    finalizado          
 ---------------------- ------------ ------------ ----------- ------------------------------------------ --------------------
-db_olimpiadas_anio     DIFERENCIAL         68.10           0 /var/opt/mssql/backups/diff_anio_3.bak     2026-10-13 22:30:45 
+db_olimpiadas_anio     DIFERENCIAL         68.09           0 /var/opt/mssql/backups/diff_anio_3.bak     2026-10-17 03:27:03 
 
 (1 rows affected)
 The backup set on file 1 is valid.

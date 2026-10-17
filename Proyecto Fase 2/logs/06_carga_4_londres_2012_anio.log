@@ -1,7 +1,7 @@
 Changed database context to 'db_olimpiadas_anio'.
 ===============================================================
 CARGA 4 / 4 - Por Año - LONDRES 2012
-Ejecutado: 2026-10-13 22:30:33
+Ejecutado: 2026-10-17 03:26:57
 ===============================================================
 === Carga masiva para la edición 2012 (id_edicion 52) ===
 --- Preparando datos en RAM ---
@@ -154,10 +154,10 @@ dbo.roles                  11
 tabla                  indice                       tipo_indice        fragmentacion_pct
 ---------------------- ---------------------------- ------------------ -----------------
 atleta                 NULL                         HEAP                             .30
-atleta                 ix_atleta_names              NONCLUSTERED                   99.05
-atleta                 pk_atleta                    CLUSTERED                      77.36
+atleta                 ix_atleta_names              NONCLUSTERED                   98.87
+atleta                 pk_atleta                    CLUSTERED                      77.22
 atleta_rol             NULL                         HEAP                             .00
-atleta_roles           pk_atleta_roles              CLUSTERED                      68.81
+atleta_roles           pk_atleta_roles              CLUSTERED                      82.65
 disciplina             NULL                         HEAP                             .00
 disciplina             pk_disciplina                CLUSTERED                      91.67
 disciplina             uq_disciplina_evento         NONCLUSTERED                   81.82
@@ -167,17 +167,17 @@ edicion_juego          ix_edicion_year              NONCLUSTERED                
 edicion_juego          pk_edicion_juego             CLUSTERED                        .00
 edicion_juego          uq_edicion_juego             NONCLUSTERED                     .00
 participacion          NULL                         HEAP                             .48
-participacion          ix_participacion_busqueda    NONCLUSTERED                   85.91
-participacion          ix_participacion_noc         NONCLUSTERED                   89.69
-participacion          pk_participacion             CLUSTERED                      62.80
-poblacion              NULL                         HEAP                           46.15
+participacion          ix_participacion_busqueda    NONCLUSTERED                   86.36
+participacion          ix_participacion_noc         NONCLUSTERED                   93.18
+participacion          pk_participacion             CLUSTERED                      62.54
+poblacion              NULL                         HEAP                           38.46
 poblacion              pk_poblacion                 CLUSTERED                      97.30
 region                 NULL                         HEAP                             .00
 region                 pk_region                    CLUSTERED                      66.67
 resultado              NULL                         HEAP                             .37
 resultado              ix_resultado_medal           NONCLUSTERED                   47.73
 resultado              pk_resultado                 CLUSTERED                       7.65
-resultado              uq_resultado_particip        NONCLUSTERED                   77.52
+resultado              uq_resultado_particip        NONCLUSTERED                   54.35
 rol                    NULL                         HEAP                             .00
 roles                  pk_roles                     CLUSTERED                        .00
 roles                  uq_roles_nombre              NONCLUSTERED                     .00

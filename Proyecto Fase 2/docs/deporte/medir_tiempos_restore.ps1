@@ -38,6 +38,7 @@ function Invoke-SqlFile {
     Write-Host "`n>>> sqlcmd -i $Ruta" -ForegroundColor Cyan
     $args = @(
         '-S', $Servidor, '-U', $Usuario, '-P', $Password,
+        '-C',                       # confiar el certificado autofirmado (ODBC 18)
         '-b',                       # salir con codigo de error si el SQL falla
         '-i', $Ruta
     )

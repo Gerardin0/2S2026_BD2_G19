@@ -1,0 +1,24 @@
+Changed database context to 'db_olimpiadas_deporte'.
+===============================================================
+BACKUP DIFERENCIAL 1 - Deporte (tras carga 2, Tokio 2020)
+Ejecutado: 2026-10-17 03:02:14
+===============================================================
+13 percent processed.
+20 percent processed.
+31 percent processed.
+40 percent processed.
+52 percent processed.
+70 percent processed.
+81 percent processed.
+93 percent processed.
+100 percent processed.
+Processed 440 pages for database 'db_olimpiadas_deporte', file 'db_olimpiadas_deporte' on file 1.
+Processed 2 pages for database 'db_olimpiadas_deporte', file 'db_olimpiadas_deporte_log' on file 1.
+BACKUP DATABASE WITH DIFFERENTIAL successfully processed 442 pages in 0.033 seconds (104.521 MB/sec).
+database_name                                                                                                                    tipo        archivo                                                                                                                                                                                                                                                              finalizado          
+-------------------------------------------------------------------------------------------------------------------------------- ----------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --------------------
+db_olimpiadas_deporte                                                                                                            DIFERENCIAL /var/opt/mssql/backups/diff_deporte_1.bak                                                                                                                                                                                                                            2026-10-17 03:02:14 
+
+(1 rows affected)
+The backup set on file 1 is valid.
+Diferencial 1 creado: /var/opt/mssql/backups/diff_deporte_1.bak

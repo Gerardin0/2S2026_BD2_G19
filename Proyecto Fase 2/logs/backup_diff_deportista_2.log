@@ -1,24 +1,18 @@
 Changed database context to 'db_olimpiadas_deportista'.
 ===============================================================
 BACKUP DIFERENCIAL 2 - Deportista (tras carga 3, Londres 2012)
-Ejecutado: 2026-10-14 22:30:34 
+Ejecutado: 2026-10-16 21:14:06 
 ===============================================================
-13 percent processed.
-23 percent processed.
-36 percent processed.
-42 percent processed.
-52 percent processed.
-79 percent processed.
-82 percent processed.
-98 percent processed.
-100 percent processed.
-Processed 256 pages for database 'db_olimpiadas_deportista', file 'db_olimpiadas_deportista' on file 1.
-Processed 2 pages for database 'db_olimpiadas_deportista', file 'db_olimpiadas_deportista_log' on file 1.
-BACKUP DATABASE WITH DIFFERENTIAL successfully processed 258 pages in 0.027 seconds (74.508 MB/sec).
+Msg 3201, Level 16, State 1, Server 103a77b208dd, Line 2
+Cannot open backup device '/var/opt/mssql/backups/diff_deportista_2.bak'. Operating system error 5(Access is denied.).
+Msg 3013, Level 16, State 1, Server 103a77b208dd, Line 2
+BACKUP DATABASE is terminating abnormally.
 database_name                                                                                                                    tipo        archivo                                                                                                                                                                                                                                                              finalizado          
 -------------------------------------------------------------------------------------------------------------------------------- ----------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --------------------
-db_olimpiadas_deportista                                                                                                         DIFERENCIAL /var/opt/mssql/backups/diff_deportista_2.bak                                                                                                                                                                                                                         2026-10-14 22:30:34 
 
-(1 rows affected)
-The backup set on file 1 is valid.
+(0 rows affected)
+Msg 3254, Level 16, State 1, Server 103a77b208dd, Line 4
+The volume on device '/var/opt/mssql/backups/diff_deportista_2.bak' is empty.
+Msg 3013, Level 16, State 1, Server 103a77b208dd, Line 4
+VERIFY DATABASE is terminating abnormally.
 Diferencial 2 creado: /var/opt/mssql/backups/diff_deportista_2.bak

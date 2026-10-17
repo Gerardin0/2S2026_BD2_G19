@@ -148,7 +148,7 @@ cd "/home/gerardo/Descargas/2S2026_BD2_G19/Proyecto Fase 2"
 mkdir -p "$PWD/backups"
 chmod 777 "$PWD/backups"
 
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Password123!" \
+sudo docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Password123!" \
   -e "MSSQL_COLLATION=Latin1_General_100_CI_AS_SC_UTF8" \
   -p 1433:1433 --name sqlserver_olimpiadas \
   -v "$PWD/CSVs:/var/opt/mssql/csv:ro" \

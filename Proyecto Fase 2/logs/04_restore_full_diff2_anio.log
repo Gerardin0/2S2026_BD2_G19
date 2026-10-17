@@ -1,7 +1,7 @@
 Changed database context to 'master'.
 ===============================================================
 RESTAURACION 3/4 - FULL + DIFF 2 (hasta Rio 2016)
-Ejecutado: 2026-10-13 22:31:10
+Ejecutado: 2026-10-17 02:43:40
 ===============================================================
 10 percent processed.
 20 percent processed.
@@ -15,7 +15,7 @@ Ejecutado: 2026-10-13 22:31:10
 100 percent processed.
 Processed 15120 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio' on file 1.
 Processed 2 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio_log' on file 1.
-RESTORE DATABASE successfully processed 15122 pages in 0.364 seconds (324.551 MB/sec).
+RESTORE DATABASE successfully processed 15122 pages in 2.235 seconds (52.857 MB/sec).
 10 percent processed.
 20 percent processed.
 30 percent processed.
@@ -26,10 +26,10 @@ RESTORE DATABASE successfully processed 15122 pages in 0.364 seconds (324.551 MB
 80 percent processed.
 90 percent processed.
 100 percent processed.
-Processed 6352 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio' on file 1.
+Processed 6344 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio' on file 1.
 Processed 2 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio_log' on file 1.
-RESTORE DATABASE successfully processed 6354 pages in 0.363 seconds (136.740 MB/sec).
->>> TIEMPO_MOTOR_RESTORE_MS: 1681 ms (1.681 s)
+RESTORE DATABASE successfully processed 6346 pages in 2.352 seconds (21.077 MB/sec).
+>>> TIEMPO_MOTOR_RESTORE_MS: 5614 ms (5.614 s)
 Changed database context to 'db_olimpiadas_anio'.
 --- Conteos restaurados (FULL + DIFF 2) ---
 tabla             filas      
