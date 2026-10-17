@@ -1,7 +1,7 @@
 Changed database context to 'db_olimpiadas_anio'.
 ===============================================================
 CARGA 1 / 4 - Por Año - PARIS 2024
-Ejecutado: 2026-10-17 03:26:29
+Ejecutado: 2026-10-17 04:33:20
 ===============================================================
 Warning: Null value is eliminated by an aggregate or other SET operation.
 === Carga masiva para la edición 2024 (id_edicion 63) ===
@@ -155,7 +155,7 @@ atleta                 NULL                         HEAP                        
 atleta                 ix_atleta_names              NONCLUSTERED                     .95
 atleta                 pk_atleta                    CLUSTERED                        .43
 atleta_rol             NULL                         HEAP                             .00
-atleta_roles           pk_atleta_roles              CLUSTERED                      88.89
+atleta_roles           pk_atleta_roles              CLUSTERED                      83.33
 disciplina             NULL                         HEAP                             .00
 disciplina             pk_disciplina                CLUSTERED                      20.00
 disciplina             uq_disciplina_evento         NONCLUSTERED                   20.00
@@ -168,7 +168,7 @@ participacion          NULL                         HEAP                        
 participacion          ix_participacion_busqueda    NONCLUSTERED                    2.44
 participacion          ix_participacion_noc         NONCLUSTERED                    2.70
 participacion          pk_participacion             CLUSTERED                        .56
-poblacion              NULL                         HEAP                           38.46
+poblacion              NULL                         HEAP                           46.15
 poblacion              pk_poblacion                 CLUSTERED                      97.14
 region                 NULL                         HEAP                             .00
 region                 pk_region                    CLUSTERED                      50.00

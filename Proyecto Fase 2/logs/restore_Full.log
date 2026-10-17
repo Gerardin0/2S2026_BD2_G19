@@ -1,0 +1,49 @@
+Changed database context to 'master'.
+===============================================================
+RESTAURACION 1/4 - SOLO FULL (estado tras la carga 1)
+Ejecutado: 2026-10-16 22:32:08 
+===============================================================
+16 percent processed.
+32 percent processed.
+48 percent processed.
+64 percent processed.
+80 percent processed.
+96 percent processed.
+100 percent processed.
+Processed 808 pages for database 'db_olimpiadas_deportista', file 'db_olimpiadas_deportista' on file 1.
+Processed 2 pages for database 'db_olimpiadas_deportista', file 'db_olimpiadas_deportista_log' on file 1.
+RESTORE DATABASE successfully processed 810 pages in 0.281 seconds (22.506 MB/sec).
+database_name                                                                                                                                                              duracion_backup_s tipo        archivo                                                                                                                                                                                                                                                             
+-------------------------------------------------------------------------------------------------------------------------------- -------------------- -------------------- ----------------- ----------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+db_olimpiadas_deportista                                                                                                         2026-10-16 22:04:51  2026-10-16 22:04:52                  1 FULL        /var/opt/mssql/backups/full_deportista.bak                                                                                                                                                                                                                          
+db_olimpiadas_deportista                                                                                                         2026-10-16 22:10:46  2026-10-16 22:10:46                  0 FULL        /var/opt/mssql/backups/full_deportista.bak                                                                                                                                                                                                                          
+db_olimpiadas_deportista                                                                                                         2026-10-16 22:11:53  2026-10-16 22:11:53                  0 DIFERENCIAL /var/opt/mssql/backups/diff_deportista_1.bak                                                                                                                                                                                                                        
+db_olimpiadas_deportista                                                                                                         2026-10-16 22:12:09  2026-10-16 22:12:09                  0 DIFERENCIAL /var/opt/mssql/backups/diff_deportista_2.bak                                                                                                                                                                                                                        
+db_olimpiadas_deportista                                                                                                         2026-10-16 22:12:37  2026-10-16 22:12:37                  0 DIFERENCIAL /var/opt/mssql/backups/diff_deportista_3.bak                                                                                                                                                                                                                        
+db_olimpiadas_deportista                                                                                                         2026-10-16 22:25:14  2026-10-16 22:25:14                  0 FULL        /var/opt/mssql/backups/full_deportista.bak                                                                                                                                                                                                                          
+db_olimpiadas_deportista                                                                                                         2026-10-16 22:25:55  2026-10-16 22:25:55                  0 DIFERENCIAL /var/opt/mssql/backups/diff_deportista_1.bak                                                                                                                                                                                                                        
+db_olimpiadas_deportista                                                                                                         2026-10-16 22:26:34  2026-10-16 22:26:34                  0 DIFERENCIAL /var/opt/mssql/backups/diff_deportista_2.bak                                                                                                                                                                                                                        
+db_olimpiadas_deportista                                                                                                         2026-10-16 22:27:04  2026-10-16 22:27:04                  0 DIFERENCIAL /var/opt/mssql/backups/diff_deportista_3.bak                                                                                                                                                                                                                        
+
+(9 rows affected)
+--- Conteos restaurados (solo FULL) ---
+Changed database context to 'db_olimpiadas_deportista'.
+tabla             filas      
+----------------- -----------
+dbo.atleta                  1
+dbo.atleta_roles            2
+dbo.disciplina              1
+dbo.edicion_juego           1
+dbo.participacion           1
+dbo.poblacion              65
+dbo.region                  1
+dbo.resultado               1
+dbo.roles                  11
+
+(9 rows affected)
+Solo deben aparecer las participaciones de ATENAS 2004.
+anio        edicion                                                                                                                                                                                                  sport                                                                                                                                                                                                    event_name                                                                                                                                                                                                                                                                                                   posicion             medal     
+----------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -------------------- ----------
+
+(0 rows affected)
+Restauracion 1/4 completada.

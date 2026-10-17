@@ -1,7 +1,7 @@
 Changed database context to 'db_olimpiadas_anio'.
 ===============================================================
 CARGA 2 / 4 - Por Año - TOKIO 2020
-Ejecutado: 2026-10-17 03:26:41
+Ejecutado: 2026-10-17 04:33:26
 ===============================================================
 Warning: Null value is eliminated by an aggregate or other SET operation.
 === Carga masiva para la edición 2020 (id_edicion 60) ===
@@ -156,7 +156,7 @@ atleta                 NULL                         HEAP                        
 atleta                 ix_atleta_names              NONCLUSTERED                   98.89
 atleta                 pk_atleta                    CLUSTERED                      73.41
 atleta_rol             NULL                         HEAP                             .00
-atleta_roles           pk_atleta_roles              CLUSTERED                      70.21
+atleta_roles           pk_atleta_roles              CLUSTERED                      67.86
 disciplina             NULL                         HEAP                             .00
 disciplina             pk_disciplina                CLUSTERED                      81.82
 disciplina             uq_disciplina_evento         NONCLUSTERED                   81.82
@@ -166,10 +166,10 @@ edicion_juego          ix_edicion_year              NONCLUSTERED                
 edicion_juego          pk_edicion_juego             CLUSTERED                        .00
 edicion_juego          uq_edicion_juego             NONCLUSTERED                     .00
 participacion          NULL                         HEAP                             .48
-participacion          ix_participacion_busqueda    NONCLUSTERED                   73.58
+participacion          ix_participacion_busqueda    NONCLUSTERED                   72.64
 participacion          ix_participacion_noc         NONCLUSTERED                   93.52
 participacion          pk_participacion             CLUSTERED                       3.71
-poblacion              NULL                         HEAP                           38.46
+poblacion              NULL                         HEAP                           46.15
 poblacion              pk_poblacion                 CLUSTERED                      97.22
 region                 NULL                         HEAP                             .00
 region                 pk_region                    CLUSTERED                      66.67

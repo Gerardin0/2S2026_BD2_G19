@@ -1,0 +1,59 @@
+Changed database context to 'master'.
+===============================================================
+RESTAURACION 2/4 - FULL + DIFERENCIAL 1 (estado tras la carga 2)
+Ejecutado: 2026-10-17 04:34:34
+===============================================================
+12 percent processed.
+21 percent processed.
+30 percent processed.
+42 percent processed.
+51 percent processed.
+60 percent processed.
+73 percent processed.
+82 percent processed.
+91 percent processed.
+100 percent processed.
+Processed 4216 pages for database 'db_olimpiadas_deporte', file 'db_olimpiadas_deporte' on file 1.
+Processed 2 pages for database 'db_olimpiadas_deporte', file 'db_olimpiadas_deporte_log' on file 1.
+RESTORE DATABASE successfully processed 4218 pages in 1.027 seconds (32.082 MB/sec).
+37 percent processed.
+74 percent processed.
+100 percent processed.
+Processed 352 pages for database 'db_olimpiadas_deporte', file 'db_olimpiadas_deporte' on file 1.
+Processed 2 pages for database 'db_olimpiadas_deporte', file 'db_olimpiadas_deporte_log' on file 1.
+RESTORE DATABASE successfully processed 354 pages in 0.456 seconds (6.056 MB/sec).
+database_name                                                                                                                    backup_start_date       backup_finish_date      duracion_backup_s tipo        archivo                                                                                                                                                                                                                                                             
+-------------------------------------------------------------------------------------------------------------------------------- ----------------------- ----------------------- ----------------- ----------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+db_olimpiadas_deporte                                                                                                            2026-10-17 04:33:51.000 2026-10-17 04:33:51.000                 0 FULL        /var/opt/mssql/backups/full_deporte.bak                                                                                                                                                                                                                             
+db_olimpiadas_deporte                                                                                                            2026-10-17 04:33:52.000 2026-10-17 04:33:52.000                 0 DIFERENCIAL /var/opt/mssql/backups/diff_deporte_1.bak                                                                                                                                                                                                                           
+db_olimpiadas_deporte                                                                                                            2026-10-17 04:33:52.000 2026-10-17 04:33:52.000                 0 DIFERENCIAL /var/opt/mssql/backups/diff_deporte_2.bak                                                                                                                                                                                                                           
+db_olimpiadas_deporte                                                                                                            2026-10-17 04:33:53.000 2026-10-17 04:33:53.000                 0 DIFERENCIAL /var/opt/mssql/backups/diff_deporte_3.bak                                                                                                                                                                                                                           
+
+(4 rows affected)
+--- Conteos restaurados (FULL + DIFERENCIAL 1) ---
+Changed database context to 'db_olimpiadas_deporte'.
+tabla             filas      
+----------------- -----------
+dbo.atleta                150
+dbo.atleta_roles          102
+dbo.disciplina              1
+dbo.edicion_juego           2
+dbo.participacion         159
+dbo.poblacion            3315
+dbo.region                 93
+dbo.resultado             159
+dbo.roles                  11
+
+(9 rows affected)
+Debe aparecer el podio de cada edicion hasta Tokio 2020 inclusive.
+anio        edicion                                                                                                                                                                                                  sport                                                                                                                                                                                                    event_name                                                                                                                                                                                                                                                                                                   posicion             medal     
+----------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -------------------- ----------
+       2020 2020 Summer                                                                                                                                                                                              Athletics                                                                                                                                                                                                "100 metres, Women (Olympic)"                                                                                                                                                                                                                                                                                1                    Gold      
+       2020 2020 Summer                                                                                                                                                                                              Athletics                                                                                                                                                                                                "100 metres, Women (Olympic)"                                                                                                                                                                                                                                                                                2                    Silver    
+       2020 2020 Summer                                                                                                                                                                                              Athletics                                                                                                                                                                                                "100 metres, Women (Olympic)"                                                                                                                                                                                                                                                                                3                    Bronze    
+       2024 2024 Summer                                                                                                                                                                                              Athletics                                                                                                                                                                                                "100 metres, Women (Olympic)"                                                                                                                                                                                                                                                                                1                    Gold      
+       2024 2024 Summer                                                                                                                                                                                              Athletics                                                                                                                                                                                                "100 metres, Women (Olympic)"                                                                                                                                                                                                                                                                                2                    Silver    
+       2024 2024 Summer                                                                                                                                                                                              Athletics                                                                                                                                                                                                "100 metres, Women (Olympic)"                                                                                                                                                                                                                                                                                2                    Bronze    
+
+(6 rows affected)
+Restauracion 2/4 completada.

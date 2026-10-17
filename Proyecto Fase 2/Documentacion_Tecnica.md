@@ -560,13 +560,13 @@ Fragmentación de índices y tamaño de la base después de la carga 1 (Deporte)
 
 Respaldo FULL de Deportista con verificación `RESTORE VERIFYONLY`.
 
-![Backup FULL - Deportista](capturas/deportista_04_backup_full.png)
+![Backup FULL - Deportista](capturas/deportista_backup_full.png)
 
 ### 10.3 Eliminación y restauración
 
 Eliminación de la base y restauración FULL + DIFERENCIAL 3 (Deportista).
 
-![Restauracion - Deportista](capturas/deportista_17_restore7.png)
+![Restauracion - Deportista](capturas/deportista_restauración.png)
 
 Validación después de FULL + DIFERENCIAL 3 (Deporte): conteos iguales a los de
 antes del `DROP` y podio de las cuatro ediciones.

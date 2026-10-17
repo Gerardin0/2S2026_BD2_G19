@@ -62,6 +62,32 @@ function Invoke-SqlFile {
     }
 }
 
+function Get-FilasParticipacionRestauradas {
+    $Consulta = @'
+SET NOCOUNT ON;
+SELECT COUNT(*)
+FROM dbo.participacion AS p
+INNER JOIN dbo.edicion_juego AS ej ON p.id_edicion = ej.id;
+'@
+    $ArgsSql = @(
+        '-S', $Servidor, '-U', $Usuario, '-P', $Password,
+        '-C', '-b', '-d', 'db_olimpiadas_deportista',
+        '-h', '-1', '-W', '-Q', $Consulta
+    )
+    $SalidaSql = @(& sqlcmd @ArgsSql)
+    if ($LASTEXITCODE -ne 0) {
+        throw "Falló la consulta de filas restauradas (sqlcmd exit $LASTEXITCODE)"
+    }
+
+    $Valores = @($SalidaSql | ForEach-Object { "$_".Trim() } |
+        Where-Object { $_ -match '^\d+$' })
+    if ($Valores.Count -ne 1) {
+        throw "No se pudo interpretar el conteo de filas restauradas: $($SalidaSql -join ' ')"
+    }
+
+    return [long]$Valores[0]
+}
+
 $Resultados = @()
 
 foreach ($Paso in $Pasos) {
@@ -83,14 +109,16 @@ foreach ($Paso in $Pasos) {
     $Fin = Get-Date
 
     $Segundos = [math]::Round(($Fin - $Inicio).TotalSeconds, 3)
+    $FilasRestauradas = Get-FilasParticipacionRestauradas
     Write-Host ">>> Tiempo de restauración [$($Paso.Etiqueta)] = $Segundos s" -ForegroundColor Green
+    Write-Host ">>> Filas participacion + edicion restauradas = $FilasRestauradas" -ForegroundColor Green
 
     $Resultados += [pscustomobject]@{
         tipo_carga          = 'Deportista'
         restauracion        = $Paso.Etiqueta
         fecha_hora          = (Get-HoraGuatemala)
         tiempo_s            = $Segundos
-        filas_restauradas   = 'ver capturas'
+        filas_restauradas   = $FilasRestauradas
         tamano_bak          = 'ver logs'
     }
 }

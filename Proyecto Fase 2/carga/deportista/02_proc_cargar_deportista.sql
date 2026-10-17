@@ -322,12 +322,12 @@ BEGIN
 
     /* ---------------------------------------------------------------
        9. Purga de staging.
-       Tras el backup diferencial anterior ya se tiene lo que interesaba,
-       asi que se eliminan de stg las filas que NO pertenecen a esta
-       edicion. Motivo PRACTICO: si stg se quedara con los 153 mil atletas
-       y las 323 mil participaciones en el momento del FULL, cada
-       diferencial posterior seria practicamente vacio y las mediciones de
-       tiempo no significarian nada.
+       Se conserva unicamente el subconjunto requerido por las cargas
+       posteriores. Primero se copia ese subconjunto a tablas temporales y
+       luego se usa TRUNCATE + INSERT en lugar de DELETE fila por fila.
+       TRUNCATE reduce el trabajo de logging en las tablas staging grandes
+       (atleta, participacion y atleta_rol), manteniendo los datos necesarios
+       para las otras ediciones y los respaldos diferenciales.
 
        OJO con el tipo del casteo: athlete_id llega como "105512.0".
        TRY_CAST('7.0' AS INT) devuelve NULL (no error, NULL), y una
@@ -338,41 +338,84 @@ BEGIN
     /* Se conservan TODAS las participaciones del atleta (las 10, de las 4
        ediciones), no solo las de la edicion actual: las cargas 2, 3 y 4
        necesitan encontrar su propia edicion dentro de stg.participacion. */
-    DELETE FROM stg.participacion
-    WHERE TRY_CAST(LTRIM(RTRIM(athlete_id)) AS FLOAT) IS NULL
-       OR TRY_CAST(LTRIM(RTRIM(athlete_id)) AS FLOAT) <> @atleta_id;
+    SELECT *
+    INTO #participacion_conservada
+    FROM stg.participacion
+    WHERE TRY_CAST(LTRIM(RTRIM(athlete_id)) AS FLOAT) = @atleta_id;
 
-    DELETE FROM stg.resultado
-    WHERE TRY_CAST(LTRIM(RTRIM(id_participacion)) AS INT) NOT IN (
-        SELECT TRY_CAST(LTRIM(RTRIM(id_participacion)) AS INT)
-        FROM stg.participacion);
+    SELECT r.*
+    INTO #resultado_conservado
+    FROM stg.resultado AS r
+    WHERE TRY_CAST(LTRIM(RTRIM(r.id_participacion)) AS INT) IN (
+        SELECT TRY_CAST(LTRIM(RTRIM(p.id_participacion)) AS INT)
+        FROM #participacion_conservada AS p);
 
-    DELETE FROM stg.atleta
-    WHERE TRY_CAST(LTRIM(RTRIM(athlete_id)) AS FLOAT) IS NULL
-       OR TRY_CAST(LTRIM(RTRIM(athlete_id)) AS FLOAT) <> @atleta_id;
+    SELECT *
+    INTO #atleta_conservado
+    FROM stg.atleta
+    WHERE TRY_CAST(LTRIM(RTRIM(athlete_id)) AS FLOAT) = @atleta_id;
 
-    DELETE FROM stg.atleta_rol
-    WHERE TRY_CAST(LTRIM(RTRIM(athlete_id)) AS FLOAT) IS NULL
-       OR TRY_CAST(LTRIM(RTRIM(athlete_id)) AS FLOAT) <> @atleta_id;
+    SELECT *
+    INTO #atleta_rol_conservado
+    FROM stg.atleta_rol
+    WHERE TRY_CAST(LTRIM(RTRIM(athlete_id)) AS FLOAT) = @atleta_id;
 
-    /* Se conservan las disciplinas que usa el atleta en alguna de sus
-       ediciones, mas las que ya estan en dbo.disciplina. */
-    DELETE FROM stg.disciplina
-    WHERE TRY_CAST(LTRIM(RTRIM(id_disciplina)) AS INT) NOT IN (
-        SELECT TRY_CAST(LTRIM(RTRIM(id_disciplina)) AS INT)
-        FROM stg.participacion)
-      AND TRY_CAST(LTRIM(RTRIM(id_disciplina)) AS INT)
-          NOT IN (SELECT id FROM dbo.disciplina);
+    /* Se conservan las disciplinas de las participaciones del atleta y las
+       que ya estan cargadas en dbo.disciplina. Los IDs nulos se mantienen,
+       igual que con la purga anterior basada en NOT IN. */
+    SELECT *
+    INTO #disciplina_conservada
+    FROM stg.disciplina
+    WHERE TRY_CAST(LTRIM(RTRIM(id_disciplina)) AS INT) IS NULL
+       OR TRY_CAST(LTRIM(RTRIM(id_disciplina)) AS INT) IN (
+            SELECT TRY_CAST(LTRIM(RTRIM(id_disciplina)) AS INT)
+            FROM #participacion_conservada)
+       OR TRY_CAST(LTRIM(RTRIM(id_disciplina)) AS INT) IN (
+            SELECT id FROM dbo.disciplina);
 
-    /* stg.edicion_juego NO se purga: son solo 63 filas y las necesitan
-       las cargas siguientes para resolver su edicion. Purgarla hacia que
-       la carga 2 abortara con "no se encontro la edicion de verano 2008". */
+    /* stg.edicion_juego no se purga: las cargas siguientes la necesitan
+       para resolver las ediciones aun cuando no haya participacion en
+       staging para el anio actual. */
 
-    DELETE FROM stg.poblacion
-    WHERE LTRIM(RTRIM(noc_code)) NOT IN (SELECT noc_code FROM dbo.region);
+    SELECT *
+    INTO #poblacion_conservada
+    FROM stg.poblacion
+    WHERE LTRIM(RTRIM(noc_code)) IS NULL
+       OR LTRIM(RTRIM(noc_code)) IN (SELECT noc_code FROM dbo.region);
 
-    DELETE FROM stg.region
-    WHERE LTRIM(RTRIM(NOC)) NOT IN (SELECT noc_code FROM dbo.region);
+    SELECT *
+    INTO #region_conservada
+    FROM stg.region
+    WHERE LTRIM(RTRIM(NOC)) IS NULL
+       OR LTRIM(RTRIM(NOC)) IN (SELECT noc_code FROM dbo.region);
+
+    TRUNCATE TABLE stg.participacion;
+    INSERT INTO stg.participacion
+    SELECT * FROM #participacion_conservada;
+
+    TRUNCATE TABLE stg.resultado;
+    INSERT INTO stg.resultado
+    SELECT * FROM #resultado_conservado;
+
+    TRUNCATE TABLE stg.atleta;
+    INSERT INTO stg.atleta
+    SELECT * FROM #atleta_conservado;
+
+    TRUNCATE TABLE stg.atleta_rol;
+    INSERT INTO stg.atleta_rol
+    SELECT * FROM #atleta_rol_conservado;
+
+    TRUNCATE TABLE stg.disciplina;
+    INSERT INTO stg.disciplina
+    SELECT * FROM #disciplina_conservada;
+
+    TRUNCATE TABLE stg.poblacion;
+    INSERT INTO stg.poblacion
+    SELECT * FROM #poblacion_conservada;
+
+    TRUNCATE TABLE stg.region;
+    INSERT INTO stg.region
+    SELECT * FROM #region_conservada;
 
     PRINT '--- Carga de ' + CAST(@anio AS VARCHAR(10)) + ' finalizada. ---';
     RETURN 0;

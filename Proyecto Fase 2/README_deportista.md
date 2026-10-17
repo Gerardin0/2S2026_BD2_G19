@@ -261,6 +261,9 @@ processed N pages in X seconds` de cada `logs/restore_Full*.log`. El tiempo
 total es mayor porque incluye el `DROP DATABASE` y la espera entre ambos pasos.
 
 CSV con los valores: `docs/deportista/tiempos_restore_deportista.csv`.
+En nuevas ejecuciones, el medidor también guarda en `filas_restauradas` el
+conteo de filas de `dbo.participacion` unidas con `dbo.edicion_juego`; el CSV
+se vuelve a generar después de cada corrida.
 
 **Los logs de `logs/` corresponden a una única corrida**, la del 2026-10-14
 22:30. Son los 8 archivos de esta parte:
@@ -340,8 +343,13 @@ Capturas de la misma corrida: `capturas/deportista_*.png`. Los logs con sufijo
    consultas de validación filtran por `source_athlete_id = 105512`, que no
    depende de la codificación.
 
-6. **Por qué se purga `stg` al final de cada carga.** Si las 153 mil filas de
-   atletas y las 323 mil participaciones se quedaran en staging desde el
-   primer FULL, los diferenciales posteriores serían prácticamente vacíos y las
-   mediciones de tiempo no significarían nada. La purga está documentada dentro
-   de `sp_cargar_deportista`.
+6. **Por qué y cómo se purga `stg` al final de cada carga.** Si las 153 mil
+   filas de atletas y las 323 mil participaciones se quedaran en staging desde
+   el primer FULL, los diferenciales posteriores serían prácticamente vacíos y
+   las mediciones de tiempo no significarían nada. El procedimiento conserva
+   en tablas temporales solo las filas necesarias para las siguientes ediciones
+   y luego usa `TRUNCATE + INSERT`, en vez de borrar fila por fila las tablas
+   grandes. Esto mantiene la lógica de las cargas y reduce el logging de la
+   purga. Para ejecutar esta versión, hay que volver a crear el procedimiento
+   ejecutando `carga/deportista/02_proc_cargar_deportista.sql` después de que
+   cualquier carga activa haya terminado.

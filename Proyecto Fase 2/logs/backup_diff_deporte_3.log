@@ -1,23 +1,21 @@
 Changed database context to 'db_olimpiadas_deporte'.
 ===============================================================
 BACKUP DIFERENCIAL 3 - Deporte (tras carga 4, Londres 2012)
-Ejecutado: 2026-10-17 03:02:16
+Ejecutado: 2026-10-17 04:33:53
 ===============================================================
 12 percent processed.
-24 percent processed.
-31 percent processed.
-40 percent processed.
-50 percent processed.
-68 percent processed.
-71 percent processed.
-90 percent processed.
+20 percent processed.
+32 percent processed.
+57 percent processed.
+63 percent processed.
+96 percent processed.
 100 percent processed.
-Processed 472 pages for database 'db_olimpiadas_deporte', file 'db_olimpiadas_deporte' on file 1.
+Processed 400 pages for database 'db_olimpiadas_deporte', file 'db_olimpiadas_deporte' on file 1.
 Processed 2 pages for database 'db_olimpiadas_deporte', file 'db_olimpiadas_deporte_log' on file 1.
-BACKUP DATABASE WITH DIFFERENTIAL successfully processed 474 pages in 0.049 seconds (75.494 MB/sec).
+BACKUP DATABASE WITH DIFFERENTIAL successfully processed 402 pages in 0.033 seconds (95.052 MB/sec).
 database_name                                                                                                                    tipo        archivo                                                                                                                                                                                                                                                              finalizado          
 -------------------------------------------------------------------------------------------------------------------------------- ----------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --------------------
-db_olimpiadas_deporte                                                                                                            DIFERENCIAL /var/opt/mssql/backups/diff_deporte_3.bak                                                                                                                                                                                                                            2026-10-17 03:02:16 
+db_olimpiadas_deporte                                                                                                            DIFERENCIAL /var/opt/mssql/backups/diff_deporte_3.bak                                                                                                                                                                                                                            2026-10-17 04:33:53 
 
 (1 rows affected)
 The backup set on file 1 is valid.
