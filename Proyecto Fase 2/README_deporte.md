@@ -238,6 +238,7 @@ Todo lo demás es idéntico salvo nombres, ediciones y el filtro.
 | `carga/deporte/02_proc_cargar_deporte.sql` | `LEFT(..., 50)` sobre `orden_nombre` | el staging no interpreta las comillas del CSV: un campo con coma corre la fila una columna y en 6 de las 261 atletas llega ahí un texto de más de 50 caracteres, que haría fallar el `INSERT` de `dbo.atleta` |
 | `carga/deporte/02_proc_cargar_deporte.sql` | `COALESCE(region, noc_code)` para `country_name` | `tabla_nocs.csv` trae `region` vacía para TUV y Tuvalu compite en el evento; sin eso `country_name` (NOT NULL) recibe NULL y la carga 1 falla |
 | `.gitattributes` (raíz del repo) | fuerza LF en `Proyecto Fase 2/CSVs/*.csv` | en Windows git los baja con CRLF y `BULK INSERT` deja el `\r` pegado a la última columna (`rol_id`, `weight_kg`, `medal`), que entonces no se puede convertir a número |
+| `carga/deporte/02_proc_cargar_deporte.sql` | tablas temporales `#atl` y `#keep_*` en lugar de subconsultas sobre `stg.participacion` | la carga 1 bajó de ~6 min a ~6 s; los datos resultantes son idénticos fila por fila (verificado contra la base cargada con la versión anterior) |
 | `restauracion/deporte/01_eliminar_base.sql` | alias `bfm` corregido en la consulta de respaldos | con `bmf` la consulta da `Msg 4104` |
 | `restauracion/deporte/02..05` | la validación final muestra el podio del evento en vez de las filas de un atleta | no hay un atleta único que filtrar |
 | `docs/deporte/medir_tiempos_restore.ps1` | los logs se llaman `restore_deporte_*.log` | regla 2 de `CONVENCIONES.md`: no pisar los logs de otro |
@@ -246,10 +247,10 @@ Todo lo demás es idéntico salvo nombres, ediciones y el filtro.
 
 ## 9. Evidencia de ejecución
 
-Selección de capturas de la corrida completa del 12/10/2026 (20:41–20:49). La
-salida íntegra de cada paso está en `logs/captura_deporte_*.log`; el resto de
-capturas (54 en total) no se sube al repositorio y se puede regenerar con
-`docs/deporte/capturar_ciclo.ps1 -SoloCapturas`.
+Selección de capturas de la corrida completa del 12/10/2026 (20:41–20:49),
+hecha con la versión de `sp_cargar_deporte` anterior a la optimización (ver
+sección 8). El resto de capturas (54 en total) no se sube al repositorio. Los
+logs `logs/*_deporte.log` son de una ejecución posterior del mismo ciclo.
 
 Cada captura muestra dos horas en su encabezado: **ejecutado** (cuándo corrió
 el paso) y la hora en que se tomó la captura, que coincide con el reloj de

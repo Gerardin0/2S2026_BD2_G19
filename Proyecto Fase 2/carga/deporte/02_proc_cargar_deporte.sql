@@ -17,6 +17,17 @@
 
    Es idempotente: se puede re-ejecutar sin duplicar filas.
 
+   OPTIMIZACION (version con #atl):
+   Los pasos 4 (dbo.atleta) y 5 (dbo.atleta_roles) recorrian, por cada una
+   de las ~153 mil filas de stg.atleta / stg.atleta_rol, las ~323 mil filas
+   de stg.participacion para saber si esa persona corre el evento. En la
+   carga 1, con el staging completo, eso tomaba varios minutos.
+   Ahora la lista de atletas del evento en la edicion se calcula UNA vez en
+   la tabla temporal #atl (con PK) y ambos pasos filtran contra ella.
+   La purga del paso 9 usa el mismo recurso (#keep_*), porque sus NOT IN
+   eran el verdadero cuello de botella (~4.5 de los ~6 minutos).
+   El resultado es identico; solo cambia el plan de ejecucion.
+
    Ejecutar por consola:
      sqlcmd -S localhost,1433 -U sa -P 'Password123!' -d db_olimpiadas_deporte \
             -i 02_proc_cargar_deporte.sql
@@ -59,6 +70,26 @@ BEGIN
     PRINT '=== Carga del deporte (disciplina ' + CAST(@id_disciplina AS VARCHAR(20))
         + ') para la edicion ' + CAST(@anio AS VARCHAR(10))
         + ' (id_edicion ' + CAST(@id_edicion AS VARCHAR(10)) + ') ===';
+
+    /* ---------------------------------------------------------------
+       Atletas que corren el evento en esta edicion, calculados UNA vez.
+       Los pasos 4 y 5 filtran contra esta tabla en lugar de recorrer
+       stg.participacion completa por cada fila de stg.atleta.
+       noc_code: el NOC con el que compite (el menor si hubiera varios),
+       mismo criterio que el TOP 1 ... ORDER BY de la version anterior.
+       --------------------------------------------------------------- */
+    CREATE TABLE #atl (
+        id        FLOAT        NOT NULL PRIMARY KEY,
+        noc_code  NVARCHAR(10) COLLATE DATABASE_DEFAULT NULL
+    );
+    INSERT INTO #atl (id, noc_code)
+    SELECT TRY_CAST(LTRIM(RTRIM(athlete_id)) AS FLOAT),
+           MIN(NULLIF(LTRIM(RTRIM(noc_code)), ''))
+    FROM stg.participacion
+    WHERE TRY_CAST(LTRIM(RTRIM(id_disciplina)) AS INT) = @id_disciplina
+      AND TRY_CAST(LTRIM(RTRIM(id_edicion_juego)) AS INT) = @id_edicion
+      AND TRY_CAST(LTRIM(RTRIM(athlete_id)) AS FLOAT) IS NOT NULL
+    GROUP BY TRY_CAST(LTRIM(RTRIM(athlete_id)) AS FLOAT);
 
     /* ---------------------------------------------------------------
        1. dbo.region
@@ -177,18 +208,10 @@ BEGIN
         TRY_CONVERT(DECIMAL(9,6), NULLIF(LTRIM(RTRIM(a.[long])), '')),
         TRY_CONVERT(DATE, NULLIF(LTRIM(RTRIM(a.died_date)), '')),
         NULLIF(LTRIM(RTRIM(a.died_in)), ''),
-        (SELECT TOP 1 LTRIM(RTRIM(p2.noc_code))
-           FROM stg.participacion p2
-          WHERE TRY_CAST(LTRIM(RTRIM(p2.athlete_id)) AS FLOAT) = TRY_CAST(LTRIM(RTRIM(a.athlete_id)) AS FLOAT)
-            AND TRY_CAST(LTRIM(RTRIM(p2.id_disciplina)) AS INT) = @id_disciplina
-            AND TRY_CAST(LTRIM(RTRIM(p2.id_edicion_juego)) AS INT) = @id_edicion
-            AND LTRIM(RTRIM(p2.noc_code)) <> ''
-          ORDER BY LTRIM(RTRIM(p2.noc_code)))
+        (SELECT t.noc_code FROM #atl t
+          WHERE t.id = TRY_CAST(LTRIM(RTRIM(a.athlete_id)) AS FLOAT))
     FROM stg.atleta a
-    WHERE EXISTS (SELECT 1 FROM stg.participacion p
-                  WHERE TRY_CAST(LTRIM(RTRIM(p.athlete_id)) AS FLOAT) = TRY_CAST(LTRIM(RTRIM(a.athlete_id)) AS FLOAT)
-                    AND TRY_CAST(LTRIM(RTRIM(p.id_disciplina)) AS INT) = @id_disciplina
-                    AND TRY_CAST(LTRIM(RTRIM(p.id_edicion_juego)) AS INT) = @id_edicion)
+    WHERE TRY_CAST(LTRIM(RTRIM(a.athlete_id)) AS FLOAT) IN (SELECT id FROM #atl)
       AND NOT EXISTS (SELECT 1 FROM dbo.atleta x
                       WHERE x.id = TRY_CONVERT(INT, TRY_CAST(LTRIM(RTRIM(a.athlete_id)) AS FLOAT)));
     SET @n = @@ROWCOUNT;
@@ -217,10 +240,7 @@ BEGIN
         TRY_CONVERT(INT, TRY_CAST(LTRIM(RTRIM(ar.athlete_id)) AS FLOAT)),
         TRY_CONVERT(INT, TRY_CAST(LTRIM(RTRIM(ar.rol_id)) AS INT))
     FROM stg.atleta_rol ar
-    WHERE EXISTS (SELECT 1 FROM stg.participacion p
-                  WHERE TRY_CAST(LTRIM(RTRIM(p.athlete_id)) AS FLOAT) = TRY_CAST(LTRIM(RTRIM(ar.athlete_id)) AS FLOAT)
-                    AND TRY_CAST(LTRIM(RTRIM(p.id_disciplina)) AS INT) = @id_disciplina
-                    AND TRY_CAST(LTRIM(RTRIM(p.id_edicion_juego)) AS INT) = @id_edicion)
+    WHERE TRY_CAST(LTRIM(RTRIM(ar.athlete_id)) AS FLOAT) IN (SELECT id FROM #atl)
       AND NOT EXISTS (
             SELECT 1 FROM dbo.atleta_roles x
             WHERE x.id_atleta = TRY_CONVERT(INT, TRY_CAST(LTRIM(RTRIM(ar.athlete_id)) AS FLOAT))
@@ -319,18 +339,38 @@ BEGIN
        comparacion con NULL nunca es verdadera, asi que castear a INT
        aqui dejaba filas sin purgar. Se castea a FLOAT, que si acepta el
        decimal, y se agrega "IS NULL" para no dejar filas huerfanas.
+
+       WITH (TABLOCK): stg.* son heaps; con bloqueo de tabla, SQL Server
+       libera las paginas que el DELETE deja vacias en lugar de dejarlas
+       reservadas (y dentro del respaldo FULL).
        --------------------------------------------------------------- */
     /* Se conservan TODAS las participaciones de la disciplina (todas sus
        ediciones), no solo las de la edicion actual: las cargas 2, 3 y 4
        necesitan encontrar su propia edicion dentro de stg.participacion. */
-    DELETE FROM stg.participacion
+    DELETE FROM stg.participacion WITH (TABLOCK)
     WHERE TRY_CAST(LTRIM(RTRIM(id_disciplina)) AS INT) IS NULL
        OR TRY_CAST(LTRIM(RTRIM(id_disciplina)) AS INT) <> @id_disciplina;
 
-    DELETE FROM stg.resultado
-    WHERE TRY_CAST(LTRIM(RTRIM(id_participacion)) AS INT) NOT IN (
-        SELECT TRY_CAST(LTRIM(RTRIM(id_participacion)) AS INT)
-        FROM stg.participacion);
+    /* Lo que sobrevive en stg.participacion define que se conserva en el
+       resto del staging. Se guarda UNA vez en tablas temporales con PK.
+
+       OPTIMIZACION: la version anterior usaba NOT IN (subconsulta sobre
+       stg.participacion) en cada DELETE. Como se compara una expresion
+       (TRY_CAST(...)) contra otra, sin indices, el motor resolvia el NOT IN
+       con un bucle anidado: ~153 mil filas de stg.atleta por ~1 200 de
+       stg.participacion, y lo mismo en stg.atleta_rol. Esa purga sola
+       tomaba ~4.5 minutos de la carga 1; con #keep_* toma segundos.
+       NOT EXISTS (en vez de NOT IN) tambien evita que un NULL en la
+       subconsulta anule el borrado. */
+    CREATE TABLE #keep_part (id INT   NOT NULL PRIMARY KEY);
+    CREATE TABLE #keep_atl  (id FLOAT NOT NULL PRIMARY KEY);
+    CREATE TABLE #keep_disc (id INT   NOT NULL PRIMARY KEY);
+    CREATE TABLE #keep_noc  (noc_code NVARCHAR(10) COLLATE DATABASE_DEFAULT NOT NULL PRIMARY KEY);
+
+    INSERT INTO #keep_part (id)
+    SELECT DISTINCT TRY_CAST(LTRIM(RTRIM(id_participacion)) AS INT)
+    FROM stg.participacion
+    WHERE TRY_CAST(LTRIM(RTRIM(id_participacion)) AS INT) IS NOT NULL;
 
     /* UNICA DIFERENCIA DE FONDO con la purga de la carga por deportista:
        alla el atleta y su NOC son siempre los mismos, asi que basta con
@@ -338,43 +378,49 @@ BEGIN
        NOC nuevos, por lo que se conservan los de TODAS las participaciones
        que quedan en stg; si no, la carga 2 no encontraria sus atletas ni
        sus regiones. */
-    DELETE FROM stg.atleta
-    WHERE TRY_CAST(LTRIM(RTRIM(athlete_id)) AS FLOAT) IS NULL
-       OR TRY_CAST(LTRIM(RTRIM(athlete_id)) AS FLOAT) NOT IN (
-            SELECT TRY_CAST(LTRIM(RTRIM(athlete_id)) AS FLOAT)
-            FROM stg.participacion
-            WHERE TRY_CAST(LTRIM(RTRIM(athlete_id)) AS FLOAT) IS NOT NULL);
-
-    DELETE FROM stg.atleta_rol
-    WHERE TRY_CAST(LTRIM(RTRIM(athlete_id)) AS FLOAT) IS NULL
-       OR TRY_CAST(LTRIM(RTRIM(athlete_id)) AS FLOAT) NOT IN (
-            SELECT TRY_CAST(LTRIM(RTRIM(athlete_id)) AS FLOAT)
-            FROM stg.participacion
-            WHERE TRY_CAST(LTRIM(RTRIM(athlete_id)) AS FLOAT) IS NOT NULL);
+    INSERT INTO #keep_atl (id)
+    SELECT DISTINCT TRY_CAST(LTRIM(RTRIM(athlete_id)) AS FLOAT)
+    FROM stg.participacion
+    WHERE TRY_CAST(LTRIM(RTRIM(athlete_id)) AS FLOAT) IS NOT NULL;
 
     /* Se conservan las disciplinas que quedan en stg.participacion, mas
        las que ya estan en dbo.disciplina. */
-    DELETE FROM stg.disciplina
-    WHERE TRY_CAST(LTRIM(RTRIM(id_disciplina)) AS INT) NOT IN (
-        SELECT TRY_CAST(LTRIM(RTRIM(id_disciplina)) AS INT)
-        FROM stg.participacion)
-      AND TRY_CAST(LTRIM(RTRIM(id_disciplina)) AS INT)
-          NOT IN (SELECT id FROM dbo.disciplina);
+    INSERT INTO #keep_disc (id)
+    SELECT TRY_CAST(LTRIM(RTRIM(id_disciplina)) AS INT) FROM stg.participacion
+    WHERE TRY_CAST(LTRIM(RTRIM(id_disciplina)) AS INT) IS NOT NULL
+    UNION
+    SELECT id FROM dbo.disciplina;
+
+    INSERT INTO #keep_noc (noc_code)
+    SELECT LTRIM(RTRIM(noc_code)) FROM stg.participacion
+    WHERE noc_code IS NOT NULL AND LTRIM(RTRIM(noc_code)) <> ''
+    UNION
+    SELECT noc_code FROM dbo.region;
+
+    DELETE x FROM stg.resultado AS x WITH (TABLOCK)
+    WHERE NOT EXISTS (SELECT 1 FROM #keep_part k
+                      WHERE k.id = TRY_CAST(LTRIM(RTRIM(x.id_participacion)) AS INT));
+
+    DELETE x FROM stg.atleta AS x WITH (TABLOCK)
+    WHERE NOT EXISTS (SELECT 1 FROM #keep_atl k
+                      WHERE k.id = TRY_CAST(LTRIM(RTRIM(x.athlete_id)) AS FLOAT));
+
+    DELETE x FROM stg.atleta_rol AS x WITH (TABLOCK)
+    WHERE NOT EXISTS (SELECT 1 FROM #keep_atl k
+                      WHERE k.id = TRY_CAST(LTRIM(RTRIM(x.athlete_id)) AS FLOAT));
+
+    DELETE x FROM stg.disciplina AS x WITH (TABLOCK)
+    WHERE NOT EXISTS (SELECT 1 FROM #keep_disc k
+                      WHERE k.id = TRY_CAST(LTRIM(RTRIM(x.id_disciplina)) AS INT));
 
     /* stg.edicion_juego NO se purga: son solo 63 filas y las necesitan
        las cargas siguientes para resolver su edicion. */
 
-    DELETE FROM stg.poblacion
-    WHERE LTRIM(RTRIM(noc_code)) NOT IN (
-            SELECT LTRIM(RTRIM(noc_code)) FROM stg.participacion
-            WHERE noc_code IS NOT NULL AND LTRIM(RTRIM(noc_code)) <> '')
-      AND LTRIM(RTRIM(noc_code)) NOT IN (SELECT noc_code FROM dbo.region);
+    DELETE x FROM stg.poblacion AS x WITH (TABLOCK)
+    WHERE NOT EXISTS (SELECT 1 FROM #keep_noc k WHERE k.noc_code = LTRIM(RTRIM(x.noc_code)));
 
-    DELETE FROM stg.region
-    WHERE LTRIM(RTRIM(NOC)) NOT IN (
-            SELECT LTRIM(RTRIM(noc_code)) FROM stg.participacion
-            WHERE noc_code IS NOT NULL AND LTRIM(RTRIM(noc_code)) <> '')
-      AND LTRIM(RTRIM(NOC)) NOT IN (SELECT noc_code FROM dbo.region);
+    DELETE x FROM stg.region AS x WITH (TABLOCK)
+    WHERE NOT EXISTS (SELECT 1 FROM #keep_noc k WHERE k.noc_code = LTRIM(RTRIM(x.NOC)));
 
     PRINT '--- Carga de ' + CAST(@anio AS VARCHAR(10)) + ' finalizada. ---';
     RETURN 0;

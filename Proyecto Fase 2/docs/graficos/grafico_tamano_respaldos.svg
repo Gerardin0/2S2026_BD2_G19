@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img" aria-label="Tamaño de cada archivo de respaldo">
+<rect width="760" height="420" fill="#fcfcfb"/>
+<text x="64" y="30" font-size="17" font-weight="600" fill="#0b0b0b">Tamaño de cada archivo de respaldo</text>
+<text x="64" y="52" font-size="12.5" fill="#52514e">MB del .bak; cada diferencial es acumulativo desde el FULL</text>
+<rect x="64" y="66" width="12" height="12" rx="2" fill="#2a78d6"/>
+<text x="82" y="76.5" font-size="12.5" fill="#52514e">Año</text>
+<rect x="126.5" y="66" width="12" height="12" rx="2" fill="#eb6834"/>
+<text x="144.5" y="76.5" font-size="12.5" fill="#52514e">Deporte</text>
+<rect x="219.0" y="66" width="12" height="12" rx="2" fill="#1baf7a"/>
+<text x="237.0" y="76.5" font-size="12.5" fill="#52514e">Deportista</text>
+<line x1="64" x2="740" y1="364.0" y2="364.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="56" y="368.0" font-size="11.5" fill="#52514e" text-anchor="end">0</text>
+<line x1="64" x2="740" y1="309.6" y2="309.6" stroke="#e4e3df" stroke-width="1"/>
+<text x="56" y="313.6" font-size="11.5" fill="#52514e" text-anchor="end">25</text>
+<line x1="64" x2="740" y1="255.2" y2="255.2" stroke="#e4e3df" stroke-width="1"/>
+<text x="56" y="259.2" font-size="11.5" fill="#52514e" text-anchor="end">50</text>
+<line x1="64" x2="740" y1="200.8" y2="200.8" stroke="#e4e3df" stroke-width="1"/>
+<text x="56" y="204.8" font-size="11.5" fill="#52514e" text-anchor="end">75</text>
+<line x1="64" x2="740" y1="146.4" y2="146.4" stroke="#e4e3df" stroke-width="1"/>
+<text x="56" y="150.4" font-size="11.5" fill="#52514e" text-anchor="end">100</text>
+<line x1="64" x2="740" y1="92.0" y2="92.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="56" y="96.0" font-size="11.5" fill="#52514e" text-anchor="end">125</text>
+<text x="14" y="228.0" font-size="11.5" fill="#52514e" text-anchor="middle" transform="rotate(-90 14 228.0)">MB</text>
+<path d="M101.5,364.0 V108.8 Q101.5,104.8 105.5,104.8 H127.5 Q131.5,104.8 131.5,108.8 V364.0 Z" fill="#2a78d6"><title>Año - Full: 119.1 MB</title></path>
+<text x="116.5" y="99.8" font-size="10.5" fill="#0b0b0b" text-anchor="middle">119.1</text>
+<path d="M133.5,364.0 V287.2 Q133.5,283.2 137.5,283.2 H159.5 Q163.5,283.2 163.5,287.2 V364.0 Z" fill="#eb6834"><title>Deporte - Full: 37.1 MB</title></path>
+<text x="148.5" y="278.2" font-size="10.5" fill="#0b0b0b" text-anchor="middle">37.1</text>
+<path d="M165.5,364.0 V339.7 Q165.5,335.7 169.5,335.7 H191.5 Q195.5,335.7 195.5,339.7 V364.0 Z" fill="#1baf7a"><title>Deportista - Full: 13 MB</title></path>
+<text x="180.5" y="330.7" font-size="10.5" fill="#0b0b0b" text-anchor="middle">13</text>
+<text x="148.5" y="386" font-size="12" fill="#0b0b0b" text-anchor="middle">Full</text>
+<path d="M270.5,364.0 V291.6 Q270.5,287.6 274.5,287.6 H296.5 Q300.5,287.6 300.5,291.6 V364.0 Z" fill="#2a78d6"><title>Año - Diff 1: 35.1 MB</title></path>
+<text x="285.5" y="282.6" font-size="10.5" fill="#0b0b0b" text-anchor="middle">35.1</text>
+<path d="M302.5,364.0 V359.0 Q302.5,355.0 306.5,355.0 H328.5 Q332.5,355.0 332.5,359.0 V364.0 Z" fill="#eb6834"><title>Deporte - Diff 1: 4.1 MB</title></path>
+<text x="317.5" y="350.0" font-size="10.5" fill="#0b0b0b" text-anchor="middle">4.1</text>
+<path d="M334.5,364.0 V361.0 Q334.5,357.0 338.5,357.0 H360.5 Q364.5,357.0 364.5,361.0 V364.0 Z" fill="#1baf7a"><title>Deportista - Diff 1: 3.2 MB</title></path>
+<text x="349.5" y="352.0" font-size="10.5" fill="#0b0b0b" text-anchor="middle">3.2</text>
+<text x="317.5" y="386" font-size="12" fill="#0b0b0b" text-anchor="middle">Diff 1</text>
+<path d="M439.5,364.0 V256.8 Q439.5,252.8 443.5,252.8 H465.5 Q469.5,252.8 469.5,256.8 V364.0 Z" fill="#2a78d6"><title>Año - Diff 2: 51.1 MB</title></path>
+<text x="454.5" y="247.8" font-size="10.5" fill="#0b0b0b" text-anchor="middle">51.1</text>
+<path d="M471.5,364.0 V359.0 Q471.5,355.0 475.5,355.0 H497.5 Q501.5,355.0 501.5,359.0 V364.0 Z" fill="#eb6834"><title>Deporte - Diff 2: 4.1 MB</title></path>
+<text x="486.5" y="350.0" font-size="10.5" fill="#0b0b0b" text-anchor="middle">4.1</text>
+<path d="M503.5,364.0 V361.0 Q503.5,357.0 507.5,357.0 H529.5 Q533.5,357.0 533.5,361.0 V364.0 Z" fill="#1baf7a"><title>Deportista - Diff 2: 3.2 MB</title></path>
+<text x="518.5" y="352.0" font-size="10.5" fill="#0b0b0b" text-anchor="middle">3.2</text>
+<text x="486.5" y="386" font-size="12" fill="#0b0b0b" text-anchor="middle">Diff 2</text>
+<path d="M608.5,364.0 V219.8 Q608.5,215.8 612.5,215.8 H634.5 Q638.5,215.8 638.5,219.8 V364.0 Z" fill="#2a78d6"><title>Año - Diff 3: 68.1 MB</title></path>
+<text x="623.5" y="210.8" font-size="10.5" fill="#0b0b0b" text-anchor="middle">68.1</text>
+<path d="M640.5,364.0 V356.8 Q640.5,352.8 644.5,352.8 H666.5 Q670.5,352.8 670.5,356.8 V364.0 Z" fill="#eb6834"><title>Deporte - Diff 3: 5.1 MB</title></path>
+<text x="655.5" y="347.8" font-size="10.5" fill="#0b0b0b" text-anchor="middle">5.1</text>
+<path d="M672.5,364.0 V361.0 Q672.5,357.0 676.5,357.0 H698.5 Q702.5,357.0 702.5,361.0 V364.0 Z" fill="#1baf7a"><title>Deportista - Diff 3: 3.2 MB</title></path>
+<text x="687.5" y="352.0" font-size="10.5" fill="#0b0b0b" text-anchor="middle">3.2</text>
+<text x="655.5" y="386" font-size="12" fill="#0b0b0b" text-anchor="middle">Diff 3</text>
+<line x1="64" x2="740" y1="364" y2="364" stroke="#52514e" stroke-width="1"/>
+</svg>

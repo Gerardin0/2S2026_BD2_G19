@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img" aria-label="Tiempo de restauración por tipo de carga">
+<rect width="760" height="420" fill="#fcfcfb"/>
+<text x="64" y="30" font-size="17" font-weight="600" fill="#0b0b0b">Tiempo de restauración por tipo de carga</text>
+<text x="64" y="52" font-size="12.5" fill="#52514e">Segundos de pared (DROP + RESTORE + validación), medidos por consola</text>
+<rect x="64" y="66" width="12" height="12" rx="2" fill="#2a78d6"/>
+<text x="82" y="76.5" font-size="12.5" fill="#52514e">Año</text>
+<rect x="126.5" y="66" width="12" height="12" rx="2" fill="#eb6834"/>
+<text x="144.5" y="76.5" font-size="12.5" fill="#52514e">Deporte</text>
+<rect x="219.0" y="66" width="12" height="12" rx="2" fill="#1baf7a"/>
+<text x="237.0" y="76.5" font-size="12.5" fill="#52514e">Deportista</text>
+<line x1="64" x2="740" y1="364.0" y2="364.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="56" y="368.0" font-size="11.5" fill="#52514e" text-anchor="end">0</text>
+<line x1="64" x2="740" y1="318.7" y2="318.7" stroke="#e4e3df" stroke-width="1"/>
+<text x="56" y="322.7" font-size="11.5" fill="#52514e" text-anchor="end">2</text>
+<line x1="64" x2="740" y1="273.3" y2="273.3" stroke="#e4e3df" stroke-width="1"/>
+<text x="56" y="277.3" font-size="11.5" fill="#52514e" text-anchor="end">4</text>
+<line x1="64" x2="740" y1="228.0" y2="228.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="56" y="232.0" font-size="11.5" fill="#52514e" text-anchor="end">6</text>
+<line x1="64" x2="740" y1="182.7" y2="182.7" stroke="#e4e3df" stroke-width="1"/>
+<text x="56" y="186.7" font-size="11.5" fill="#52514e" text-anchor="end">8</text>
+<line x1="64" x2="740" y1="137.3" y2="137.3" stroke="#e4e3df" stroke-width="1"/>
+<text x="56" y="141.3" font-size="11.5" fill="#52514e" text-anchor="end">10</text>
+<line x1="64" x2="740" y1="92.0" y2="92.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="56" y="96.0" font-size="11.5" fill="#52514e" text-anchor="end">12</text>
+<text x="14" y="228.0" font-size="11.5" fill="#52514e" text-anchor="middle" transform="rotate(-90 14 228.0)">segundos</text>
+<path d="M101.5,364.0 V346.1 Q101.5,342.1 105.5,342.1 H127.5 Q131.5,342.1 131.5,346.1 V364.0 Z" fill="#2a78d6"><title>Año - Full: 0.96 segundos</title></path>
+<text x="116.5" y="337.1" font-size="10.5" fill="#0b0b0b" text-anchor="middle">0.96</text>
+<path d="M133.5,364.0 V348.3 Q133.5,344.3 137.5,344.3 H159.5 Q163.5,344.3 163.5,348.3 V364.0 Z" fill="#eb6834"><title>Deporte - Full: 0.87 segundos</title></path>
+<text x="148.5" y="339.3" font-size="10.5" fill="#0b0b0b" text-anchor="middle">0.87</text>
+<path d="M165.5,364.0 V350.8 Q165.5,346.8 169.5,346.8 H191.5 Q195.5,346.8 195.5,350.8 V364.0 Z" fill="#1baf7a"><title>Deportista - Full: 0.76 segundos</title></path>
+<text x="180.5" y="341.8" font-size="10.5" fill="#0b0b0b" text-anchor="middle">0.76</text>
+<text x="148.5" y="386" font-size="12" fill="#0b0b0b" text-anchor="middle">Full</text>
+<path d="M270.5,364.0 V332.1 Q270.5,328.1 274.5,328.1 H296.5 Q300.5,328.1 300.5,332.1 V364.0 Z" fill="#2a78d6"><title>Año - Full + Diff 1: 1.58 segundos</title></path>
+<text x="285.5" y="323.1" font-size="10.5" fill="#0b0b0b" text-anchor="middle">1.58</text>
+<path d="M302.5,364.0 V335.9 Q302.5,331.9 306.5,331.9 H328.5 Q332.5,331.9 332.5,335.9 V364.0 Z" fill="#eb6834"><title>Deporte - Full + Diff 1: 1.42 segundos</title></path>
+<text x="317.5" y="326.9" font-size="10.5" fill="#0b0b0b" text-anchor="middle">1.42</text>
+<path d="M334.5,364.0 V311.2 Q334.5,307.2 338.5,307.2 H360.5 Q364.5,307.2 364.5,311.2 V364.0 Z" fill="#1baf7a"><title>Deportista - Full + Diff 1: 2.51 segundos</title></path>
+<text x="349.5" y="302.2" font-size="10.5" fill="#0b0b0b" text-anchor="middle">2.51</text>
+<text x="317.5" y="386" font-size="12" fill="#0b0b0b" text-anchor="middle">Full + Diff 1</text>
+<path d="M439.5,364.0 V329.9 Q439.5,325.9 443.5,325.9 H465.5 Q469.5,325.9 469.5,329.9 V364.0 Z" fill="#2a78d6"><title>Año - Full + Diff 2: 1.68 segundos</title></path>
+<text x="454.5" y="320.9" font-size="10.5" fill="#0b0b0b" text-anchor="middle">1.68</text>
+<path d="M471.5,364.0 V338.5 Q471.5,334.5 475.5,334.5 H497.5 Q501.5,334.5 501.5,338.5 V364.0 Z" fill="#eb6834"><title>Deporte - Full + Diff 2: 1.3 segundos</title></path>
+<text x="486.5" y="329.5" font-size="10.5" fill="#0b0b0b" text-anchor="middle">1.3</text>
+<path d="M503.5,364.0 V107.8 Q503.5,103.8 507.5,103.8 H529.5 Q533.5,103.8 533.5,107.8 V364.0 Z" fill="#1baf7a"><title>Deportista - Full + Diff 2: 11.48 segundos</title></path>
+<text x="518.5" y="98.8" font-size="10.5" fill="#0b0b0b" text-anchor="middle">11.48</text>
+<text x="486.5" y="386" font-size="12" fill="#0b0b0b" text-anchor="middle">Full + Diff 2</text>
+<path d="M608.5,364.0 V332.8 Q608.5,328.8 612.5,328.8 H634.5 Q638.5,328.8 638.5,332.8 V364.0 Z" fill="#2a78d6"><title>Año - Full + Diff 3: 1.55 segundos</title></path>
+<text x="623.5" y="323.8" font-size="10.5" fill="#0b0b0b" text-anchor="middle">1.55</text>
+<path d="M640.5,364.0 V337.7 Q640.5,333.7 644.5,333.7 H666.5 Q670.5,333.7 670.5,337.7 V364.0 Z" fill="#eb6834"><title>Deporte - Full + Diff 3: 1.34 segundos</title></path>
+<text x="655.5" y="328.7" font-size="10.5" fill="#0b0b0b" text-anchor="middle">1.34</text>
+<path d="M672.5,364.0 V131.3 Q672.5,127.3 676.5,127.3 H698.5 Q702.5,127.3 702.5,131.3 V364.0 Z" fill="#1baf7a"><title>Deportista - Full + Diff 3: 10.44 segundos</title></path>
+<text x="687.5" y="122.3" font-size="10.5" fill="#0b0b0b" text-anchor="middle">10.44</text>
+<text x="655.5" y="386" font-size="12" fill="#0b0b0b" text-anchor="middle">Full + Diff 3</text>
+<line x1="64" x2="740" y1="364" y2="364" stroke="#52514e" stroke-width="1"/>
+</svg>
