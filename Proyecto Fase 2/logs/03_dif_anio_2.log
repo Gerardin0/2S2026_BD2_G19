@@ -1,24 +1,24 @@
 Changed database context to 'db_olimpiadas_anio'.
 ===============================================================
 BACKUP DIFERENCIAL 2 - Por Año (tras carga 3, Rio 2016)
-Ejecutado: 2026-10-17 04:33:35
+Ejecutado: 2026-10-17 10:27:21
 ===============================================================
 10 percent processed.
 20 percent processed.
 31 percent processed.
-40 percent processed.
+41 percent processed.
 50 percent processed.
 61 percent processed.
 71 percent processed.
 81 percent processed.
 91 percent processed.
 100 percent processed.
-Processed 6352 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio' on file 1.
+Processed 6360 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio' on file 1.
 Processed 2 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio_log' on file 1.
-BACKUP DATABASE WITH DIFFERENTIAL successfully processed 6354 pages in 0.148 seconds (335.383 MB/sec).
+BACKUP DATABASE WITH DIFFERENTIAL successfully processed 6362 pages in 0.143 seconds (347.546 MB/sec).
 database_name          tipo         tamano_mb    duracion_ms archivo                                    finalizado          
 ---------------------- ------------ ------------ ----------- ------------------------------------------ --------------------
-db_olimpiadas_anio     DIFERENCIAL         51.09           0 /var/opt/mssql/backups/diff_anio_2.bak     2026-10-17 04:33:35 
+db_olimpiadas_anio     DIFERENCIAL         51.09           0 /var/opt/mssql/backups/diff_anio_2.bak     2026-10-17 10:27:21 
 
 (1 rows affected)
 The backup set on file 1 is valid.

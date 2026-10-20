@@ -1,7 +1,7 @@
 Changed database context to 'db_olimpiadas_deportista'.
 ===============================================================
 CARGA 1 / 4 - Deportista - ATENAS 2004
-Ejecutado: 2026-10-16 22:24:00 
+Ejecutado: 2026-10-17 04:29:27 
 ===============================================================
 === Carga del deportista 105512 para la edicion 2004 (id_edicion 47) ===
   region        -> 1 filas

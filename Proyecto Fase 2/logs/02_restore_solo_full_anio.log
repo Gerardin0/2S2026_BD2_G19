@@ -1,7 +1,7 @@
 Changed database context to 'master'.
 ===============================================================
 RESTAURACION 1/4 - SOLO FULL (estado tras carga 1: Paris 2024)
-Ejecutado: 2026-10-17 04:34:02
+Ejecutado: 2026-10-17 10:30:07
 ===============================================================
 10 percent processed.
 20 percent processed.
@@ -15,21 +15,16 @@ Ejecutado: 2026-10-17 04:34:02
 100 percent processed.
 Processed 15120 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio' on file 1.
 Processed 2 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio_log' on file 1.
-RESTORE DATABASE successfully processed 15122 pages in 0.507 seconds (233.011 MB/sec).
->>> TIEMPO_MOTOR_RESTORE_MS: 1062 ms (1.062 s)
+RESTORE DATABASE successfully processed 15122 pages in 0.556 seconds (212.476 MB/sec).
+>>> TIEMPO_MOTOR_RESTORE_MS: 1196 ms (1.196 s)
 database_name          tipo         tamano_mb    archivo                                    finalizado          
 ---------------------- ------------ ------------ ------------------------------------------ --------------------
-db_olimpiadas_anio     FULL               119.09 /var/opt/mssql/backups/full_anio.bak       2026-10-17 04:03:48 
-db_olimpiadas_anio     DIFERENCIAL         35.09 /var/opt/mssql/backups/diff_anio_1.bak     2026-10-17 04:03:56 
-db_olimpiadas_anio     DIFERENCIAL         51.09 /var/opt/mssql/backups/diff_anio_2.bak     2026-10-17 04:04:05 
-db_olimpiadas_anio     DIFERENCIAL         68.09 /var/opt/mssql/backups/diff_anio_3.bak     2026-10-17 04:04:11 
-db_olimpiadas_anio     DIFERENCIAL         68.09 /var/opt/mssql/backups/diff_anio_1.bak     2026-10-17 04:07:44 
-db_olimpiadas_anio     FULL               119.09 /var/opt/mssql/backups/full_anio.bak       2026-10-17 04:33:26 
-db_olimpiadas_anio     DIFERENCIAL         35.09 /var/opt/mssql/backups/diff_anio_1.bak     2026-10-17 04:33:30 
-db_olimpiadas_anio     DIFERENCIAL         51.09 /var/opt/mssql/backups/diff_anio_2.bak     2026-10-17 04:33:35 
-db_olimpiadas_anio     DIFERENCIAL         68.09 /var/opt/mssql/backups/diff_anio_3.bak     2026-10-17 04:33:39 
+db_olimpiadas_anio     FULL               119.09 /var/opt/mssql/backups/full_anio.bak       2026-10-17 10:27:12 
+db_olimpiadas_anio     DIFERENCIAL         35.09 /var/opt/mssql/backups/diff_anio_1.bak     2026-10-17 10:27:16 
+db_olimpiadas_anio     DIFERENCIAL         51.09 /var/opt/mssql/backups/diff_anio_2.bak     2026-10-17 10:27:21 
+db_olimpiadas_anio     DIFERENCIAL         69.09 /var/opt/mssql/backups/diff_anio_3.bak     2026-10-17 10:27:25 
 
-(9 rows affected)
+(4 rows affected)
 Changed database context to 'db_olimpiadas_anio'.
 --- Conteos restaurados (solo FULL) ---
 tabla             filas      

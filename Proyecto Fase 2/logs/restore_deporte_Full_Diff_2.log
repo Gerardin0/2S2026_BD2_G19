@@ -1,33 +1,33 @@
 Changed database context to 'master'.
 ===============================================================
 RESTAURACION 3/4 - FULL + DIFERENCIAL 2 (estado tras la carga 3)
-Ejecutado: 2026-10-17 04:34:36
+Ejecutado: 2026-10-17 11:36:28
 ===============================================================
 12 percent processed.
 21 percent processed.
 30 percent processed.
-42 percent processed.
-51 percent processed.
-60 percent processed.
-73 percent processed.
-82 percent processed.
-91 percent processed.
+40 percent processed.
+52 percent processed.
+61 percent processed.
+71 percent processed.
+80 percent processed.
+92 percent processed.
 100 percent processed.
-Processed 4216 pages for database 'db_olimpiadas_deporte', file 'db_olimpiadas_deporte' on file 1.
+Processed 4144 pages for database 'db_olimpiadas_deporte', file 'db_olimpiadas_deporte' on file 1.
 Processed 2 pages for database 'db_olimpiadas_deporte', file 'db_olimpiadas_deporte_log' on file 1.
-RESTORE DATABASE successfully processed 4218 pages in 0.481 seconds (68.501 MB/sec).
+RESTORE DATABASE successfully processed 4146 pages in 0.481 seconds (67.332 MB/sec).
 33 percent processed.
 67 percent processed.
 100 percent processed.
 Processed 392 pages for database 'db_olimpiadas_deporte', file 'db_olimpiadas_deporte' on file 1.
 Processed 2 pages for database 'db_olimpiadas_deporte', file 'db_olimpiadas_deporte_log' on file 1.
-RESTORE DATABASE successfully processed 394 pages in 0.459 seconds (6.697 MB/sec).
+RESTORE DATABASE successfully processed 394 pages in 0.460 seconds (6.683 MB/sec).
 database_name                                                                                                                    backup_start_date       backup_finish_date      duracion_backup_s tipo        archivo                                                                                                                                                                                                                                                             
 -------------------------------------------------------------------------------------------------------------------------------- ----------------------- ----------------------- ----------------- ----------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-db_olimpiadas_deporte                                                                                                            2026-10-17 04:33:51.000 2026-10-17 04:33:51.000                 0 FULL        /var/opt/mssql/backups/full_deporte.bak                                                                                                                                                                                                                             
-db_olimpiadas_deporte                                                                                                            2026-10-17 04:33:52.000 2026-10-17 04:33:52.000                 0 DIFERENCIAL /var/opt/mssql/backups/diff_deporte_1.bak                                                                                                                                                                                                                           
-db_olimpiadas_deporte                                                                                                            2026-10-17 04:33:52.000 2026-10-17 04:33:52.000                 0 DIFERENCIAL /var/opt/mssql/backups/diff_deporte_2.bak                                                                                                                                                                                                                           
-db_olimpiadas_deporte                                                                                                            2026-10-17 04:33:53.000 2026-10-17 04:33:53.000                 0 DIFERENCIAL /var/opt/mssql/backups/diff_deporte_3.bak                                                                                                                                                                                                                           
+db_olimpiadas_deporte                                                                                                            2026-10-17 11:36:02.000 2026-10-17 11:36:02.000                 0 FULL        /var/opt/mssql/backups/full_deporte.bak                                                                                                                                                                                                                             
+db_olimpiadas_deporte                                                                                                            2026-10-17 11:36:02.000 2026-10-17 11:36:02.000                 0 DIFERENCIAL /var/opt/mssql/backups/diff_deporte_1.bak                                                                                                                                                                                                                           
+db_olimpiadas_deporte                                                                                                            2026-10-17 11:36:03.000 2026-10-17 11:36:03.000                 0 DIFERENCIAL /var/opt/mssql/backups/diff_deporte_2.bak                                                                                                                                                                                                                           
+db_olimpiadas_deporte                                                                                                            2026-10-17 11:36:03.000 2026-10-17 11:36:03.000                 0 DIFERENCIAL /var/opt/mssql/backups/diff_deporte_3.bak                                                                                                                                                                                                                           
 
 (4 rows affected)
 --- Conteos restaurados (FULL + DIFERENCIAL 2) ---

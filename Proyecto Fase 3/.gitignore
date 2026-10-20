@@ -1,0 +1,6 @@
+# Generados por los ETL (397 MB); no se suben al repositorio.
+etl/salida/
+# Bitacoras de ejecucion con fecha y hora (si se prefieren solo en local)
+# docs/logs/
+__pycache__/
+*.pyc

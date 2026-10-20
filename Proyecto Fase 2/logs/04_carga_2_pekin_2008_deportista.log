@@ -1,7 +1,7 @@
 Changed database context to 'db_olimpiadas_deportista'.
 ===============================================================
 CARGA 2 / 4 - Deportista - PEKIN 2008
-Ejecutado: 2026-10-16 22:25:25 
+Ejecutado: 2026-10-17 04:29:35 
 ===============================================================
 === Carga del deportista 105512 para la edicion 2008 (id_edicion 49) ===
   region        -> 0 filas

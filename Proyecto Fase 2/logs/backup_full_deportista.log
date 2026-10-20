@@ -1,25 +1,25 @@
 Changed database context to 'db_olimpiadas_deportista'.
 ===============================================================
 BACKUP COMPLETO (FULL) - Deportista
-Ejecutado: 2026-10-16 22:25:14 
+Ejecutado: 2026-10-17 04:29:34 
 ===============================================================
-16 percent processed.
-32 percent processed.
-44 percent processed.
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
 50 percent processed.
 60 percent processed.
-79 percent processed.
-95 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
 100 percent processed.
-Processed 808 pages for database 'db_olimpiadas_deportista', file 'db_olimpiadas_deportista' on file 1.
+Processed 13648 pages for database 'db_olimpiadas_deportista', file 'db_olimpiadas_deportista' on file 1.
 Processed 2 pages for database 'db_olimpiadas_deportista', file 'db_olimpiadas_deportista_log' on file 1.
-BACKUP DATABASE successfully processed 810 pages in 0.062 seconds (102.003 MB/sec).
+BACKUP DATABASE successfully processed 13650 pages in 0.317 seconds (336.393 MB/sec).
 database_name                                                                                                                    tipo        archivo                                                                                                                                                                                                                                                              finalizado          
 -------------------------------------------------------------------------------------------------------------------------------- ----------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --------------------
-db_olimpiadas_deportista                                                                                                         FULL        /var/opt/mssql/backups/full_deportista.bak                                                                                                                                                                                                                           2026-10-16 22:04:52 
-db_olimpiadas_deportista                                                                                                         FULL        /var/opt/mssql/backups/full_deportista.bak                                                                                                                                                                                                                           2026-10-16 22:10:46 
-db_olimpiadas_deportista                                                                                                         FULL        /var/opt/mssql/backups/full_deportista.bak                                                                                                                                                                                                                           2026-10-16 22:25:14 
+db_olimpiadas_deportista                                                                                                         FULL        /var/opt/mssql/backups/full_deportista.bak                                                                                                                                                                                                                           2026-10-17 04:29:35 
 
-(3 rows affected)
+(1 rows affected)
 The backup set on file 1 is valid.
 FULL creado: /var/opt/mssql/backups/full_deportista.bak

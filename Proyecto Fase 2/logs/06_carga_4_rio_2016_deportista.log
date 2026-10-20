@@ -1,7 +1,7 @@
 Changed database context to 'db_olimpiadas_deportista'.
 ===============================================================
 CARGA 4 / 4 - Deportista - RIO 2016
-Ejecutado: 2026-10-16 22:26:42 
+Ejecutado: 2026-10-17 04:29:35 
 ===============================================================
 === Carga del deportista 105512 para la edicion 2016 (id_edicion 56) ===
   region        -> 0 filas

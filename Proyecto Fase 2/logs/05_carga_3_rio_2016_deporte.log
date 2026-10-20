@@ -1,7 +1,7 @@
 Changed database context to 'db_olimpiadas_deporte'.
 ===============================================================
 CARGA 3 / 4 - Deporte - RIO 2016
-Ejecutado: 2026-10-17 04:33:52
+Ejecutado: 2026-10-17 11:36:02
 ===============================================================
 === Carga del deporte (disciplina 237) para la edicion 2016 (id_edicion 56) ===
   region        -> 21 filas

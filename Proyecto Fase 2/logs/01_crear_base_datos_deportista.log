@@ -1,5 +1,2 @@
-La base db_olimpiadas_deportista ya existe. Se procede a recrearla.
-Nonqualified transactions are being rolled back. Estimated rollback completion: 0%.
-Nonqualified transactions are being rolled back. Estimated rollback completion: 100%.
 Collation de la base: Latin1_General_100_CI_AS_SC_UTF8
 Base de datos db_olimpiadas_deportista creada.

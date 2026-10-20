@@ -1,7 +1,7 @@
 Changed database context to 'db_olimpiadas_deporte'.
 ===============================================================
 CARGA 1 / 4 - Deporte - PARIS 2024
-Ejecutado: 2026-10-17 04:33:44
+Ejecutado: 2026-10-17 11:35:42
 ===============================================================
 === Carga del deporte (disciplina 237) para la edicion 2024 (id_edicion 63) ===
   region        -> 73 filas

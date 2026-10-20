@@ -1,7 +1,7 @@
 Changed database context to 'master'.
 ===============================================================
 RESTAURACION 2/4 - FULL + DIFF 1 (Paris 2024 + Tokio 2020)
-Ejecutado: 2026-10-17 04:34:03
+Ejecutado: 2026-10-17 10:30:08
 ===============================================================
 10 percent processed.
 20 percent processed.
@@ -15,21 +15,21 @@ Ejecutado: 2026-10-17 04:34:03
 100 percent processed.
 Processed 15120 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio' on file 1.
 Processed 2 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio_log' on file 1.
-RESTORE DATABASE successfully processed 15122 pages in 0.537 seconds (219.993 MB/sec).
-11 percent processed.
-20 percent processed.
-32 percent processed.
-41 percent processed.
-50 percent processed.
-62 percent processed.
-71 percent processed.
-80 percent processed.
-92 percent processed.
+RESTORE DATABASE successfully processed 15122 pages in 0.507 seconds (233.011 MB/sec).
+12 percent processed.
+21 percent processed.
+30 percent processed.
+42 percent processed.
+51 percent processed.
+60 percent processed.
+72 percent processed.
+81 percent processed.
+90 percent processed.
 100 percent processed.
-Processed 4296 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio' on file 1.
+Processed 4280 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio' on file 1.
 Processed 2 pages for database 'db_olimpiadas_anio', file 'db_olimpiadas_anio_log' on file 1.
-RESTORE DATABASE successfully processed 4298 pages in 0.325 seconds (103.305 MB/sec).
->>> TIEMPO_MOTOR_RESTORE_MS: 1323 ms (1.323 s)
+RESTORE DATABASE successfully processed 4282 pages in 5.651 seconds (5.919 MB/sec).
+>>> TIEMPO_MOTOR_RESTORE_MS: 7784 ms (7.784 s)
 Changed database context to 'db_olimpiadas_anio'.
 --- Conteos restaurados (FULL + DIFF 1) ---
 tabla             filas      

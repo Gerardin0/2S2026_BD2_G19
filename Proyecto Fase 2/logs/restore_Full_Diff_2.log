@@ -1,37 +1,35 @@
 Changed database context to 'master'.
 ===============================================================
 RESTAURACION 3/4 - FULL + DIFERENCIAL 2 (estado tras la carga 3)
-Ejecutado: 2026-10-16 22:32:11 
+Ejecutado: 2026-10-17 04:31:35 
 ===============================================================
-16 percent processed.
-32 percent processed.
-48 percent processed.
-64 percent processed.
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
 80 percent processed.
-96 percent processed.
+90 percent processed.
 100 percent processed.
-Processed 808 pages for database 'db_olimpiadas_deportista', file 'db_olimpiadas_deportista' on file 1.
+Processed 13648 pages for database 'db_olimpiadas_deportista', file 'db_olimpiadas_deportista' on file 1.
 Processed 2 pages for database 'db_olimpiadas_deportista', file 'db_olimpiadas_deportista_log' on file 1.
-RESTORE DATABASE successfully processed 810 pages in 0.266 seconds (23.775 MB/sec).
-33 percent processed.
-67 percent processed.
+RESTORE DATABASE successfully processed 13650 pages in 7.555 seconds (14.114 MB/sec).
+35 percent processed.
+70 percent processed.
 100 percent processed.
-Processed 392 pages for database 'db_olimpiadas_deportista', file 'db_olimpiadas_deportista' on file 1.
+Processed 376 pages for database 'db_olimpiadas_deportista', file 'db_olimpiadas_deportista' on file 1.
 Processed 2 pages for database 'db_olimpiadas_deportista', file 'db_olimpiadas_deportista_log' on file 1.
-RESTORE DATABASE successfully processed 394 pages in 1.507 seconds (2.039 MB/sec).
+RESTORE DATABASE successfully processed 378 pages in 7.446 seconds (0.396 MB/sec).
 database_name                                                                                                                                                              duracion_backup_s tipo        archivo                                                                                                                                                                                                                                                             
 -------------------------------------------------------------------------------------------------------------------------------- -------------------- -------------------- ----------------- ----------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-db_olimpiadas_deportista                                                                                                         2026-10-16 22:04:51  2026-10-16 22:04:52                  1 FULL        /var/opt/mssql/backups/full_deportista.bak                                                                                                                                                                                                                          
-db_olimpiadas_deportista                                                                                                         2026-10-16 22:10:46  2026-10-16 22:10:46                  0 FULL        /var/opt/mssql/backups/full_deportista.bak                                                                                                                                                                                                                          
-db_olimpiadas_deportista                                                                                                         2026-10-16 22:11:53  2026-10-16 22:11:53                  0 DIFERENCIAL /var/opt/mssql/backups/diff_deportista_1.bak                                                                                                                                                                                                                        
-db_olimpiadas_deportista                                                                                                         2026-10-16 22:12:09  2026-10-16 22:12:09                  0 DIFERENCIAL /var/opt/mssql/backups/diff_deportista_2.bak                                                                                                                                                                                                                        
-db_olimpiadas_deportista                                                                                                         2026-10-16 22:12:37  2026-10-16 22:12:37                  0 DIFERENCIAL /var/opt/mssql/backups/diff_deportista_3.bak                                                                                                                                                                                                                        
-db_olimpiadas_deportista                                                                                                         2026-10-16 22:25:14  2026-10-16 22:25:14                  0 FULL        /var/opt/mssql/backups/full_deportista.bak                                                                                                                                                                                                                          
-db_olimpiadas_deportista                                                                                                         2026-10-16 22:25:55  2026-10-16 22:25:55                  0 DIFERENCIAL /var/opt/mssql/backups/diff_deportista_1.bak                                                                                                                                                                                                                        
-db_olimpiadas_deportista                                                                                                         2026-10-16 22:26:34  2026-10-16 22:26:34                  0 DIFERENCIAL /var/opt/mssql/backups/diff_deportista_2.bak                                                                                                                                                                                                                        
-db_olimpiadas_deportista                                                                                                         2026-10-16 22:27:04  2026-10-16 22:27:04                  0 DIFERENCIAL /var/opt/mssql/backups/diff_deportista_3.bak                                                                                                                                                                                                                        
+db_olimpiadas_deportista                                                                                                         2026-10-17 04:29:34  2026-10-17 04:29:35                  1 FULL        /var/opt/mssql/backups/full_deportista.bak                                                                                                                                                                                                                          
+db_olimpiadas_deportista                                                                                                         2026-10-17 04:29:35  2026-10-17 04:29:35                  0 DIFERENCIAL /var/opt/mssql/backups/diff_deportista_1.bak                                                                                                                                                                                                                        
+db_olimpiadas_deportista                                                                                                         2026-10-17 04:29:35  2026-10-17 04:29:35                  0 DIFERENCIAL /var/opt/mssql/backups/diff_deportista_2.bak                                                                                                                                                                                                                        
+db_olimpiadas_deportista                                                                                                         2026-10-17 04:29:35  2026-10-17 04:29:35                  0 DIFERENCIAL /var/opt/mssql/backups/diff_deportista_3.bak                                                                                                                                                                                                                        
 
-(9 rows affected)
+(4 rows affected)
 --- Conteos restaurados (FULL + DIFERENCIAL 2) ---
 Changed database context to 'db_olimpiadas_deportista'.
 tabla             filas      
