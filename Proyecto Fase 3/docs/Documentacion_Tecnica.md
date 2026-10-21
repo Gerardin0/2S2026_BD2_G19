@@ -20,7 +20,7 @@ docker run -d \
   -e MONGO_INITDB_ROOT_USERNAME=admin \
   -e MONGO_INITDB_ROOT_PASSWORD=admin123 \
   -v "$PWD/mongodata:/data/db:z" \
-  mongo:latest
+  mongo:9.0.4
 
 ```
 
@@ -48,24 +48,33 @@ python3 ddl/crear_colecciones_indices.py --uri "mongodb://admin:admin123@localho
 
 ## 4. Ejecución del Pipeline ETL Principal
 
-El motor de carga está diseñado para ser idempotente, permitiendo reejecuciones sin duplicidad de datos mediante operaciones `UpdateOne` con directiva `upsert=True` ejecutadas en la API `bulk_write` por lotes de 10,000 registros para evitar cuellos de botella en la RAM.
+El motor de carga es idempotente: usa `ReplaceOne` con `upsert=True` por `_id`, ejecutado con `bulk_write` en lotes de 10,000 documentos. Lee los CSV de `fuentes/` y, para el NOC de los atletas sin participaciones, `Proyecto Fase 1/datasets/bios.csv`.
 
 ```bash
-python3 carga/cargar_mongo.py
+# todo en un paso (levanta el contenedor, crea índices y carga; --limpio borra la base antes)
+bash carga/cargar_todo.sh --limpio
 
+# o el ETL solo (requiere pandas y pymongo)
+python3 carga/cargar_mongo.py --uri "mongodb://admin:admin123@localhost:27017/"
 ```
 
-### 4.1 Transformaciones y Correcciones de Limpieza (Data Wrangling)
+> En Windows con Control de aplicaciones puede estar bloqueada la DLL de numpy. `cargar_todo.sh` corre el ETL dentro de un contenedor `python:3.12-slim` conectado a la red del contenedor de Mongo, así que no necesita pandas local.
 
-Durante el proceso de carga en memoria (Pandas), el script aplica dinámicamente las siguientes correcciones sobre anomalías detectadas en los datos de origen:
+### 4.1 Correcciones aplicadas (trazadas en la bitácora `docs/logs/carga_mongo_<fecha>.log`)
 
-* **Mapeo de Atletas Nulos:** Se identificaron 237 perfiles de atletas en `bios.csv` carentes de participaciones formales. Se les asignó por defecto el código NOC `SWE` para preservar la integridad referencial.
-* **Normalización Geopolítica:** Se homologaron los códigos NOC anómalos interceptados en origen: `ROC` migrado a `RUS` y `COR` migrado a `KOR`.
-* **Evasión de Tipos Híbridos:** Las tuplas con atributos ausentes (ej. año de edición o deporte) se trataron mediante `limpiar_nan()` para convertirlas a `null` nativo BSON o valores por defecto (`"Desconocido"`), evitando fallos de aserción del `$jsonSchema` (evitando cruces de `double` a `string`).
+| # | Corrección | Resultado en la carga del 2026-10-20 21:42 |
+| --- | --- | --- |
+| C1 | `ROC` → `RUS` y `COR` → `KOR`, en el NOC del atleta **y** en `participaciones.pais`. Antes solo se corregía el del atleta, y quedaban participaciones con un país que no existe en `paises` | 1,154 participaciones |
+| C2 | NOC de los atletas sin participaciones: se toma de `bios.csv` (columna NOC con el nombre del país, cruzada con `tabla_nocs.region`). Si no cruza, se usa `born_country` cuando es un NOC válido. Si no, queda `null`. **Reemplaza la asignación fija a `SWE`**: 106 de esos atletas son de USA | 238 atletas: 219 con NOC, 19 `null` |
+| C3 | **IDs de atletas nuevos de París 2024.** En la Fase 1 los atletas nuevos (ids 149815–157639) se numeraron en orden alfabético en `tabla_atletas.csv`, pero en orden de aparición en `tabla_participacion.csv` y `resultados_2024.csv`. El athlete_id se reasigna buscando `presentado_como` por nombre normalizado (y por `noc_2024` si hay homónimos). Ejemplo: el bronce de Pierre Brol (GUA, Trap) estaba asignado a "Shayna Jack" | 10,178 participaciones reasignadas, 0 sin resolver |
+| C4 | Nombres sin viñetas (`•`), comillas ni paréntesis. `busqueda_nombre` y `palabras_nombre` van en minúsculas y **sin tildes** (nombre completo + nombre de uso), para buscar con índice | 153,325 atletas |
+| C5 | Medallero del país **por evento** (una medalla de equipo cuenta una vez), por año y por deporte. Se conserva también el conteo por atleta | `paises.medallero.por_anio` y `por_deporte` |
+| — | Participaciones embebidas con `temporada`, `ciudad`, `categoria` (Olympics/Youth/Special), `equipo`, `edad`, `posicion`, `empate` y `medalla`. El atleta incluye `nacimiento`, `fecha_fallecimiento`, `afiliaciones` y `resumen_medallas` | 323,143 participaciones |
+| — | `limpiar_nan()` convierte NaN en `null` BSON, para evitar fallos de `$jsonSchema` | — |
 
 ## 5. Auditoría e Integridad de Resultados
 
-Tras la ejecución del pipeline (140.40 segundos), los conteos transaccionales concuerdan al 100% con los modelos de la Fase 1:
+Tras la ejecución del pipeline (40 segundos, 2026-10-20 21:42 sobre una base vacía), los conteos transaccionales concuerdan al 100% con los modelos de la Fase 1:
 
 | Colección | Volumen BSON | Fuente de Verificación (Fase 1) | Estado |
 | --- | --- | --- | --- |
