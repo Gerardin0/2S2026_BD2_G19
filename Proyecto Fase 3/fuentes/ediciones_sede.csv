@@ -1,0 +1,64 @@
+id_edicion_juego,anio,temporada,ciudad,noc_sede,categoria
+1,1888,Zappas Olympic Games,Athina,GRE,Special
+2,1896,Summer,Athina,GRE,Olympics
+3,1900,Summer,Paris,FRA,Olympics
+4,1904,Summer,St. Louis,USA,Olympics
+5,1906,Intercalated Games,Athina,GRE,Special
+6,1908,Summer,London,GBR,Olympics
+7,1912,Summer,Stockholm,SWE,Olympics
+8,1920,Summer,Antwerpen,BEL,Olympics
+9,1924,Summer,Paris,FRA,Olympics
+10,1924,Winter,Chamonix,FRA,Olympics
+11,1928,Summer,Amsterdam,NED,Olympics
+12,1928,Winter,Sankt Moritz,SUI,Olympics
+13,1932,Summer,Los Angeles,USA,Olympics
+14,1932,Winter,Lake Placid,USA,Olympics
+15,1936,Summer,Berlin,GER,Olympics
+16,1936,Winter,Garmisch-Partenkirchen,GER,Olympics
+17,1948,Summer,London,GBR,Olympics
+18,1948,Winter,Sankt Moritz,SUI,Olympics
+19,1952,Summer,Helsinki,FIN,Olympics
+20,1952,Winter,Oslo,NOR,Olympics
+21,1956,Equestrian Olympics,Stockholm,SWE,Special
+22,1956,Summer,Melbourne,AUS,Olympics
+23,1956,Winter,Cortina d'Ampezzo,ITA,Olympics
+24,1960,Summer,Roma,ITA,Olympics
+25,1960,Winter,Squaw Valley,USA,Olympics
+26,1964,Summer,Tokyo,JPN,Olympics
+27,1964,Winter,Innsbruck,AUT,Olympics
+28,1968,Summer,Ciudad de Mexico,MEX,Olympics
+29,1968,Winter,Grenoble,FRA,Olympics
+30,1972,Summer,Munich,FRG,Olympics
+31,1972,Winter,Sapporo,JPN,Olympics
+32,1976,Summer,Montreal,CAN,Olympics
+33,1976,Winter,Innsbruck,AUT,Olympics
+34,1980,Summer,Moskva,URS,Olympics
+35,1980,Winter,Lake Placid,USA,Olympics
+36,1984,Summer,Los Angeles,USA,Olympics
+37,1984,Winter,Sarajevo,YUG,Olympics
+38,1988,Summer,Seoul,KOR,Olympics
+39,1988,Winter,Calgary,CAN,Olympics
+40,1992,Summer,Barcelona,ESP,Olympics
+41,1992,Winter,Albertville,FRA,Olympics
+42,1994,Winter,Lillehammer,NOR,Olympics
+43,1996,Summer,Atlanta,USA,Olympics
+44,1998,Winter,Nagano,JPN,Olympics
+45,2000,Summer,Sydney,AUS,Olympics
+46,2002,Winter,Salt Lake City,USA,Olympics
+47,2004,Summer,Athina,GRE,Olympics
+48,2006,Winter,Torino,ITA,Olympics
+49,2008,Summer,Beijing,CHN,Olympics
+50,2010,Summer,Singapore,SGP,Youth
+51,2010,Winter,Vancouver,CAN,Olympics
+52,2012,Summer,London,GBR,Olympics
+53,2012,Winter,Innsbruck,AUT,Youth
+54,2014,Summer,Nanjing,CHN,Youth
+55,2014,Winter,Sochi,RUS,Olympics
+56,2016,Summer,Rio de Janeiro,BRA,Olympics
+57,2016,Winter,Lillehammer,NOR,Youth
+58,2018,Summer,Buenos Aires,ARG,Youth
+59,2018,Winter,PyeongChang,KOR,Olympics
+60,2020,Summer,Tokyo,JPN,Olympics
+61,2020,Winter,Lausanne,SUI,Youth
+62,2022,Winter,Beijing,CHN,Olympics
+63,2024,Summer,Paris,FRA,Olympics

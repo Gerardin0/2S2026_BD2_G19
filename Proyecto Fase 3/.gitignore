@@ -4,3 +4,5 @@ etl/salida/
 # docs/logs/
 __pycache__/
 *.pyc
+
+mongodata/
