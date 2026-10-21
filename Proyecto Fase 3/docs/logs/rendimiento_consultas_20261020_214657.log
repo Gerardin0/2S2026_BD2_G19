@@ -1,0 +1,19 @@
+# Rendimiento de consultas — 2026-10-20 21:46:57
+
+Repeticiones por caso: 5 (tiempo = suma de las consultas a MongoDB del script)
+
+| Comando | Mín ms | Prom ms | Máx ms | Índices usados | keys / docs examinados (por etapa) | COLLSCAN |
+| --- | ---: | ---: | ---: | --- | --- | --- |
+| `atleta.py "Michael Phelps"` | 4 | 5 | 8 | _id_, ix_atletas_palabras | 15 / 14; 1 / 1 | no |
+| `atleta.py "erick barrondo"` | 3 | 6 | 14 | _id_, ix_atletas_palabras | 6 / 5; 1 / 1 | no |
+| `atleta.py Phelps --deporte swim --anio 2008 --medalla oro` | 4 | 5 | 10 | _id_, ix_atletas_palabras | 15 / 14; 1 / 1 | no |
+| `atleta.py "usain bolt" --pais JAM --desde 2008 --hasta 2016` | 3 | 6 | 10 | _id_, ix_atletas_palabras | 2 / 1; 1 / 1 | no |
+| `atleta.py maria --max-atletas 1` | 21 | 22 | 24 | _id_, ix_atletas_palabras | 1,856 / 1,850; 1 / 1 | no |
+| `atleta.py "john smith"` | 6 | 8 | 9 | _id_, ix_atletas_palabras | 403 / 402; 6 / 3 | no |
+| `pais.py GUA` | 3 | 4 | 6 | ix_atletas_part_pais | 267 / 267 | no |
+| `pais.py Guatemala` | 4 | 6 | 11 | ix_atletas_part_pais | 267 / 267 | no |
+| `pais.py USA` | 55 | 60 | 68 | ix_atletas_part_pais | 10,466 / 10,466 | no |
+| `pais.py USA --anio 2008` | 35 | 40 | 48 | ix_atletas_part_anio | 10,956 / 10,956; 10,956 / 10,956 | no |
+| `pais.py MEX --desde 2000 --hasta 2020 --deporte Diving` | 10 | 13 | 18 | ix_atletas_part_pais | 1,750 / 1,750; 1,750 / 1,750 | no |
+| `pais.py USA --deporte Athletics --atletas --resultados` | 139 | 143 | 147 | ix_atletas_part_pais | 10,466 / 10,466; 10,466 / 10,466; 10,466 / 10,466; 10,466 / 10,466 | no |
+| `pais.py GBR --medalla oro` | 33 | 35 | 36 | ix_atletas_part_pais | 6,659 / 6,659; 6,659 / 6,659 | no |
