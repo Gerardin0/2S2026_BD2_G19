@@ -1,0 +1,45 @@
+[18:43:47] === INICIANDO ETL A MONGODB ===
+[18:43:47] Extrayendo datasets...
+[18:43:49] Transformando datos y aplicando correcciones...
+[18:43:50] Agrupando roles por atleta...
+[18:43:53] Agrupando participaciones por atleta y país...
+[18:43:55] Construyendo documentos de atletas (~153325)...
+[18:46:49] Conectando a MongoDB y aplicando Bulk Writes...
+[18:46:49]   -> roles: Insertados/Modificados 0
+[18:46:49]   -> disciplinas: Insertados/Modificados 0
+[18:46:49]   -> ediciones: Insertados/Modificados 0
+[18:46:49]   -> paises: Insertados/Modificados 0
+[18:46:50]   -> atletas: Insertados/Modificados 0
+[18:46:50]      Lote atletas procesado (10000/153325)
+[18:46:50]   -> atletas: Insertados/Modificados 0
+[18:46:50]      Lote atletas procesado (20000/153325)
+[18:46:51]   -> atletas: Insertados/Modificados 0
+[18:46:51]      Lote atletas procesado (30000/153325)
+[18:46:52]   -> atletas: Insertados/Modificados 0
+[18:46:52]      Lote atletas procesado (40000/153325)
+[18:46:52]   -> atletas: Insertados/Modificados 0
+[18:46:52]      Lote atletas procesado (50000/153325)
+[18:46:53]   -> atletas: Insertados/Modificados 0
+[18:46:53]      Lote atletas procesado (60000/153325)
+[18:46:53]   -> atletas: Insertados/Modificados 0
+[18:46:53]      Lote atletas procesado (70000/153325)
+[18:46:54]   -> atletas: Insertados/Modificados 0
+[18:46:54]      Lote atletas procesado (80000/153325)
+[18:46:54]   -> atletas: Insertados/Modificados 0
+[18:46:54]      Lote atletas procesado (90000/153325)
+[18:46:55]   -> atletas: Insertados/Modificados 0
+[18:46:55]      Lote atletas procesado (100000/153325)
+[18:46:56]   -> atletas: Insertados/Modificados 0
+[18:46:56]      Lote atletas procesado (110000/153325)
+[18:46:57]   -> atletas: Insertados/Modificados 0
+[18:46:57]      Lote atletas procesado (120000/153325)
+[18:46:57]   -> atletas: Insertados/Modificados 0
+[18:46:57]      Lote atletas procesado (130000/153325)
+[18:46:58]   -> atletas: Insertados/Modificados 0
+[18:46:58]      Lote atletas procesado (140000/153325)
+[18:46:58]   -> atletas: Insertados/Modificados 0
+[18:46:58]      Lote atletas procesado (150000/153325)
+[18:46:59]   -> atletas: Insertados/Modificados 0
+[18:46:59]      Lote atletas procesado (153325/153325)
+[18:46:59] === CARGA FINALIZADA ===
+[18:46:59] Tiempo total: 191.83 segundos

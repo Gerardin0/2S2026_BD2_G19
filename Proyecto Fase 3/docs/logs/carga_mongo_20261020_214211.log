@@ -1,0 +1,48 @@
+[2026-10-20 21:42:11] === INICIANDO ETL A MONGODB ===
+[2026-10-20 21:42:11] Fuentes: /repo/Proyecto Fase 3/fuentes | Base: olimpiadas
+[2026-10-20 21:42:11] Extrayendo datasets...
+[2026-10-20 21:42:12]   tabla_atletas: 153,325 filas
+[2026-10-20 21:42:12]   tabla_participacion: 323,143 filas
+[2026-10-20 21:42:12]   tabla_resultado: 323,143 filas
+[2026-10-20 21:42:12]   tabla_disciplina: 2,087 filas
+[2026-10-20 21:42:12]   tabla_edicion_juego: 63 filas
+[2026-10-20 21:42:12]   tabla_nocs: 234 filas
+[2026-10-20 21:42:12]   tabla_poblaciones_mapeada: 17,195 filas
+[2026-10-20 21:42:12]   ediciones_sede: 63 filas
+[2026-10-20 21:42:12] Transformando datos y aplicando correcciones...
+[2026-10-20 21:42:15]   C3 participaciones 2024 reasignadas a su atleta correcto: 10,178 (sin resolver: 0)
+[2026-10-20 21:42:15]   C1 participaciones con NOC corregido (ROC->RUS, COR->KOR): 1,154
+[2026-10-20 21:42:32]   C2 atletas sin participaciones: 238 -> NOC asignado a 219, null: 19
+[2026-10-20 21:42:32] Agrupando roles por atleta...
+[2026-10-20 21:42:33] Agrupando participaciones por atleta y país...
+[2026-10-20 21:42:37] Construyendo documentos de atletas (~153,325)...
+[2026-10-20 21:42:40] Conectando a MongoDB y aplicando Bulk Writes...
+[2026-10-20 21:42:40]   -> roles: insertados 11, reemplazados 0
+[2026-10-20 21:42:40]   -> disciplinas: insertados 2,087, reemplazados 0
+[2026-10-20 21:42:40]   -> ediciones: insertados 63, reemplazados 0
+[2026-10-20 21:42:40]   -> paises: insertados 234, reemplazados 0
+[2026-10-20 21:42:40]   -> atletas: insertados 10,000, reemplazados 0
+[2026-10-20 21:42:41]   -> atletas: insertados 10,000, reemplazados 0
+[2026-10-20 21:42:42]   -> atletas: insertados 10,000, reemplazados 0
+[2026-10-20 21:42:42]   -> atletas: insertados 10,000, reemplazados 0
+[2026-10-20 21:42:43]   -> atletas: insertados 10,000, reemplazados 0
+[2026-10-20 21:42:44]   -> atletas: insertados 10,000, reemplazados 0
+[2026-10-20 21:42:45]   -> atletas: insertados 10,000, reemplazados 0
+[2026-10-20 21:42:45]   -> atletas: insertados 10,000, reemplazados 0
+[2026-10-20 21:42:46]   -> atletas: insertados 10,000, reemplazados 0
+[2026-10-20 21:42:47]   -> atletas: insertados 10,000, reemplazados 0
+[2026-10-20 21:42:48]   -> atletas: insertados 10,000, reemplazados 0
+[2026-10-20 21:42:48]   -> atletas: insertados 10,000, reemplazados 0
+[2026-10-20 21:42:49]   -> atletas: insertados 10,000, reemplazados 0
+[2026-10-20 21:42:50]   -> atletas: insertados 10,000, reemplazados 0
+[2026-10-20 21:42:51]   -> atletas: insertados 10,000, reemplazados 0
+[2026-10-20 21:42:51]   -> atletas: insertados 3,325, reemplazados 0
+[2026-10-20 21:42:51] Conteos finales:
+[2026-10-20 21:42:51]   roles: 11 documentos
+[2026-10-20 21:42:51]   disciplinas: 2,087 documentos
+[2026-10-20 21:42:51]   ediciones: 63 documentos
+[2026-10-20 21:42:51]   paises: 234 documentos
+[2026-10-20 21:42:51]   atletas: 153,325 documentos
+[2026-10-20 21:42:51]   participaciones embebidas: 323,143 (fuente: 323,143)
+[2026-10-20 21:42:51] === CARGA FINALIZADA ===
+[2026-10-20 21:42:51] Tiempo total: 40.27 segundos

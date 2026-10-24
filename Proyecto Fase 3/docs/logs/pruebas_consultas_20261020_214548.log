@@ -1,0 +1,1136 @@
+PRUEBAS DE CONSULTAS — Fase 3 — inicio 2026-10-20 21:45:48
+
+##############################################################################
+# P01 — Atleta por nombre exacto con tildes
+# [2026-10-20 21:45:49] $ python consulta/atleta.py "Érick Barrondo"
+# resultado: OK (espera: ['athlete_id 123159', '20 kilometres Race Walk', 'Plata'])
+##############################################################################
+
+==============================================================================
+Érick Barrondo  (athlete_id 123159)
+==============================================================================
+  Nombre completo : Érick Bernabé Barrondo García
+  Sexo            : Male
+  País (NOC)      : GUA - Guatemala
+  Nacimiento      : 1991-06-14 en San Cristóbal, Alta Verapaz, GUA
+  Roles           : Competed in Olympic Games, Other
+  Medallas (total): Oro 0 | Plata 1 | Bronce 0 | Total 1
+  Participaciones : 4 en 3 edición(es) | países: GUA
+  Ediciones       : 2012 Summer (London); 2016 Summer (Rio de Janeiro); 2020 Summer (Tokyo)
+
+  Participaciones y resultados:
+  Año  | Temp.  | Ciudad         | Deporte   | Evento                                 | NOC | Equipo | Edad | Pos. | Medalla
+  -----+--------+----------------+-----------+----------------------------------------+-----+--------+------+------+--------
+  2012 | Summer | London         | Athletics | 20 kilometres Race Walk, Men (Olympic) | GUA |        |      | 2    | Plata  
+  2012 | Summer | London         | Athletics | 50 kilometres Race Walk, Men (Olympic) | GUA |        |      | -    |        
+  2016 | Summer | Rio de Janeiro | Athletics | 20 kilometres Race Walk, Men (Olympic) | GUA |        |      | 50   |        
+  2020 | Summer | Tokyo          | Athletics | 50 kilometres Race Walk, Men (Olympic) | GUA |        |      | -    |        
+
+(consulta resuelta en 3 ms)
+
+##############################################################################
+# P02 — Sin tildes y palabras en otro orden
+# [2026-10-20 21:45:50] $ python consulta/atleta.py "barrondo erick"
+# resultado: OK (espera: ['Érick Barrondo  (athlete_id 123159)'])
+##############################################################################
+
+==============================================================================
+Érick Barrondo  (athlete_id 123159)
+==============================================================================
+  Nombre completo : Érick Bernabé Barrondo García
+  Sexo            : Male
+  País (NOC)      : GUA - Guatemala
+  Nacimiento      : 1991-06-14 en San Cristóbal, Alta Verapaz, GUA
+  Roles           : Competed in Olympic Games, Other
+  Medallas (total): Oro 0 | Plata 1 | Bronce 0 | Total 1
+  Participaciones : 4 en 3 edición(es) | países: GUA
+  Ediciones       : 2012 Summer (London); 2016 Summer (Rio de Janeiro); 2020 Summer (Tokyo)
+
+  Participaciones y resultados:
+  Año  | Temp.  | Ciudad         | Deporte   | Evento                                 | NOC | Equipo | Edad | Pos. | Medalla
+  -----+--------+----------------+-----------+----------------------------------------+-----+--------+------+------+--------
+  2012 | Summer | London         | Athletics | 20 kilometres Race Walk, Men (Olympic) | GUA |        |      | 2    | Plata  
+  2012 | Summer | London         | Athletics | 50 kilometres Race Walk, Men (Olympic) | GUA |        |      | -    |        
+  2016 | Summer | Rio de Janeiro | Athletics | 20 kilometres Race Walk, Men (Olympic) | GUA |        |      | 50   |        
+  2020 | Summer | Tokyo          | Athletics | 50 kilometres Race Walk, Men (Olympic) | GUA |        |      | -    |        
+
+(consulta resuelta en 3 ms)
+
+##############################################################################
+# P03 — Nombre parcial (prefijo de palabra)
+# [2026-10-20 21:45:50] $ python consulta/atleta.py phelp --max-atletas 1
+# resultado: OK (espera: ['atletas coinciden', 'Michael Phelps  (athlete_id 93860)', 'Oro 23 | Plata 3 | Bronce 2'])
+##############################################################################
+
+==============================================================================
+14 atletas coinciden con "phelp"
+==============================================================================
+  ID    | Nombre              | NOC | S | Nacido     | Años                         | Deportes                       | Medallas          | 
+  ------+---------------------+-----+---+------------+------------------------------+--------------------------------+-------------------+-
+  93860 | Michael Phelps      | USA | M | 1985-06-30 | 2000, 2004, 2008, 2012, 2016 | Swimming (Aquatics)            | O:23 P:3 B:2 T:28 | 
+  18187 | Mason Phelps        | USA | M | 1885-12-07 | 1904                         | Golf                           | O:1 P:0 B:0 T:1   | 
+  29274 | Jaycie Phelps       | USA | F | 1979-09-26 | 1996                         | Artistic Gymnastics (Gymnasti… | O:1 P:0 B:0 T:1   | 
+  34800 | Richard Phelps      | GBR | M | 1961-04-19 | 1984, 1988, 1992, 1996       | Modern Pentathlon              | O:0 P:0 B:1 T:1   | 
+  47366 | Brian Phelps        | GBR | M | 1944-04-21 | 1960, 1964                   | Diving (Aquatics)              | O:0 P:0 B:1 T:1   | 
+  78981 | Harlow Rothert      | USA | M | 1908-04-01 | 1928, 1932                   | Athletics                      | O:0 P:1 B:0 T:1   | 
+  28475 | Monica Rutherford   | GBR | F | 1944-03-29 | 1964                         | Artistic Gymnastics (Gymnasti… | O:0 P:0 B:0 T:0   | 
+  34801 | Robert Phelps       | GBR | M | 1939-07-22 | 1964, 1968, 1972             | Modern Pentathlon              | O:0 P:0 B:0 T:0   | 
+  37189 | Annamarie Stapleton | GBR | F | 1966-05-24 | 1996                         | Rowing                         | O:0 P:0 B:0 T:0   | 
+  37426 | Richard Phelps      | GBR | M | 1965-11-21 | 1992                         | Rowing                         | O:0 P:0 B:0 T:0   | 
+  45270 | Peter Phelps        | AUS | M | 1945-03-28 | 1964                         | Swimming (Aquatics)            | O:0 P:0 B:0 T:0   | 
+  58228 | Robert Phelps       | GBR | M | 1890-07-21 | 1912                         | Wrestling                      | O:0 P:0 B:0 T:0   | 
+  69066 | Jack George         | GBR | M | 1882-04-26 | 1908                         | Athletics                      | O:0 P:0 B:0 T:0   | 
+  78892 | Pete Phelps         | USA | M | 1903-05-02 | 1924                         | Athletics                      | O:0 P:0 B:0 T:0   | 
+
+==============================================================================
+Michael Phelps  (athlete_id 93860)
+==============================================================================
+  Nombre completo : Michael Fred Phelps, II
+  Sexo            : Male
+  País (NOC)      : USA - USA
+  Nacimiento      : 1985-06-30 en Baltimore, Maryland, USA
+  Afiliaciones    : NBAC, Baltimore (USA) / Michigan Wolverines, Ann Arbor (USA)
+  Roles           : Competed in Olympic Games, Other
+  Medallas (total): Oro 23 | Plata 3 | Bronce 2 | Total 28
+  Participaciones : 30 en 5 edición(es) | países: USA
+  Ediciones       : 2000 Summer (Sydney); 2004 Summer (Athina); 2008 Summer (Beijing); 2012 Summer (London); 2016 Summer (Rio de Janeiro)
+
+  Participaciones y resultados:
+  Año  | Temp.  | Ciudad         | Deporte             | Evento                                     | NOC | Equipo        | Edad | Pos. | Medalla
+  -----+--------+----------------+---------------------+--------------------------------------------+-----+---------------+------+------+--------
+  2000 | Summer | Sydney         | Swimming (Aquatics) | 200 metres Butterfly, Men (Olympic)        | USA |               |      | 5    |        
+  2004 | Summer | Athina         | Swimming (Aquatics) | 100 metres Butterfly, Men (Olympic)        | USA |               |      | 1    | Oro    
+  2004 | Summer | Athina         | Swimming (Aquatics) | 200 metres Butterfly, Men (Olympic)        | USA |               |      | 1    | Oro    
+  2004 | Summer | Athina         | Swimming (Aquatics) | 200 metres Freestyle, Men (Olympic)        | USA |               |      | 3    | Bronce 
+  2004 | Summer | Athina         | Swimming (Aquatics) | 200 metres Individual Medley, Men (Olympi… | USA |               |      | 1    | Oro    
+  2004 | Summer | Athina         | Swimming (Aquatics) | 4 × 100 metres Freestyle Relay, Men (Olym… | USA | United States |      | 3    | Bronce 
+  2004 | Summer | Athina         | Swimming (Aquatics) | 4 × 100 metres Medley Relay, Men (Olympic) | USA | United States |      | 1    | Oro    
+  2004 | Summer | Athina         | Swimming (Aquatics) | 4 × 200 metres Freestyle Relay, Men (Olym… | USA | United States |      | 1    | Oro    
+  2004 | Summer | Athina         | Swimming (Aquatics) | 400 metres Individual Medley, Men (Olympi… | USA |               |      | 1    | Oro    
+  2008 | Summer | Beijing        | Swimming (Aquatics) | 100 metres Butterfly, Men (Olympic)        | USA |               |      | 1    | Oro    
+  2008 | Summer | Beijing        | Swimming (Aquatics) | 200 metres Butterfly, Men (Olympic)        | USA |               |      | 1    | Oro    
+  2008 | Summer | Beijing        | Swimming (Aquatics) | 200 metres Freestyle, Men (Olympic)        | USA |               |      | 1    | Oro    
+  2008 | Summer | Beijing        | Swimming (Aquatics) | 200 metres Individual Medley, Men (Olympi… | USA |               |      | 1    | Oro    
+  2008 | Summer | Beijing        | Swimming (Aquatics) | 4 × 100 metres Freestyle Relay, Men (Olym… | USA | United States |      | 1    | Oro    
+  2008 | Summer | Beijing        | Swimming (Aquatics) | 4 × 100 metres Medley Relay, Men (Olympic) | USA | United States |      | 1    | Oro    
+  2008 | Summer | Beijing        | Swimming (Aquatics) | 4 × 200 metres Freestyle Relay, Men (Olym… | USA | United States |      | 1    | Oro    
+  2008 | Summer | Beijing        | Swimming (Aquatics) | 400 metres Individual Medley, Men (Olympi… | USA |               |      | 1    | Oro    
+  2012 | Summer | London         | Swimming (Aquatics) | 100 metres Butterfly, Men (Olympic)        | USA |               |      | 1    | Oro    
+  2012 | Summer | London         | Swimming (Aquatics) | 200 metres Butterfly, Men (Olympic)        | USA |               |      | 2    | Plata  
+  2012 | Summer | London         | Swimming (Aquatics) | 200 metres Individual Medley, Men (Olympi… | USA |               |      | 1    | Oro    
+  2012 | Summer | London         | Swimming (Aquatics) | 4 × 100 metres Freestyle Relay, Men (Olym… | USA | United States |      | 2    | Plata  
+  2012 | Summer | London         | Swimming (Aquatics) | 4 × 100 metres Medley Relay, Men (Olympic) | USA | United States |      | 1    | Oro    
+  2012 | Summer | London         | Swimming (Aquatics) | 4 × 200 metres Freestyle Relay, Men (Olym… | USA | United States |      | 1    | Oro    
+  2012 | Summer | London         | Swimming (Aquatics) | 400 metres Individual Medley, Men (Olympi… | USA |               |      | 4    |        
+  2016 | Summer | Rio de Janeiro | Swimming (Aquatics) | 100 metres Butterfly, Men (Olympic)        | USA |               |      | =2   | Plata  
+  2016 | Summer | Rio de Janeiro | Swimming (Aquatics) | 200 metres Butterfly, Men (Olympic)        | USA |               |      | 1    | Oro    
+  2016 | Summer | Rio de Janeiro | Swimming (Aquatics) | 200 metres Individual Medley, Men (Olympi… | USA |               |      | 1    | Oro    
+  2016 | Summer | Rio de Janeiro | Swimming (Aquatics) | 4 × 100 metres Freestyle Relay, Men (Olym… | USA | United States |      | 1    | Oro    
+  2016 | Summer | Rio de Janeiro | Swimming (Aquatics) | 4 × 100 metres Medley Relay, Men (Olympic) | USA | United States |      | 1    | Oro    
+  2016 | Summer | Rio de Janeiro | Swimming (Aquatics) | 4 × 200 metres Freestyle Relay, Men (Olym… | USA | United States |      | 1    | Oro    
+
+(consulta resuelta en 4 ms)
+
+##############################################################################
+# P04 — Atleta inexistente
+# [2026-10-20 21:45:51] $ python consulta/atleta.py "Zzyzx Qwerty"
+# resultado: OK (espera: ['No se encontró ningún atleta'])
+##############################################################################
+No se encontró ningún atleta para "Zzyzx Qwerty".
+(consulta: 1 ms)
+
+##############################################################################
+# P05 — Nombre repetido (varios homónimos)
+# [2026-10-20 21:45:52] $ python consulta/atleta.py "John Smith" --max-atletas 1
+# resultado: OK (espera: ['atletas coinciden', '← exacto', '(athlete_id 60764)'])
+##############################################################################
+
+==============================================================================
+12 atletas coinciden con "John Smith"
+==============================================================================
+  ID     | Nombre               | NOC | S | Nacido     | Años                   | Deportes                      | Medallas        |         
+  -------+----------------------+-----+---+------------+------------------------+-------------------------------+-----------------+---------
+  60764  | John Smith           | USA | M | 1965-08-09 | 1988, 1992             | Wrestling                     | O:2 P:0 B:0 T:2 | ← exacto
+  121633 | John Smith           | RSA | M | 1990-01-12 | 2012, 2016, 2020, 2024 | Rowing                        | O:1 P:0 B:0 T:1 | ← exacto
+  59536  | John Smith           | ZAM | M | 1942-09-25 | 1964                   | Wrestling                     | O:0 P:0 B:0 T:0 | ← exacto
+  79059  | John Smith           | USA | M | 1950-08-05 | 1972                   | Athletics                     | O:0 P:0 B:0 T:0 | ← exacto
+  17574  | Matthew Smith        | AUS | M | 1973-11-20 | 1996                   | Hockey                        | O:0 P:0 B:1 T:1 |         
+  17943  | Johnson Parker-Smith | GBR | M | 1882-01-14 | 1908                   | Lacrosse                      | O:0 P:1 B:0 T:1 |         
+  36268  | Jack Smith           | CAN | M | 1899-03-03 | 1924                   | Rowing                        | O:0 P:1 B:0 T:1 |         
+  37471  | Robert Somers-Smith  | GBR | M | 1887-12-15 | 1908                   | Rowing                        | O:1 P:0 B:0 T:1 |         
+  51969  | Sinjin Smith         | USA | M | 1957-05-07 | 1996                   | Beach Volleyball (Volleyball) | O:0 P:0 B:0 T:0 |         
+  65036  | Danny Smith          | BAH | M | 1952-05-15 | 1972, 1976             | Athletics                     | O:0 P:0 B:0 T:0 |         
+  69493  | Suttie Smith         | GBR | M | 1905-06-21 | 1928                   | Athletics                     | O:0 P:0 B:0 T:0 |         
+  79058  | Macauley Smith       | USA | M | 1905-04-10 | 1928                   | Athletics                     | O:0 P:0 B:0 T:0 |         
+
+==============================================================================
+John Smith  (athlete_id 60764)
+==============================================================================
+  Nombre completo : John William Smith
+  Sexo            : Male
+  País (NOC)      : USA - USA
+  Nacimiento      : 1965-08-09 en Oklahoma City, Oklahoma, USA
+  Afiliaciones    : Sunkist Kids Wrestling Club, Scottsdale (USA)
+  Roles           : Competed in Olympic Games
+  Medallas (total): Oro 2 | Plata 0 | Bronce 0 | Total 2
+  Participaciones : 2 en 2 edición(es) | países: USA
+  Ediciones       : 1988 Summer (Seoul); 1992 Summer (Barcelona)
+
+  Participaciones y resultados:
+  Año  | Temp.  | Ciudad    | Deporte   | Evento                                  | NOC | Equipo        | Edad | Pos. | Medalla
+  -----+--------+-----------+-----------+-----------------------------------------+-----+---------------+------+------+--------
+  1988 | Summer | Seoul     | Wrestling | Featherweight, Freestyle, Men (Olympic) | USA | United States |      | 1    | Oro    
+  1992 | Summer | Barcelona | Wrestling | Featherweight, Freestyle, Men (Olympic) | USA | United States |      | 1    | Oro    
+
+(consulta resuelta en 10 ms)
+
+##############################################################################
+# P06 — Filtros año + medalla
+# [2026-10-20 21:45:53] $ python consulta/atleta.py "Michael Phelps" --anio 2008 --medalla oro
+# resultado: OK (espera: ['Participaciones : 8 de 30', 'Medallas (filtro): Oro 8 | Plata 0 | Bronce 0'])
+##############################################################################
+
+==============================================================================
+Michael Phelps  (athlete_id 93860)
+==============================================================================
+  Nombre completo : Michael Fred Phelps, II
+  Sexo            : Male
+  País (NOC)      : USA - USA
+  Nacimiento      : 1985-06-30 en Baltimore, Maryland, USA
+  Afiliaciones    : NBAC, Baltimore (USA) / Michigan Wolverines, Ann Arbor (USA)
+  Roles           : Competed in Olympic Games, Other
+  Medallas (total): Oro 23 | Plata 3 | Bronce 2 | Total 28
+  Participaciones : 8 de 30 (filtros: anio=2008, medalla=oro) en 1 edición(es) | países: USA
+  Ediciones       : 2008 Summer (Beijing)
+  Medallas (filtro): Oro 8 | Plata 0 | Bronce 0 | Total 8
+
+  Participaciones y resultados:
+  Año  | Temp.  | Ciudad  | Deporte             | Evento                                     | NOC | Equipo        | Edad | Pos. | Medalla
+  -----+--------+---------+---------------------+--------------------------------------------+-----+---------------+------+------+--------
+  2008 | Summer | Beijing | Swimming (Aquatics) | 100 metres Butterfly, Men (Olympic)        | USA |               |      | 1    | Oro    
+  2008 | Summer | Beijing | Swimming (Aquatics) | 200 metres Butterfly, Men (Olympic)        | USA |               |      | 1    | Oro    
+  2008 | Summer | Beijing | Swimming (Aquatics) | 200 metres Freestyle, Men (Olympic)        | USA |               |      | 1    | Oro    
+  2008 | Summer | Beijing | Swimming (Aquatics) | 200 metres Individual Medley, Men (Olympi… | USA |               |      | 1    | Oro    
+  2008 | Summer | Beijing | Swimming (Aquatics) | 4 × 100 metres Freestyle Relay, Men (Olym… | USA | United States |      | 1    | Oro    
+  2008 | Summer | Beijing | Swimming (Aquatics) | 4 × 100 metres Medley Relay, Men (Olympic) | USA | United States |      | 1    | Oro    
+  2008 | Summer | Beijing | Swimming (Aquatics) | 4 × 200 metres Freestyle Relay, Men (Olym… | USA | United States |      | 1    | Oro    
+  2008 | Summer | Beijing | Swimming (Aquatics) | 400 metres Individual Medley, Men (Olympi… | USA |               |      | 1    | Oro    
+
+(consulta resuelta en 4 ms)
+
+##############################################################################
+# P07 — Filtro sin coincidencias
+# [2026-10-20 21:45:54] $ python consulta/atleta.py "Michael Phelps" --anio 1990
+# resultado: OK (espera: ['No se encontró ningún atleta', 'con filtros'])
+##############################################################################
+No se encontró ningún atleta para "Michael Phelps" con filtros (anio=1990).
+(consulta: 2 ms)
+
+##############################################################################
+# P08 — Edición especial 1906 (Intercalated Games)
+# [2026-10-20 21:45:55] $ python consulta/atleta.py "Archie Hahn" --anio 1906
+# resultado: OK (espera: ['1906 Intercalated Games (Athina, Special)', '100 metres, Men (Intercalated)'])
+##############################################################################
+
+==============================================================================
+Archie Hahn  (athlete_id 78496)
+==============================================================================
+  Nombre completo : Charles Archibald Archie Hahn
+  Sexo            : Male
+  País (NOC)      : USA - USA
+  Nacimiento      : 1880-09-14 en Dodgeville, Wisconsin, USA
+  Fallecimiento   : 1955-01-21
+  Afiliaciones    : Michigan Wolverines, Ann Arbor (USA) / Milwaukee AC, Milwaukee (USA)
+  Roles           : Competed in Olympic Games, Competed in Intercalated Games
+  Medallas (total): Oro 4 | Plata 0 | Bronce 0 | Total 4
+  Participaciones : 1 de 4 (filtros: anio=1906) en 1 edición(es) | países: USA
+  Ediciones       : 1906 Intercalated Games (Athina, Special)
+  Medallas (filtro): Oro 1 | Plata 0 | Bronce 0 | Total 1
+
+  Participaciones y resultados:
+  Año  | Temp.              | Ciudad | Deporte   | Evento                         | NOC | Equipo | Edad | Pos. | Medalla
+  -----+--------------------+--------+-----------+--------------------------------+-----+--------+------+------+--------
+  1906 | Intercalated Games | Athina | Athletics | 100 metres, Men (Intercalated) | USA |        |      | 1    | Oro    
+
+(consulta resuelta en 6 ms)
+
+##############################################################################
+# P09 — Juegos Olímpicos de la Juventud (Youth)
+# [2026-10-20 21:45:56] $ python consulta/atleta.py "Alejandra Orozco"
+# resultado: OK (espera: ['2014 Summer (Nanjing, Youth)'])
+##############################################################################
+
+==============================================================================
+Alejandra Orozco  (athlete_id 123301)
+==============================================================================
+  Nombre completo : Alejandra Orozco Loza
+  Sexo            : Female
+  País (NOC)      : MEX - Mexico
+  Nacimiento      : 1997-04-19 en Zapopan, Jalisco, MEX
+  Roles           : Competed in Olympic Games, Competed in Youth Olympic Games, Other
+  Medallas (total): Oro 1 | Plata 1 | Bronce 2 | Total 4
+  Participaciones : 10 en 5 edición(es) | países: MEX
+  Ediciones       : 2012 Summer (London); 2014 Summer (Nanjing, Youth); 2016 Summer (Rio de Janeiro); 2020 Summer (Tokyo); 2024 Summer (Paris)
+
+  Participaciones y resultados:
+  Año  | Temp.  | Ciudad         | Deporte           | Evento                                     | NOC | Equipo           | Edad | Pos. | Medalla
+  -----+--------+----------------+-------------------+--------------------------------------------+-----+------------------+------+------+--------
+  2012 | Summer | London         | Diving (Aquatics) | Synchronized Platform, Women (Olympic)     | MEX | Paola Espinosa   |      | 2    | Plata  
+  2014 | Summer | Nanjing        | Diving (Aquatics) | Platform, Girls (YOG)                      | MEX |                  |      | 3    | Bronce 
+  2014 | Summer | Nanjing        | Diving (Aquatics) | Springboard, Girls (YOG)                   | MEX |                  |      | 6    |        
+  2014 | Summer | Nanjing        | Diving (Aquatics) | Team, Mixed Youth (YOG)                    | MEX | Daniel Jensen    |      | 1    | Oro    
+  2016 | Summer | Rio de Janeiro | Diving (Aquatics) | Platform, Women (Olympic)                  | MEX |                  |      | 20   |        
+  2016 | Summer | Rio de Janeiro | Diving (Aquatics) | Synchronized Platform, Women (Olympic)     | MEX | Paola Espinosa   |      | 6    |        
+  2020 | Summer | Tokyo          | Diving (Aquatics) | Platform, Women (Olympic)                  | MEX |                  |      | 6    |        
+  2020 | Summer | Tokyo          | Diving (Aquatics) | Synchronized Platform, Women (Olympic)     | MEX | Gabriela Agúndez |      | 3    | Bronce 
+  2024 | Summer | Paris          | Diving (Aquatics) | 10 metres Platform, Women (Olympic)        | MEX |                  | 27   | 17   |        
+  2024 | Summer | Paris          | Diving (Aquatics) | Synchronised 10 metres Platform, Women (O… | MEX |                  | 27   | 6    |        
+
+(consulta resuelta en 4 ms)
+
+##############################################################################
+# P10 — Corrección C3: atleta 2024 con su medalla
+# [2026-10-20 21:45:57] $ python consulta/atleta.py "Pierre Brol"
+# resultado: OK (espera: ['Trap, Men (Olympic)', 'Bronce', 'GUA - Guatemala'])
+##############################################################################
+
+==============================================================================
+2 atletas coinciden con "Pierre Brol"
+==============================================================================
+  ID     | Nombre           | NOC | S | Nacido     | Años | Deportes | Medallas        |         
+  -------+------------------+-----+---+------------+------+----------+-----------------+---------
+  155583 | Pierre Brol      | GUA | M |            | 2024 | Shooting | O:0 P:0 B:1 T:1 | ← exacto
+  123253 | Jean-Pierre Brol | GUA | M | 1982-12-18 | 2012 | Shooting | O:0 P:0 B:0 T:0 |         
+
+==============================================================================
+Pierre Brol  (athlete_id 155583)
+==============================================================================
+  Nombre completo : Pierre Brol
+  Sexo            : Male
+  País (NOC)      : GUA - Guatemala
+  Nacimiento      : -
+  Roles           : Competitor
+  Medallas (total): Oro 0 | Plata 0 | Bronce 1 | Total 1
+  Participaciones : 1 en 1 edición(es) | países: GUA
+  Ediciones       : 2024 Summer (Paris)
+
+  Participaciones y resultados:
+  Año  | Temp.  | Ciudad | Deporte  | Evento              | NOC | Equipo | Edad | Pos. | Medalla
+  -----+--------+--------+----------+---------------------+-----+--------+------+------+--------
+  2024 | Summer | Paris  | Shooting | Trap, Men (Olympic) | GUA |        |      | 3    | Bronce 
+
+==============================================================================
+Jean-Pierre Brol  (athlete_id 123253)
+==============================================================================
+  Nombre completo : Jean-Pierre Brol Cárdenas
+  Sexo            : Male
+  País (NOC)      : GUA - Guatemala
+  Nacimiento      : 1982-12-18 en Ciudad de Guatemala (Guatemala City), Guatemala, GUA
+  Afiliaciones    : Caza Tiro Y Pesca [Caza Shooting and Fishing], Guatemala
+  Roles           : Competed in Olympic Games
+  Medallas (total): Oro 0 | Plata 0 | Bronce 0 | Total 0
+  Participaciones : 1 en 1 edición(es) | países: GUA
+  Ediciones       : 2012 Summer (London)
+
+  Participaciones y resultados:
+  Año  | Temp.  | Ciudad | Deporte  | Evento              | NOC | Equipo | Edad | Pos. | Medalla
+  -----+--------+--------+----------+---------------------+-----+--------+------+------+--------
+  2012 | Summer | London | Shooting | Trap, Men (Olympic) | GUA |        |      | 28   |        
+
+(consulta resuelta en 4 ms)
+
+##############################################################################
+# P11 — Corrección C3: medalla ya no asignada a otra persona
+# [2026-10-20 21:45:58] $ python consulta/atleta.py "Shayna Jack"
+# resultado: OK (espera: ['AUS']; no debe contener: ['Trap, Men'])
+##############################################################################
+
+==============================================================================
+Shayna Jack  (athlete_id 156220)
+==============================================================================
+  Nombre completo : Shayna Jack
+  Sexo            : Female
+  País (NOC)      : AUS - Australia
+  Nacimiento      : -
+  Roles           : Competitor
+  Medallas (total): Oro 2 | Plata 0 | Bronce 0 | Total 2
+  Participaciones : 4 en 1 edición(es) | países: AUS
+  Ediciones       : 2024 Summer (Paris)
+
+  Participaciones y resultados:
+  Año  | Temp.  | Ciudad | Deporte             | Evento                                     | NOC | Equipo | Edad | Pos. | Medalla
+  -----+--------+--------+---------------------+--------------------------------------------+-----+--------+------+------+--------
+  2024 | Summer | Paris  | Swimming (Aquatics) | 100 metres Freestyle, Women (Olympic)      | AUS |        |      | 5    |        
+  2024 | Summer | Paris  | Swimming (Aquatics) | 4 × 100 metres Freestyle Relay, Women (Ol… | AUS |        |      | 1    | Oro    
+  2024 | Summer | Paris  | Swimming (Aquatics) | 4 × 200 metres Freestyle Relay, Women (Ol… | AUS |        |      | 1    | Oro    
+  2024 | Summer | Paris  | Swimming (Aquatics) | 50 metres Freestyle, Women (Olympic)       | AUS |        |      | 2    |        
+
+(consulta resuelta en 9 ms)
+
+##############################################################################
+# P12 — País por código NOC
+# [2026-10-20 21:45:59] $ python consulta/pais.py GUA
+# resultado: OK (espera: ['Guatemala  (GUA)', '¿Ha sido sede?        : NO', 'Oro 1 | Plata 1 | Bronce 1 | Total 3', 'Adriana Ruano'])
+##############################################################################
+
+==============================================================================
+Guatemala  (GUA)
+==============================================================================
+  Atletas / particip.   : 267 atletas, 479 participaciones
+  Ediciones             : 19 (primera 1952, última 2024)
+  Población             : 17,855,393 (2024)
+  Medallero (por evento): Oro 1 | Plata 1 | Bronce 1 | Total 3
+
+  ¿Ha sido sede?        : NO
+
+  Años de participación : 1952, 1968, 1972, 1976, 1980, 1984, 1988, 1992, 1996, 2000, 2004, 2008, 2010, 2012, 2014, 2016, 2020, 2024
+
+  Participación y medallas por edición:
+  Año  | Temp.  | Ciudad           | Categoría |  | Atletas | Partic. | Oro | Plata | Bronce | Total | Población 
+  -----+--------+------------------+-----------+--+---------+---------+-----+-------+--------+-------+-----------
+  1952 | Summer | Helsinki         | Olympics  |  | 21      | 38      | 0   | 0     | 0      | 0     |           
+  1968 | Summer | Ciudad de Mexico | Olympics  |  | 48      | 68      | 0   | 0     | 0      | 0     | 5,184,095 
+  1972 | Summer | Munich           | Olympics  |  | 8       | 11      | 0   | 0     | 0      | 0     | 5,723,759 
+  1976 | Summer | Montreal         | Olympics  |  | 28      | 28      | 0   | 0     | 0      | 0     | 6,269,983 
+  1980 | Summer | Moskva           | Olympics  |  | 10      | 10      | 0   | 0     | 0      | 0     | 6,890,346 
+  1984 | Summer | Los Angeles      | Olympics  |  | 24      | 54      | 0   | 0     | 0      | 0     | 7,669,863 
+  1988 | Summer | Seoul            | Olympics  |  | 28      | 37      | 0   | 0     | 0      | 0     | 8,566,331 
+  1988 | Winter | Calgary          | Olympics  |  | 6       | 16      | 0   | 0     | 0      | 0     | 8,566,331 
+  1992 | Summer | Barcelona        | Olympics  |  | 14      | 41      | 0   | 0     | 0      | 0     | 9,544,055 
+  1996 | Summer | Atlanta          | Olympics  |  | 26      | 28      | 0   | 0     | 0      | 0     | 10,536,942
+  2000 | Summer | Sydney           | Olympics  |  | 15      | 18      | 0   | 0     | 0      | 0     | 11,589,761
+  2004 | Summer | Athina           | Olympics  |  | 18      | 19      | 0   | 0     | 0      | 0     | 12,682,108
+  2008 | Summer | Beijing          | Olympics  |  | 12      | 13      | 0   | 0     | 0      | 0     | 13,739,299
+  2010 | Summer | Singapore        | Youth     |  | 2       | 5       | 0   | 0     | 0      | 0     | 14,259,687
+  2012 | Summer | London           | Olympics  |  | 19      | 24      | 0   | 1     | 0      | 1     | 14,781,942
+  2014 | Summer | Nanjing          | Youth     |  | 2       | 4       | 0   | 0     | 0      | 0     | 15,306,316
+  2016 | Summer | Rio de Janeiro   | Olympics  |  | 21      | 25      | 0   | 0     | 0      | 0     | 15,827,690
+  2020 | Summer | Tokyo            | Olympics  |  | 24      | 24      | 0   | 0     | 0      | 0     | 16,858,333
+  2024 | Summer | Paris            | Olympics  |  | 16      | 16      | 1   | 0     | 1      | 2     | 17,855,393
+
+  Medallero por deporte:
+  Deporte   | Oro | Plata | Bronce | Total
+  ----------+-----+-------+--------+------
+  Shooting  | 1   | 0     | 1      | 2    
+  Athletics | 0   | 1     | 0      | 1    
+
+  Medallas ganadas (3), más recientes primero:
+  Año  | Temp.  | Deporte   | Evento                                 | Medalla | Atleta(s)     
+  -----+--------+-----------+----------------------------------------+---------+---------------
+  2024 | Summer | Shooting  | Trap, Women (Olympic)                  | Oro     | Adriana Ruano 
+  2024 | Summer | Shooting  | Trap, Men (Olympic)                    | Bronce  | Pierre Brol   
+  2012 | Summer | Athletics | 20 kilometres Race Walk, Men (Olympic) | Plata   | Érick Barrondo
+
+(consulta resuelta en 3 ms)
+
+##############################################################################
+# P13 — País por nombre (minúsculas)
+# [2026-10-20 21:46:00] $ python consulta/pais.py guatemala
+# resultado: OK (espera: ['Guatemala  (GUA)'])
+##############################################################################
+
+==============================================================================
+Guatemala  (GUA)
+==============================================================================
+  Atletas / particip.   : 267 atletas, 479 participaciones
+  Ediciones             : 19 (primera 1952, última 2024)
+  Población             : 17,855,393 (2024)
+  Medallero (por evento): Oro 1 | Plata 1 | Bronce 1 | Total 3
+
+  ¿Ha sido sede?        : NO
+
+  Años de participación : 1952, 1968, 1972, 1976, 1980, 1984, 1988, 1992, 1996, 2000, 2004, 2008, 2010, 2012, 2014, 2016, 2020, 2024
+
+  Participación y medallas por edición:
+  Año  | Temp.  | Ciudad           | Categoría |  | Atletas | Partic. | Oro | Plata | Bronce | Total | Población 
+  -----+--------+------------------+-----------+--+---------+---------+-----+-------+--------+-------+-----------
+  1952 | Summer | Helsinki         | Olympics  |  | 21      | 38      | 0   | 0     | 0      | 0     |           
+  1968 | Summer | Ciudad de Mexico | Olympics  |  | 48      | 68      | 0   | 0     | 0      | 0     | 5,184,095 
+  1972 | Summer | Munich           | Olympics  |  | 8       | 11      | 0   | 0     | 0      | 0     | 5,723,759 
+  1976 | Summer | Montreal         | Olympics  |  | 28      | 28      | 0   | 0     | 0      | 0     | 6,269,983 
+  1980 | Summer | Moskva           | Olympics  |  | 10      | 10      | 0   | 0     | 0      | 0     | 6,890,346 
+  1984 | Summer | Los Angeles      | Olympics  |  | 24      | 54      | 0   | 0     | 0      | 0     | 7,669,863 
+  1988 | Summer | Seoul            | Olympics  |  | 28      | 37      | 0   | 0     | 0      | 0     | 8,566,331 
+  1988 | Winter | Calgary          | Olympics  |  | 6       | 16      | 0   | 0     | 0      | 0     | 8,566,331 
+  1992 | Summer | Barcelona        | Olympics  |  | 14      | 41      | 0   | 0     | 0      | 0     | 9,544,055 
+  1996 | Summer | Atlanta          | Olympics  |  | 26      | 28      | 0   | 0     | 0      | 0     | 10,536,942
+  2000 | Summer | Sydney           | Olympics  |  | 15      | 18      | 0   | 0     | 0      | 0     | 11,589,761
+  2004 | Summer | Athina           | Olympics  |  | 18      | 19      | 0   | 0     | 0      | 0     | 12,682,108
+  2008 | Summer | Beijing          | Olympics  |  | 12      | 13      | 0   | 0     | 0      | 0     | 13,739,299
+  2010 | Summer | Singapore        | Youth     |  | 2       | 5       | 0   | 0     | 0      | 0     | 14,259,687
+  2012 | Summer | London           | Olympics  |  | 19      | 24      | 0   | 1     | 0      | 1     | 14,781,942
+  2014 | Summer | Nanjing          | Youth     |  | 2       | 4       | 0   | 0     | 0      | 0     | 15,306,316
+  2016 | Summer | Rio de Janeiro   | Olympics  |  | 21      | 25      | 0   | 0     | 0      | 0     | 15,827,690
+  2020 | Summer | Tokyo            | Olympics  |  | 24      | 24      | 0   | 0     | 0      | 0     | 16,858,333
+  2024 | Summer | Paris            | Olympics  |  | 16      | 16      | 1   | 0     | 1      | 2     | 17,855,393
+
+  Medallero por deporte:
+  Deporte   | Oro | Plata | Bronce | Total
+  ----------+-----+-------+--------+------
+  Shooting  | 1   | 0     | 1      | 2    
+  Athletics | 0   | 1     | 0      | 1    
+
+  Medallas ganadas (3), más recientes primero:
+  Año  | Temp.  | Deporte   | Evento                                 | Medalla | Atleta(s)     
+  -----+--------+-----------+----------------------------------------+---------+---------------
+  2024 | Summer | Shooting  | Trap, Women (Olympic)                  | Oro     | Adriana Ruano 
+  2024 | Summer | Shooting  | Trap, Men (Olympic)                    | Bronce  | Pierre Brol   
+  2012 | Summer | Athletics | 20 kilometres Race Walk, Men (Olympic) | Plata   | Érick Barrondo
+
+(consulta resuelta en 3 ms)
+
+##############################################################################
+# P14 — País inexistente
+# [2026-10-20 21:46:01] $ python consulta/pais.py XYZ
+# resultado: OK (espera: ['No existe ningún país'])
+##############################################################################
+No existe ningún país con código o nombre "XYZ". (consulta: 3 ms)
+
+##############################################################################
+# P15 — País sin datos de población
+# [2026-10-20 21:46:01] $ python consulta/pais.py URS --limite 3
+# resultado: OK (espera: ['Población             : sin datos', 'SÍ, 1 vez', 'Moskva'])
+##############################################################################
+
+==============================================================================
+Russia  (URS)
+==============================================================================
+  Atletas / particip.   : 2,950 atletas, 5,787 participaciones
+  Ediciones             : 19 (primera 1952, última 1988)
+  Población             : sin datos
+  Medallero (por evento): Oro 471 | Plata 373 | Bronce 353 | Total 1197
+  Medallas por atleta   : Oro 1076 | Plata 724 | Bronce 680 | Total 2480  (cada integrante de un equipo cuenta)
+
+  ¿Ha sido sede?        : SÍ, 1 vez
+  Año  | Temporada | Ciudad | Categoría
+  -----+-----------+--------+----------
+  1980 | Summer    | Moskva | Olympics 
+
+  Años de participación : 1952, 1956, 1960, 1964, 1968, 1972, 1976, 1980, 1984, 1988
+
+  Participación y medallas por edición:
+  Año  | Temp.               | Ciudad            | Categoría |      | Atletas | Partic. | Oro | Plata | Bronce | Total | Población
+  -----+---------------------+-------------------+-----------+------+---------+---------+-----+-------+--------+-------+----------
+  1952 | Summer              | Helsinki          | Olympics  |      | 297     | 467     | 22  | 29    | 19     | 70    |          
+  1956 | Equestrian Olympics | Stockholm         | Special   |      | 9       | 18      | 0   | 0     | 0      | 0     |          
+  1956 | Summer              | Melbourne         | Olympics  |      | 272     | 413     | 37  | 29    | 32     | 98    |          
+  1956 | Winter              | Cortina d'Ampezzo | Olympics  |      | 54      | 83      | 6   | 3     | 6      | 15    |          
+  1960 | Summer              | Roma              | Olympics  |      | 284     | 420     | 43  | 29    | 31     | 103   |          
+  1960 | Winter              | Squaw Valley      | Olympics  |      | 62      | 92      | 7   | 5     | 9      | 21    |          
+  1964 | Summer              | Tokyo             | Olympics  |      | 317     | 468     | 30  | 30    | 33     | 93    |          
+  1964 | Winter              | Innsbruck         | Olympics  |      | 70      | 108     | 11  | 7     | 6      | 24    |          
+  1968 | Summer              | Ciudad de Mexico  | Olympics  |      | 313     | 474     | 29  | 32    | 30     | 91    |          
+  1968 | Winter              | Grenoble          | Olympics  |      | 76      | 124     | 5   | 5     | 3      | 13    |          
+  1972 | Summer              | Munich            | Olympics  |      | 372     | 540     | 50  | 27    | 22     | 99    |          
+  1972 | Winter              | Sapporo           | Olympics  |      | 76      | 118     | 8   | 5     | 3      | 16    |          
+  1976 | Summer              | Montreal          | Olympics  |      | 410     | 585     | 49  | 41    | 35     | 125   |          
+  1976 | Winter              | Innsbruck         | Olympics  |      | 79      | 121     | 13  | 6     | 8      | 27    |          
+  1980 | Summer              | Moskva            | Olympics  | SEDE | 489     | 669     | 80  | 69    | 46     | 195   |          
+  1980 | Winter              | Lake Placid       | Olympics  |      | 86      | 130     | 10  | 6     | 6      | 22    |          
+  1984 | Winter              | Sarajevo          | Olympics  |      | 99      | 143     | 6   | 10    | 9      | 25    |          
+  1988 | Summer              | Seoul             | Olympics  |      | 481     | 651     | 54  | 31    | 46     | 131   |          
+  1988 | Winter              | Calgary           | Olympics  |      | 103     | 163     | 11  | 9     | 9      | 29    |          
+
+  Medallero por deporte:
+  Deporte                          | Oro | Plata | Bronce | Total
+  ---------------------------------+-----+-------+--------+------
+  Artistic Gymnastics (Gymnastics) | 71  | 65    | 43     | 179  
+  Athletics                        | 64  | 55    | 74     | 193  
+  Wrestling                        | 62  | 31    | 23     | 116  
+  … 34 deportes más
+
+  Medallas ganadas (1197), más recientes primero:
+  Año  | Temp.  | Deporte                  | Evento                        | Medalla | Atleta(s)                       
+  -----+--------+--------------------------+-------------------------------+---------+---------------------------------
+  1988 | Summer | Artistic Gymnastics (Gy… | Floor Exercise, Men (Olympic) | Oro     | Sergey Kharkov                  
+  1988 | Summer | Artistic Gymnastics (Gy… | Horizontal Bar, Men (Olympic) | Oro     | Valery Lyukin, Vladimir Artyomov
+  1988 | Summer | Artistic Gymnastics (Gy… | Horse Vault, Women (Olympic)  | Oro     | Sviatlana Bahinskaya            
+  … 1194 medallas más (use --limite N o filtros)
+
+(consulta resuelta en 24 ms)
+
+##############################################################################
+# P16 — País sede varias veces
+# [2026-10-20 21:46:02] $ python consulta/pais.py USA --limite 3
+# resultado: OK (espera: ['SÍ, 8 veces', 'St. Louis', 'Salt Lake City'])
+##############################################################################
+
+==============================================================================
+USA  (USA)
+==============================================================================
+  Atletas / particip.   : 10,466 atletas, 22,199 participaciones
+  Ediciones             : 61 (primera 1896, última 2024)
+  Población             : 336,492,742 (2024)
+  Medallero (por evento): Oro 1240 | Plata 1015 | Bronce 900 | Total 3155
+  Medallas por atleta   : Oro 2848 | Plata 1902 | Bronce 1566 | Total 6316  (cada integrante de un equipo cuenta)
+
+  ¿Ha sido sede?        : SÍ, 8 veces
+  Año  | Temporada | Ciudad         | Categoría
+  -----+-----------+----------------+----------
+  1904 | Summer    | St. Louis      | Olympics 
+  1932 | Summer    | Los Angeles    | Olympics 
+  1932 | Winter    | Lake Placid    | Olympics 
+  1960 | Winter    | Squaw Valley   | Olympics 
+  1980 | Winter    | Lake Placid    | Olympics 
+  1984 | Summer    | Los Angeles    | Olympics 
+  1996 | Summer    | Atlanta        | Olympics 
+  2002 | Winter    | Salt Lake City | Olympics 
+
+  Años de participación : 1896, 1900, 1904, 1906, 1908, 1912, 1920, 1924, 1928, 1932, 1936, 1948, 1952, 1956, 1960, 1964, 1968, 1972, 1976, 1980, 1984, 1988, 1992, 1994, 1996, 1998, 2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022, 2024
+
+  Participación y medallas por edición:
+  Año  | Temp.               | Ciudad             | Categoría |      | Atletas | Partic. | Oro | Plata | Bronce | Total | Población  
+  -----+---------------------+--------------------+-----------+------+---------+---------+-----+-------+--------+-------+------------
+  1896 | Summer              | Athina             | Olympics  |      | 15      | 31      | 11  | 6     | 2      | 19    |            
+  1900 | Summer              | Paris              | Olympics  |      | 72      | 225     | 20  | 14    | 17     | 51    |            
+  1904 | Summer              | St. Louis          | Olympics  | SEDE | 555     | 1678    | 81  | 88    | 81     | 250   |            
+  1906 | Intercalated Games  | Athina             | Special   |      | 41      | 171     | 12  | 5     | 6      | 23    |            
+  1908 | Summer              | London             | Olympics  |      | 128     | 298     | 22  | 12    | 12     | 46    |            
+  1912 | Summer              | Stockholm          | Olympics  |      | 178     | 519     | 26  | 18    | 20     | 64    |            
+  1920 | Summer              | Antwerpen          | Olympics  |      | 289     | 497     | 42  | 27    | 27     | 96    |            
+  1924 | Summer              | Paris              | Olympics  |      | 299     | 482     | 45  | 27    | 28     | 100   |            
+  1924 | Winter              | Chamonix           | Olympics  |      | 25      | 53      | 1   | 2     | 1      | 4     |            
+  1928 | Summer              | Amsterdam          | Olympics  |      | 235     | 350     | 22  | 18    | 16     | 56    |            
+  1928 | Winter              | Sankt Moritz       | Olympics  |      | 24      | 52      | 2   | 2     | 2      | 6     |            
+  1932 | Summer              | Los Angeles        | Olympics  | SEDE | 288     | 369     | 42  | 32    | 30     | 104   |            
+  1932 | Winter              | Lake Placid        | Olympics  | SEDE | 69      | 125     | 6   | 4     | 2      | 12    |            
+  1936 | Summer              | Berlin             | Olympics  |      | 311     | 442     | 24  | 20    | 13     | 57    |            
+  1936 | Winter              | Garmisch-Partenki… | Olympics  |      | 55      | 81      | 1   | 0     | 3      | 4     |            
+  1948 | Summer              | London             | Olympics  |      | 302     | 444     | 39  | 27    | 19     | 85    |            
+  1948 | Winter              | Sankt Moritz       | Olympics  |      | 70      | 103     | 3   | 3     | 2      | 8     |            
+  1952 | Summer              | Helsinki           | Olympics  |      | 289     | 476     | 40  | 19    | 17     | 76    |            
+  1952 | Winter              | Oslo               | Olympics  |      | 66      | 99      | 4   | 6     | 1      | 11    |            
+  1956 | Equestrian Olympics | Stockholm          | Special   |      | 8       | 14      | 0   | 0     | 0      | 0     |            
+  1956 | Summer              | Melbourne          | Olympics  |      | 298     | 451     | 32  | 25    | 17     | 74    |            
+  1956 | Winter              | Cortina d'Ampezzo  | Olympics  |      | 67      | 97      | 2   | 3     | 2      | 7     |            
+  1960 | Summer              | Roma               | Olympics  |      | 292     | 437     | 34  | 21    | 16     | 71    | 180,671,000
+  1960 | Winter              | Squaw Valley       | Olympics  | SEDE | 79      | 106     | 3   | 4     | 3      | 10    | 180,671,000
+  1964 | Summer              | Tokyo              | Olympics  |      | 346     | 498     | 36  | 27    | 28     | 91    | 191,889,000
+  1964 | Winter              | Innsbruck          | Olympics  |      | 90      | 130     | 1   | 2     | 4      | 7     | 191,889,000
+  1968 | Summer              | Ciudad de Mexico   | Olympics  |      | 358     | 538     | 45  | 28    | 34     | 107   | 200,706,000
+  1968 | Winter              | Grenoble           | Olympics  |      | 97      | 137     | 1   | 3     | 1      | 5     | 200,706,000
+  1972 | Summer              | Munich             | Olympics  |      | 404     | 591     | 33  | 31    | 30     | 94    | 209,896,000
+  1972 | Winter              | Sapporo            | Olympics  |      | 103     | 147     | 3   | 2     | 3      | 8     | 209,896,000
+  1976 | Summer              | Montreal           | Olympics  |      | 398     | 564     | 34  | 35    | 25     | 94    | 218,035,000
+  1976 | Winter              | Innsbruck          | Olympics  |      | 106     | 151     | 3   | 3     | 4      | 10    | 218,035,000
+  1980 | Winter              | Lake Placid        | Olympics  | SEDE | 103     | 158     | 6   | 4     | 2      | 12    | 227,225,000
+  1984 | Summer              | Los Angeles        | Olympics  | SEDE | 525     | 698     | 82  | 61    | 30     | 173   | 235,825,000
+  1984 | Winter              | Sarajevo           | Olympics  |      | 107     | 156     | 4   | 4     | 0      | 8     | 235,825,000
+  1988 | Summer              | Seoul              | Olympics  |      | 532     | 725     | 36  | 31    | 27     | 94    | 244,499,000
+  1988 | Winter              | Calgary            | Olympics  |      | 126     | 223     | 2   | 1     | 3      | 6     | 244,499,000
+  1992 | Summer              | Barcelona          | Olympics  |      | 548     | 738     | 37  | 34    | 37     | 108   | 256,514,000
+  1992 | Winter              | Albertville        | Olympics  |      | 151     | 235     | 5   | 4     | 2      | 11    | 256,514,000
+  1994 | Winter              | Lillehammer        | Olympics  |      | 147     | 233     | 6   | 5     | 2      | 13    | 263,126,000
+  1996 | Summer              | Atlanta            | Olympics  | SEDE | 649     | 841     | 44  | 32    | 25     | 101   | 269,394,000
+  1998 | Winter              | Nagano             | Olympics  |      | 186     | 289     | 6   | 3     | 4      | 13    | 275,854,000
+  2000 | Summer              | Sydney             | Olympics  |      | 589     | 767     | 36  | 24    | 31     | 91    | 282,162,411
+  2002 | Winter              | Salt Lake City     | Olympics  | SEDE | 204     | 316     | 10  | 13    | 11     | 34    | 287,625,193
+  2004 | Summer              | Athina             | Olympics  |      | 540     | 734     | 36  | 39    | 26     | 101   | 292,805,298
+  2006 | Winter              | Torino             | Olympics  |      | 204     | 328     | 9   | 9     | 7      | 25    | 298,379,912
+  2008 | Summer              | Beijing            | Olympics  |      | 588     | 764     | 36  | 39    | 37     | 112   | 304,093,966
+  2010 | Summer              | Singapore          | Youth     |      | 8       | 14      | 0   | 1     | 2      | 3     | 309,327,143
+  2010 | Winter              | Vancouver          | Olympics  |      | 212     | 342     | 9   | 15    | 13     | 37    | 309,327,143
+  2012 | Summer              | London             | Olympics  |      | 533     | 692     | 48  | 26    | 30     | 104   | 313,877,662
+  2012 | Winter              | Innsbruck          | Youth     |      | 10      | 24      | 2   | 3     | 3      | 8     | 313,877,662
+  2014 | Summer              | Nanjing            | Youth     |      | 5       | 6       | 1   | 0     | 2      | 3     | 318,386,329
+  2014 | Winter              | Sochi              | Olympics  |      | 225     | 372     | 9   | 9     | 10     | 28    | 318,386,329
+  2016 | Summer              | Rio de Janeiro     | Olympics  |      | 556     | 721     | 46  | 37    | 38     | 121   | 323,071,755
+  2016 | Winter              | Lillehammer        | Youth     |      | 6       | 17      | 4   | 2     | 0      | 6     | 323,071,755
+  2018 | Summer              | Buenos Aires       | Youth     |      | 1       | 2       | 0   | 0     | 1      | 1     | 326,838,199
+  2018 | Winter              | PyeongChang        | Olympics  |      | 229     | 384     | 9   | 8     | 6      | 23    | 326,838,199
+  2020 | Summer              | Tokyo              | Olympics  |      | 613     | 820     | 37  | 41    | 31     | 109   | 331,526,933
+  2020 | Winter              | Lausanne           | Youth     |      | 94      | 205     | 3   | 4     | 7      | 14    | 331,526,933
+  2022 | Winter              | Beijing            | Olympics  |      | 102     | 193     | 8   | 9     | 6      | 23    | 333,271,411
+  2024 | Summer              | Paris              | Olympics  |      | 619     | 846     | 39  | 43    | 41     | 123   | 336,492,742
+
+  Medallero por deporte:
+  Deporte             | Oro | Plata | Bronce | Total
+  --------------------+-----+-------+--------+------
+  Athletics           | 370 | 285   | 228    | 883  
+  Swimming (Aquatics) | 266 | 195   | 152    | 613  
+  Wrestling           | 59  | 46    | 43     | 148  
+  … 66 deportes más
+
+  Medallas ganadas (3155), más recientes primero:
+  Año  | Temp.  | Deporte                  | Evento                      | Medalla | Atleta(s)                                         
+  -----+--------+--------------------------+-----------------------------+---------+---------------------------------------------------
+  2024 | Summer | Artistic Gymnastics (Gy… | All-Around, Women (Olympic) | Oro     | Simone Biles                                      
+  2024 | Summer | Artistic Gymnastics (Gy… | Team, Women (Olympic)       | Oro     | Hezly Rivera, Jade Carey, Jordan Chiles, Simone B…
+  2024 | Summer | Artistic Gymnastics (Gy… | Vault, Women (Olympic)      | Oro     | Simone Biles                                      
+  … 3152 medallas más (use --limite N o filtros)
+
+(consulta resuelta en 59 ms)
+
+##############################################################################
+# P17 — Nombre de país ambiguo
+# [2026-10-20 21:46:03] $ python consulta/pais.py Germany --limite 2
+# resultado: OK (espera: ['países coinciden', 'FRG', 'GDR'])
+##############################################################################
+
+==============================================================================
+4 países coinciden con "Germany" — se despliegan todos
+==============================================================================
+  NOC | Nombre  | Notas | Participó | Medallas
+  ----+---------+-------+-----------+---------
+  FRG | Germany |       | 1968–1988 | 243     
+  GDR | Germany |       | 1968–1988 | 519     
+  GER | Germany |       | 1896–2024 | 1152    
+  SAA | Germany |       | 1952–1952 | 0       
+
+==============================================================================
+Germany  (FRG)
+==============================================================================
+  Atletas / particip.   : 1,718 atletas, 3,377 participaciones
+  Ediciones             : 11 (primera 1968, última 1988)
+  Población             : sin datos
+  Medallero (por evento): Oro 67 | Plata 82 | Bronce 94 | Total 243
+  Medallas por atleta   : Oro 159 | Plata 192 | Bronce 228 | Total 579  (cada integrante de un equipo cuenta)
+
+  ¿Ha sido sede?        : SÍ, 1 vez
+  Año  | Temporada | Ciudad | Categoría
+  -----+-----------+--------+----------
+  1972 | Summer    | Munich | Olympics 
+
+  Años de participación : 1968, 1972, 1976, 1980, 1984, 1988
+
+  Participación y medallas por edición:
+  Año  | Temp.  | Ciudad           | Categoría |      | Atletas | Partic. | Oro | Plata | Bronce | Total | Población
+  -----+--------+------------------+-----------+------+---------+---------+-----+-------+--------+-------+----------
+  1968 | Summer | Ciudad de Mexico | Olympics  |      | 278     | 441     | 5   | 11    | 10     | 26    |          
+  1968 | Winter | Grenoble         | Olympics  |      | 87      | 139     | 2   | 2     | 3      | 7     |          
+  1972 | Summer | Munich           | Olympics  | SEDE | 425     | 597     | 13  | 11    | 16     | 40    |          
+  1972 | Winter | Sapporo          | Olympics  |      | 78      | 126     | 3   | 1     | 1      | 5     |          
+  1976 | Summer | Montreal         | Olympics  |      | 292     | 460     | 10  | 12    | 17     | 39    |          
+  1976 | Winter | Innsbruck        | Olympics  |      | 71      | 106     | 2   | 5     | 3      | 10    |          
+  1980 | Winter | Lake Placid      | Olympics  |      | 80      | 120     | 0   | 2     | 3      | 5     |          
+  1984 | Summer | Los Angeles      | Olympics  |      | 392     | 584     | 17  | 19    | 23     | 59    |          
+  1984 | Winter | Sarajevo         | Olympics  |      | 84      | 121     | 2   | 1     | 1      | 4     |          
+  1988 | Summer | Seoul            | Olympics  |      | 348     | 521     | 11  | 14    | 15     | 40    |          
+  1988 | Winter | Calgary          | Olympics  |      | 96      | 162     | 2   | 4     | 2      | 8     |          
+
+  Medallero por deporte:
+  Deporte   | Oro | Plata | Bronce | Total
+  ----------+-----+-------+--------+------
+  Athletics | 12  | 14    | 17     | 43   
+  Fencing   | 7   | 8     | 1      | 16   
+  … 30 deportes más
+
+  Medallas ganadas (243), más recientes primero:
+  Año  | Temp.  | Deporte                  | Evento                     | Medalla | Atleta(s)           
+  -----+--------+--------------------------+----------------------------+---------+---------------------
+  1988 | Winter | Alpine Skiing (Skiing)   | Downhill, Women (Olympic)  | Oro     | Marina Kiehl        
+  1988 | Summer | Equestrian Dressage (Eq… | Individual, Open (Olympic) | Oro     | Nicole Uphoff-Becker
+  … 241 medallas más (use --limite N o filtros)
+
+==============================================================================
+Germany  (GDR)
+==============================================================================
+  Atletas / particip.   : 1,363 atletas, 2,683 participaciones
+  Ediciones             : 11 (primera 1968, última 1988)
+  Población             : sin datos
+  Medallero (por evento): Oro 192 | Plata 165 | Bronce 162 | Total 519
+  Medallas por atleta   : Oro 392 | Plata 323 | Bronce 280 | Total 995  (cada integrante de un equipo cuenta)
+
+  ¿Ha sido sede?        : NO
+
+  Años de participación : 1968, 1972, 1976, 1980, 1984, 1988
+
+  Participación y medallas por edición:
+  Año  | Temp.  | Ciudad           | Categoría |  | Atletas | Partic. | Oro | Plata | Bronce | Total | Población
+  -----+--------+------------------+-----------+--+---------+---------+-----+-------+--------+-------+----------
+  1968 | Summer | Ciudad de Mexico | Olympics  |  | 229     | 354     | 9   | 9     | 7      | 25    |          
+  1968 | Winter | Grenoble         | Olympics  |  | 57      | 89      | 1   | 2     | 2      | 5     |          
+  1972 | Summer | Munich           | Olympics  |  | 299     | 461     | 20  | 23    | 23     | 66    |          
+  1972 | Winter | Sapporo          | Olympics  |  | 42      | 69      | 4   | 3     | 7      | 14    |          
+  1976 | Summer | Montreal         | Olympics  |  | 269     | 416     | 40  | 25    | 25     | 90    |          
+  1976 | Winter | Innsbruck        | Olympics  |  | 59      | 97      | 7   | 5     | 7      | 19    |          
+  1980 | Summer | Moskva           | Olympics  |  | 348     | 499     | 47  | 37    | 42     | 126   |          
+  1980 | Winter | Lake Placid      | Olympics  |  | 53      | 87      | 9   | 7     | 7      | 23    |          
+  1984 | Winter | Sarajevo         | Olympics  |  | 56      | 105     | 9   | 9     | 6      | 24    |          
+  1988 | Summer | Seoul            | Olympics  |  | 259     | 408     | 37  | 35    | 30     | 102   |          
+  1988 | Winter | Calgary          | Olympics  |  | 53      | 98      | 9   | 10    | 6      | 25    |          
+
+  Medallero por deporte:
+  Deporte             | Oro | Plata | Bronce | Total
+  --------------------+-----+-------+--------+------
+  Athletics           | 38  | 36    | 35     | 109  
+  Swimming (Aquatics) | 38  | 32    | 22     | 92   
+  … 25 deportes más
+
+  Medallas ganadas (519), más recientes primero:
+  Año  | Temp.  | Deporte                  | Evento                      | Medalla | Atleta(s)         
+  -----+--------+--------------------------+-----------------------------+---------+-------------------
+  1988 | Summer | Artistic Gymnastics (Gy… | Rings, Men (Olympic)        | Oro     | Holger Behrendt   
+  1988 | Summer | Athletics                | 800 metres, Women (Olympic) | Oro     | Sigrun Wodars-Grau
+  … 517 medallas más (use --limite N o filtros)
+
+==============================================================================
+Germany  (GER)
+==============================================================================
+  Atletas / particip.   : 5,493 atletas, 11,878 participaciones
+  Ediciones             : 45 (primera 1896, última 2024)
+  Población             : 84,570,750 (2024)
+  Medallero (por evento): Oro 377 | Plata 396 | Bronce 379 | Total 1152
+  Medallas por atleta   : Oro 838 | Plata 821 | Bronce 848 | Total 2507  (cada integrante de un equipo cuenta)
+
+  ¿Ha sido sede?        : SÍ, 2 veces
+  Año  | Temporada | Ciudad                 | Categoría
+  -----+-----------+------------------------+----------
+  1936 | Summer    | Berlin                 | Olympics 
+  1936 | Winter    | Garmisch-Partenkirchen | Olympics 
+
+  Años de participación : 1896, 1900, 1904, 1906, 1908, 1912, 1928, 1932, 1936, 1952, 1956, 1960, 1964, 1992, 1994, 1996, 1998, 2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022, 2024
+
+  Participación y medallas por edición:
+  Año  | Temp.               | Ciudad             | Categoría |      | Atletas | Partic. | Oro | Plata | Bronce | Total | Población 
+  -----+---------------------+--------------------+-----------+------+---------+---------+-----+-------+--------+-------+-----------
+  1896 | Summer              | Athina             | Olympics  |      | 19      | 154     | 9   | 5     | 2      | 16    |           
+  1900 | Summer              | Paris              | Olympics  |      | 77      | 127     | 4   | 3     | 1      | 8     |           
+  1904 | Summer              | St. Louis          | Olympics  |      | 20      | 68      | 5   | 4     | 5      | 14    |           
+  1906 | Intercalated Games  | Athina             | Special   |      | 50      | 223     | 5   | 6     | 4      | 15    |           
+  1908 | Summer              | London             | Olympics  |      | 92      | 194     | 3   | 5     | 5      | 13    |           
+  1912 | Summer              | Stockholm          | Olympics  |      | 184     | 344     | 5   | 14    | 7      | 26    |           
+  1928 | Summer              | Amsterdam          | Olympics  |      | 216     | 278     | 12  | 7     | 14     | 33    |           
+  1928 | Winter              | Sankt Moritz       | Olympics  |      | 44      | 52      | 0   | 0     | 1      | 1     |           
+  1932 | Summer              | Los Angeles        | Olympics  |      | 85      | 131     | 3   | 12    | 5      | 20    |           
+  1932 | Winter              | Lake Placid        | Olympics  |      | 22      | 32      | 0   | 0     | 2      | 2     |           
+  1936 | Summer              | Berlin             | Olympics  | SEDE | 349     | 461     | 33  | 26    | 30     | 89    |           
+  1936 | Winter              | Garmisch-Partenki… | Olympics  | SEDE | 55      | 71      | 3   | 3     | 0      | 6     |           
+  1952 | Summer              | Helsinki           | Olympics  |      | 208     | 386     | 0   | 7     | 18     | 25    |           
+  1952 | Winter              | Oslo               | Olympics  |      | 53      | 79      | 3   | 2     | 2      | 7     |           
+  1956 | Equestrian Olympics | Stockholm          | Special   |      | 9       | 18      | 2   | 3     | 1      | 6     |           
+  1956 | Summer              | Melbourne          | Olympics  |      | 160     | 257     | 4   | 10    | 6      | 20    |           
+  1956 | Winter              | Cortina d'Ampezzo  | Olympics  |      | 63      | 90      | 1   | 0     | 1      | 2     |           
+  1960 | Summer              | Roma               | Olympics  |      | 299     | 435     | 12  | 19    | 11     | 42    | 72,814,900
+  1960 | Winter              | Squaw Valley       | Olympics  |      | 74      | 111     | 4   | 3     | 1      | 8     | 72,814,900
+  1964 | Summer              | Tokyo              | Olympics  |      | 341     | 486     | 10  | 22    | 18     | 50    | 75,318,337
+  1964 | Winter              | Innsbruck          | Olympics  |      | 96      | 144     | 3   | 3     | 3      | 9     | 75,318,337
+  1992 | Summer              | Barcelona          | Olympics  |      | 465     | 657     | 33  | 21    | 28     | 82    | 80,624,598
+  1992 | Winter              | Albertville        | Olympics  |      | 114     | 198     | 10  | 10    | 6      | 26    | 80,624,598
+  1994 | Winter              | Lillehammer        | Olympics  |      | 112     | 186     | 9   | 7     | 8      | 24    | 81,438,348
+  1996 | Summer              | Atlanta            | Olympics  |      | 469     | 631     | 20  | 18    | 27     | 65    | 81,914,831
+  1998 | Winter              | Nagano             | Olympics  |      | 126     | 220     | 12  | 9     | 8      | 29    | 82,047,195
+  2000 | Summer              | Sydney             | Olympics  |      | 426     | 576     | 13  | 17    | 26     | 56    | 82,211,508
+  2002 | Winter              | Salt Lake City     | Olympics  |      | 157     | 261     | 12  | 16    | 8      | 36    | 82,488,495
+  2004 | Summer              | Athina             | Olympics  |      | 446     | 598     | 13  | 16    | 20     | 49    | 82,516,260
+  2006 | Winter              | Torino             | Olympics  |      | 155     | 264     | 11  | 12    | 6      | 29    | 82,376,451
+  2008 | Summer              | Beijing            | Olympics  |      | 425     | 565     | 16  | 11    | 14     | 41    | 82,110,097
+  2010 | Summer              | Singapore          | Youth     |      | 11      | 19      | 1   | 1     | 2      | 4     | 81,776,930
+  2010 | Winter              | Vancouver          | Olympics  |      | 148     | 258     | 10  | 13    | 7      | 30    | 81,776,930
+  2012 | Summer              | London             | Olympics  |      | 386     | 517     | 11  | 20    | 13     | 44    | 80,425,823
+  2012 | Winter              | Innsbruck          | Youth     |      | 8       | 20      | 6   | 2     | 0      | 8     | 80,425,823
+  2014 | Summer              | Nanjing            | Youth     |      | 2       | 8       | 0   | 1     | 3      | 4     | 80,982,500
+  2014 | Winter              | Sochi              | Olympics  |      | 151     | 274     | 8   | 6     | 5      | 19    | 80,982,500
+  2016 | Summer              | Rio de Janeiro     | Olympics  |      | 422     | 543     | 17  | 10    | 15     | 42    | 82,348,669
+  2016 | Winter              | Lillehammer        | Youth     |      | 3       | 8       | 1   | 0     | 1      | 2     | 82,348,669
+  2018 | Summer              | Buenos Aires       | Youth     |      | 1       | 3       | 0   | 1     | 0      | 1     | 82,905,782
+  2018 | Winter              | PyeongChang        | Olympics  |      | 145     | 272     | 14  | 10    | 7      | 31    | 82,905,782
+  2020 | Summer              | Tokyo              | Olympics  |      | 398     | 557     | 10  | 11    | 16     | 37    | 83,160,871
+  2020 | Winter              | Lausanne           | Youth     |      | 91      | 205     | 6   | 8     | 9      | 23    | 83,160,871
+  2022 | Winter              | Beijing            | Olympics  |      | 139     | 257     | 11  | 10    | 5      | 26    | 83,797,985
+  2024 | Summer              | Paris              | Olympics  |      | 457     | 640     | 12  | 12    | 8      | 32    | 84,570,750
+
+  Medallero por deporte:
+  Deporte                 | Oro | Plata | Bronce | Total
+  ------------------------+-----+-------+--------+------
+  Canoe Sprint (Canoeing) | 33  | 22    | 17     | 72   
+  Athletics               | 31  | 49    | 47     | 127  
+  … 53 deportes más
+
+  Medallas ganadas (1152), más recientes primero:
+  Año  | Temp.  | Deporte                  | Evento                          | Medalla | Atleta(s)                                         
+  -----+--------+--------------------------+---------------------------------+---------+---------------------------------------------------
+  2024 | Summer | 3x3 Basketball (Basketb… | 3x3 Basketball, Women (Olympic) | Oro     | Elisa Mevius, Marie Reichert, Sonja Greinacher, S…
+  2024 | Summer | Athletics                | Shot Put, Women (Olympic)       | Oro     | Yemisi Ogunleye                                   
+  … 1150 medallas más (use --limite N o filtros)
+
+==============================================================================
+Germany  (SAA)
+==============================================================================
+  Atletas / particip.   : 36 atletas, 99 participaciones
+  Ediciones             : 1 (primera 1952, última 1952)
+  Población             : sin datos
+  Medallero (por evento): Oro 0 | Plata 0 | Bronce 0 | Total 0
+
+  ¿Ha sido sede?        : NO
+
+  Años de participación : 1952
+
+  Participación y medallas por edición:
+  Año  | Temp.  | Ciudad   | Categoría |  | Atletas | Partic. | Oro | Plata | Bronce | Total | Población
+  -----+--------+----------+-----------+--+---------+---------+-----+-------+--------+-------+----------
+  1952 | Summer | Helsinki | Olympics  |  | 36      | 99      | 0   | 0     | 0      | 0     |          
+
+  Medallero por deporte:
+  (sin registros)
+
+  Medallas ganadas (0), más recientes primero:
+  (sin registros)
+
+(consulta resuelta en 53 ms)
+
+##############################################################################
+# P18 — Corrección C1: ROC unificado con RUS
+# [2026-10-20 21:46:04] $ python consulta/pais.py ROC --anio 2020 --limite 3
+# resultado: OK (espera: ['unificado con RUS', 'Russia  (RUS)', 'Tokyo'])
+##############################################################################
+Nota: ROC se cargó unificado con RUS.
+
+==============================================================================
+Russia  (RUS)  —  filtros: anio=2020
+==============================================================================
+  Atletas / particip.   : 2,969 atletas, 6,653 participaciones
+  Ediciones             : 24 (primera 1900, última 2022)
+  Población             : 143,422,892 (2024)
+  Medallero (por evento): Oro 258 | Plata 245 | Bronce 252 | Total 755
+  Medallas por atleta   : Oro 513 | Plata 521 | Bronce 480 | Total 1514  (cada integrante de un equipo cuenta)
+
+  ¿Ha sido sede?        : SÍ, 1 vez
+  Año  | Temporada | Ciudad | Categoría
+  -----+-----------+--------+----------
+  2014 | Winter    | Sochi  | Olympics 
+
+  Años de participación : 1900, 1908, 1912, 1924, 1994, 1996, 1998, 2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022
+
+  Participación y medallas por edición (filtrado):
+  Año  | Temp.  | Ciudad   | Categoría |  | Atletas | Partic. | Oro | Plata | Bronce | Total | Población  
+  -----+--------+----------+-----------+--+---------+---------+-----+-------+--------+-------+------------
+  2020 | Summer | Tokyo    | Olympics  |  | 320     | 515     | 20  | 25    | 22     | 67    | 145,245,148
+  2020 | Winter | Lausanne | Youth     |  | 103     | 212     | 13  | 16    | 11     | 40    | 145,245,148
+  Medallero con filtros: Oro 33 | Plata 41 | Bronce 33 | Total 107
+
+  Medallero por deporte (filtrado):
+  Deporte                  | Oro | Plata | Bronce | Total
+  -------------------------+-----+-------+--------+------
+  Wrestling                | 4   | 0     | 4      | 8    
+  Figure Skating (Skating) | 3   | 5     | 3      | 11   
+  Fencing                  | 3   | 4     | 1      | 8    
+  … 30 deportes más
+
+  Medallas ganadas (107), más recientes primero:
+  Año  | Temp.  | Deporte                  | Evento                           | Medalla | Atleta(s)                                         
+  -----+--------+--------------------------+----------------------------------+---------+---------------------------------------------------
+  2020 | Winter | 3-on-3 Ice Hockey (Ice … | 3-on-3 Ice Hockey, Boys (YOG)    | Oro     | Artyom Pronichkin                                 
+  2020 | Summer | Artistic Gymnastics (Gy… | Team All-Around, Men (Olympic)   | Oro     | Artur Dalaloyan, David Belyavsky, Denis Ablyazin,…
+  2020 | Summer | Artistic Gymnastics (Gy… | Team All-Around, Women (Olympic) | Oro     | Angelina Melnikova, Liliya Akhaimova, Viktoriya L…
+  … 104 medallas más (use --limite N o filtros)
+
+(consulta resuelta en 57 ms)
+
+##############################################################################
+# P19 — País en Juegos de la Juventud
+# [2026-10-20 21:46:05] $ python consulta/pais.py GUA --anio 2010
+# resultado: OK (espera: ['Singapore', 'Youth'])
+##############################################################################
+
+==============================================================================
+Guatemala  (GUA)  —  filtros: anio=2010
+==============================================================================
+  Atletas / particip.   : 267 atletas, 479 participaciones
+  Ediciones             : 19 (primera 1952, última 2024)
+  Población             : 17,855,393 (2024)
+  Medallero (por evento): Oro 1 | Plata 1 | Bronce 1 | Total 3
+
+  ¿Ha sido sede?        : NO
+
+  Años de participación : 1952, 1968, 1972, 1976, 1980, 1984, 1988, 1992, 1996, 2000, 2004, 2008, 2010, 2012, 2014, 2016, 2020, 2024
+
+  Participación y medallas por edición (filtrado):
+  Año  | Temp.  | Ciudad    | Categoría |  | Atletas | Partic. | Oro | Plata | Bronce | Total | Población 
+  -----+--------+-----------+-----------+--+---------+---------+-----+-------+--------+-------+-----------
+  2010 | Summer | Singapore | Youth     |  | 2       | 5       | 0   | 0     | 0      | 0     | 14,259,687
+  Medallero con filtros: Oro 0 | Plata 0 | Bronce 0 | Total 0
+
+  Medallero por deporte (filtrado):
+  (sin registros)
+
+  Medallas ganadas (0), más recientes primero:
+  (sin registros)
+
+(consulta resuelta en 24 ms)
+
+##############################################################################
+# P20 — País + edición 1906
+# [2026-10-20 21:46:06] $ python consulta/pais.py GRE --anio 1906 --limite 3
+# resultado: OK (espera: ['Intercalated Games', 'Athina'])
+##############################################################################
+
+==============================================================================
+Greece  (GRE)  —  filtros: anio=1906
+==============================================================================
+  Atletas / particip.   : 1,833 atletas, 3,779 participaciones
+  Ediciones             : 56 (primera 1888, última 2024)
+  Población             : 10,257,844 (2024)
+  Medallero (por evento): Oro 44 | Plata 64 | Bronce 58 | Total 166
+  Medallas por atleta   : Oro 64 | Plata 138 | Bronce 93 | Total 295  (cada integrante de un equipo cuenta)
+
+  ¿Ha sido sede?        : SÍ, 4 veces
+  Año  | Temporada            | Ciudad | Categoría
+  -----+----------------------+--------+----------
+  1888 | Zappas Olympic Games | Athina | Special  
+  1896 | Summer               | Athina | Olympics 
+  1906 | Intercalated Games   | Athina | Special  
+  2004 | Summer               | Athina | Olympics 
+
+  Años de participación : 1888, 1896, 1900, 1904, 1906, 1908, 1912, 1920, 1924, 1928, 1932, 1936, 1948, 1952, 1956, 1960, 1964, 1968, 1972, 1976, 1980, 1984, 1988, 1992, 1994, 1996, 1998, 2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022, 2024
+
+  Participación y medallas por edición (filtrado):
+  Año  | Temp.              | Ciudad | Categoría |      | Atletas | Partic. | Oro | Plata | Bronce | Total | Población
+  -----+--------------------+--------+-----------+------+---------+---------+-----+-------+--------+-------+----------
+  1906 | Intercalated Games | Athina | Special   | SEDE | 324     | 598     | 8   | 17    | 13     | 38    |          
+  Medallero con filtros: Oro 8 | Plata 17 | Bronce 13 | Total 38
+
+  Medallero por deporte (filtrado):
+  Deporte   | Oro | Plata | Bronce | Total
+  ----------+-----+-------+--------+------
+  Shooting  | 2   | 3     | 3      | 8    
+  Athletics | 1   | 3     | 4      | 8    
+  Tennis    | 1   | 3     | 2      | 6    
+  … 6 deportes más
+
+  Medallas ganadas (38), más recientes primero:
+  Año  | Temp.              | Deporte                  | Evento                            | Medalla | Atleta(s)          
+  -----+--------------------+--------------------------+-----------------------------------+---------+--------------------
+  1906 | Intercalated Games | Artistic Gymnastics (Gy… | Rope Climbing, Men (Intercalated) | Oro     | Georgios Aliprantis
+  1906 | Intercalated Games | Athletics                | Stone Throw, Men (Intercalated)   | Oro     | Nikolaos Georgantas
+  1906 | Intercalated Games | Fencing                  | Sabre, Individual, Men (Olympic)  | Oro     | Ioannis Georgiadis 
+  … 35 medallas más (use --limite N o filtros)
+
+(consulta resuelta en 9 ms)
+
+##############################################################################
+# P21 — País con resultados y atletas filtrados
+# [2026-10-20 21:46:07] $ python consulta/pais.py GUA --anio 2024 --atletas --resultados
+# resultado: OK (espera: ['Participaciones y resultados (16)', 'Atletas (16)', 'Adriana Ruano'])
+##############################################################################
+
+==============================================================================
+Guatemala  (GUA)  —  filtros: anio=2024
+==============================================================================
+  Atletas / particip.   : 267 atletas, 479 participaciones
+  Ediciones             : 19 (primera 1952, última 2024)
+  Población             : 17,855,393 (2024)
+  Medallero (por evento): Oro 1 | Plata 1 | Bronce 1 | Total 3
+
+  ¿Ha sido sede?        : NO
+
+  Años de participación : 1952, 1968, 1972, 1976, 1980, 1984, 1988, 1992, 1996, 2000, 2004, 2008, 2010, 2012, 2014, 2016, 2020, 2024
+
+  Participación y medallas por edición (filtrado):
+  Año  | Temp.  | Ciudad | Categoría |  | Atletas | Partic. | Oro | Plata | Bronce | Total | Población 
+  -----+--------+--------+-----------+--+---------+---------+-----+-------+--------+-------+-----------
+  2024 | Summer | Paris  | Olympics  |  | 16      | 16      | 1   | 0     | 1      | 2     | 17,855,393
+  Medallero con filtros: Oro 1 | Plata 0 | Bronce 1 | Total 2
+
+  Medallero por deporte (filtrado):
+  Deporte  | Oro | Plata | Bronce | Total
+  ---------+-----+-------+--------+------
+  Shooting | 1   | 0     | 1      | 2    
+
+  Medallas ganadas (2), más recientes primero:
+  Año  | Temp.  | Deporte  | Evento                | Medalla | Atleta(s)    
+  -----+--------+----------+-----------------------+---------+--------------
+  2024 | Summer | Shooting | Trap, Women (Olympic) | Oro     | Adriana Ruano
+  2024 | Summer | Shooting | Trap, Men (Olympic)   | Bronce  | Pierre Brol  
+
+  Atletas (16), ordenados por medallas:
+  ID     | Atleta             | S | Partic. | Años | Deportes            | Oro | Plata | Bronce
+  -------+--------------------+---+---------+------+---------------------+-----+-------+-------
+  143537 | Adriana Ruano      | F | 1       | 2024 | Shooting            | 1   | 0     | 0     
+  155583 | Pierre Brol        | M | 1       | 2024 | Shooting            | 0   | 0     | 1     
+  21059  | Alberto González   | M | 1       | 2024 | Athletics           | 0   | 0     | 0     
+  150063 | Alejandro Barrondo | M | 1       | 2024 | Athletics           | 0   | 0     | 0     
+  150375 | Andres Fernandez   | M | 1       | 2024 | Modern Pentathlon   | 0   | 0     | 0     
+  150749 | Bernabe Barrondo   | M | 1       | 2024 | Athletics           | 0   | 0     | 0     
+  151924 | Erick Gordillo     | M | 1       | 2024 | Swimming (Aquatics) | 0   | 0     | 0     
+  152669 | I Maegli           | M | 1       | 2024 | Sailing             | 0   | 0     | 0     
+  152860 | Jacqueline Solis   | F | 1       | 2024 | Judo                | 0   | 0     | 0     
+  112838 | Kevin Cordón       | M | 1       | 2024 | Badminton           | 0   | 0     | 0     
+  154015 | Lucero Mejia       | F | 1       | 2024 | Swimming (Aquatics) | 0   | 0     | 0     
+  143545 | Luis Grijalva      | M | 1       | 2024 | Athletics           | 0   | 0     | 0     
+  154335 | Mariandree Chacon  | F | 1       | 2024 | Athletics           | 0   | 0     | 0     
+  156144 | Sebastian Bermudez | M | 1       | 2024 | Shooting            | 0   | 0     | 0     
+  156378 | Sophia Hernandez   | F | 1       | 2024 | Modern Pentathlon   | 0   | 0     | 0     
+  157158 | Waleska Soto       | F | 1       | 2024 | Shooting            | 0   | 0     | 0     
+
+  Participaciones y resultados (16):
+  Año  | Temp.  | Deporte             | Evento                                   | Atleta             | Pos. | Medalla
+  -----+--------+---------------------+------------------------------------------+--------------------+------+--------
+  2024 | Summer | Athletics           | 100 metres, Women (Olympic)              | Mariandree Chacon  | 28   |        
+  2024 | Summer | Athletics           | 20 kilometres Race Walk, Men (Olympic)   | Alejandro Barrondo | 12   |        
+  2024 | Summer | Athletics           | 20 kilometres Race Walk, Men (Olympic)   | Bernabe Barrondo   | 12   |        
+  2024 | Summer | Athletics           | 5000 metres, Men (Olympic)               | Luis Grijalva      | 16   |        
+  2024 | Summer | Athletics           | Marathon, Men (Olympic)                  | Alberto González   | 18   |        
+  2024 | Summer | Badminton           | Singles, Men (Olympic)                   | Kevin Cordón       | 16   |        
+  2024 | Summer | Judo                | -48 kg, Women (Olympic)                  | Jacqueline Solis   | 14   |        
+  2024 | Summer | Modern Pentathlon   | Individual, Men (Olympic)                | Andres Fernandez   | 14   |        
+  2024 | Summer | Modern Pentathlon   | Individual, Women (Olympic)              | Sophia Hernandez   | 13   |        
+  2024 | Summer | Sailing             | Dinghy, Men (Olympic)                    | I Maegli           | 21   |        
+  2024 | Summer | Shooting            | Skeet, Men (Olympic)                     | Sebastian Bermudez | 14   |        
+  2024 | Summer | Shooting            | Trap, Men (Olympic)                      | Pierre Brol        | 3    | Bronce 
+  2024 | Summer | Shooting            | Trap, Women (Olympic)                    | Adriana Ruano      | 1    | Oro    
+  2024 | Summer | Shooting            | Trap, Women (Olympic)                    | Waleska Soto       | 1    |        
+  2024 | Summer | Swimming (Aquatics) | 100 metres Backstroke, Women (Olympic)   | Lucero Mejia       | 15   |        
+  2024 | Summer | Swimming (Aquatics) | 200 metres Individual Medley, Men (Olym… | Erick Gordillo     | 11   |        
+
+(consulta resuelta en 44 ms)
+
+##############################################################################
+# P22 — País + rango + deporte
+# [2026-10-20 21:46:08] $ python consulta/pais.py MEX --desde 2000 --hasta 2020 --deporte Diving
+# resultado: OK (espera: ['Medallero con filtros', 'Diving (Aquatics)'])
+##############################################################################
+
+==============================================================================
+Mexico  (MEX)  —  filtros: desde=2000, hasta=2020, deporte=Diving
+==============================================================================
+  Atletas / particip.   : 1,750 atletas, 3,365 participaciones
+  Ediciones             : 38 (primera 1900, última 2024)
+  Población             : 129,223,589 (2024)
+  Medallero (por evento): Oro 15 | Plata 28 | Bronce 41 | Total 84
+  Medallas por atleta   : Oro 32 | Plata 31 | Bronce 87 | Total 150  (cada integrante de un equipo cuenta)
+
+  ¿Ha sido sede?        : SÍ, 1 vez
+  Año  | Temporada | Ciudad           | Categoría
+  -----+-----------+------------------+----------
+  1968 | Summer    | Ciudad de Mexico | Olympics 
+
+  Años de participación : 1900, 1924, 1928, 1932, 1936, 1948, 1952, 1956, 1960, 1964, 1968, 1972, 1976, 1980, 1984, 1988, 1992, 1994, 1996, 2000, 2002, 2004, 2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022, 2024
+
+  Participación y medallas por edición (filtrado):
+  Año  | Temp.  | Ciudad         | Categoría |  | Atletas | Partic. | Oro | Plata | Bronce | Total | Población  
+  -----+--------+----------------+-----------+--+---------+---------+-----+-------+--------+-------+------------
+  2000 | Summer | Sydney         | Olympics  |  | 7       | 14      | 0   | 1     | 0      | 1     | 97,873,442 
+  2004 | Summer | Athina         | Olympics  |  | 5       | 11      | 0   | 0     | 0      | 0     | 103,945,813
+  2008 | Summer | Beijing        | Olympics  |  | 7       | 9       | 0   | 0     | 1      | 1     | 109,684,489
+  2010 | Summer | Singapore      | Youth     |  | 1       | 2       | 0   | 0     | 1      | 1     | 112,532,401
+  2012 | Summer | London         | Olympics  |  | 10      | 14      | 0   | 2     | 1      | 3     | 115,755,909
+  2014 | Summer | Nanjing        | Youth     |  | 2       | 6       | 1   | 1     | 2      | 4     | 118,755,887
+  2016 | Summer | Rio de Janeiro | Olympics  |  | 9       | 14      | 0   | 1     | 0      | 1     | 121,519,221
+  2020 | Summer | Tokyo          | Olympics  |  | 13      | 14      | 0   | 0     | 1      | 1     | 125,998,302
+  Medallero con filtros: Oro 1 | Plata 5 | Bronce 6 | Total 12
+
+  Medallero por deporte (filtrado):
+  Deporte           | Oro | Plata | Bronce | Total
+  ------------------+-----+-------+--------+------
+  Diving (Aquatics) | 1   | 5     | 6      | 12   
+
+  Medallas ganadas (12), más recientes primero:
+  Año  | Temp.  | Deporte           | Evento                                 | Medalla | Atleta(s)                       
+  -----+--------+-------------------+----------------------------------------+---------+---------------------------------
+  2020 | Summer | Diving (Aquatics) | Synchronized Platform, Women (Olympic) | Bronce  | Alejandra Orozco                
+  2016 | Summer | Diving (Aquatics) | Platform, Men (Olympic)                | Plata   | Germán Sánchez                  
+  2014 | Summer | Diving (Aquatics) | Team, Mixed Youth (YOG)                | Oro     | Alejandra Orozco                
+  2014 | Summer | Diving (Aquatics) | Springboard, Boys (YOG)                | Plata   | Rodrigo Diego                   
+  2014 | Summer | Diving (Aquatics) | Platform, Boys (YOG)                   | Bronce  | Rodrigo Diego                   
+  2014 | Summer | Diving (Aquatics) | Platform, Girls (YOG)                  | Bronce  | Alejandra Orozco                
+  2012 | Summer | Diving (Aquatics) | Synchronized Platform, Men (Olympic)   | Plata   | Germán Sánchez, Iván García     
+  2012 | Summer | Diving (Aquatics) | Synchronized Platform, Women (Olympic) | Plata   | Alejandra Orozco, Paola Espinosa
+  2012 | Summer | Diving (Aquatics) | Springboard, Women (Olympic)           | Bronce  | Laura Sánchez                   
+  2010 | Summer | Diving (Aquatics) | Platform, Boys (YOG)                   | Bronce  | Iván García                     
+  2008 | Summer | Diving (Aquatics) | Synchronized Platform, Women (Olympic) | Bronce  | Paola Espinosa, Tatiana Ortiz   
+  2000 | Summer | Diving (Aquatics) | Springboard, Men (Olympic)             | Plata   | Fernando Platas                 
+
+(consulta resuelta en 13 ms)
+
+RESUMEN: 22/22 casos OK — fin 2026-10-20 21:46:08

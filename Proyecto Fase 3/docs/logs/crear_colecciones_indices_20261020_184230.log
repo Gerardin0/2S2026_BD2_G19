@@ -1,0 +1,51 @@
+[2026-10-20 18:42:30] ==============================================================================
+[2026-10-20 18:42:30] FASE 3 — creación de colecciones e índices (MongoDB)
+[2026-10-20 18:42:30] Script: crear_colecciones_indices.py | Ejecutado por: pablo
+[2026-10-20 18:42:30] ==============================================================================
+[2026-10-20 18:42:30] Conectado a mongodb://admin:admin123@localhost:27017/ (MongoDB 9.0.4, ping ok=1.0)
+[2026-10-20 18:42:30] Base de datos: olimpiadas
+[2026-10-20 18:42:30] Colecciones:
+[2026-10-20 18:42:30] [atletas] Atleta con sus participaciones, resultados y medallas embebidos.
+[2026-10-20 18:42:30]   = atletas: ya existe, se omite la creación
+[2026-10-20 18:42:30]   + atletas.ix_atletas_busqueda: [["busqueda_nombre", 1]]
+[2026-10-20 18:42:30]   + atletas.tx_atletas_nombre: [["busqueda_nombre", "text"]]
+[2026-10-20 18:42:30]   + atletas.ix_atletas_noc: [["noc_code", 1]]
+[2026-10-20 18:42:30]   + atletas.ix_atletas_part_anio: [["participaciones.anio", 1]]
+[2026-10-20 18:42:30]   + atletas.ix_atletas_part_deporte: [["participaciones.deporte", 1]]
+[2026-10-20 18:42:30]   + atletas.ix_atletas_part_pais: [["participaciones.pais", 1]]
+[2026-10-20 18:42:30]   + atletas.ix_atletas_part_medalla: [["participaciones.medalla", 1]]
+[2026-10-20 18:42:30] [paises] País (NOC) con participaciones, medallero, población y ediciones como sede.
+[2026-10-20 18:42:30]   = paises: ya existe, se omite la creación
+[2026-10-20 18:42:30]   + paises.ix_paises_nombre: [["nombre", 1]]
+[2026-10-20 18:42:30]   + paises.ix_paises_part_anio: [["participaciones.anio", 1]]
+[2026-10-20 18:42:30]   + paises.ix_paises_part_deporte: [["participaciones.deporte", 1]]
+[2026-10-20 18:42:30]   + paises.ix_paises_part_atleta: [["participaciones.busqueda_atleta", 1]]
+[2026-10-20 18:42:30]   + paises.ix_paises_part_medalla: [["participaciones.medalla", 1]]
+[2026-10-20 18:42:30]   + paises.ix_paises_sede_anio: [["ediciones_sede.anio", 1]]
+[2026-10-20 18:42:30]   + paises.ix_paises_medallas_anio: [["medallero.por_anio.anio", 1]]
+[2026-10-20 18:42:30] [disciplinas] Catálogo de disciplinas (deporte + evento) usadas en las participaciones.
+[2026-10-20 18:42:30]   = disciplinas: ya existe, se omite la creación
+[2026-10-20 18:42:30]   + disciplinas.ix_disciplinas_deporte_evento: [["deporte", 1], ["evento", 1]]
+[2026-10-20 18:42:30] [ediciones] Edición de Juegos Olímpicos (año + temporada) con su sede.
+[2026-10-20 18:42:30]   = ediciones: ya existe, se omite la creación
+[2026-10-20 18:42:30]   + ediciones.ix_ediciones_anio: [["anio", 1]]
+[2026-10-20 18:42:30]   + ediciones.ix_ediciones_sede: [["noc_sede", 1]]
+[2026-10-20 18:42:30]   + ediciones.ix_ediciones_ciudad: [["ciudad", 1]]
+[2026-10-20 18:42:30] [roles] Catálogo de roles (competidor, medallista, etc.) asociados a los atletas.
+[2026-10-20 18:42:30]   = roles: ya existe, se omite la creación
+[2026-10-20 18:42:30]   + roles.ix_roles_nombre: [["nombre", 1]] (único)
+[2026-10-20 18:42:30] 
+[2026-10-20 18:42:30] Conteos finales:
+[2026-10-20 18:42:30]   atletas: 153,325 documentos
+[2026-10-20 18:42:30]   paises: 234 documentos
+[2026-10-20 18:42:31]   disciplinas: 2,087 documentos
+[2026-10-20 18:42:31]   ediciones: 63 documentos
+[2026-10-20 18:42:31]   roles: 11 documentos
+[2026-10-20 18:42:31] 
+[2026-10-20 18:42:31] Verificación de integridad básica (los conteos deben coincidir con la Fase 1):
+[2026-10-20 18:42:31]   atletas: 153,325 vs worked_datasets/tabla_atletas.csv -> OK
+[2026-10-20 18:42:31]   paises: 234 vs worked_datasets/tabla_nocs.csv -> OK
+[2026-10-20 18:42:31]   disciplinas: 2,087 vs worked_datasets/tabla_disciplina.csv -> OK
+[2026-10-20 18:42:31]   ediciones: 63 vs worked_datasets/tabla_edicion_juego.csv -> OK
+[2026-10-20 18:42:31]   roles: 11 vs worked_datasets/tabla_rol.csv -> OK
+[2026-10-20 18:42:31] --- Fin de la ejecución (OK) en 0.5s ---

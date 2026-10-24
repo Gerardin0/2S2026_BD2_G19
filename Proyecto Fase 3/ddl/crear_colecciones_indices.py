@@ -87,6 +87,8 @@ COLECCIONES = {
         },
         "indices": [
             {"key": [("busqueda_nombre", 1)], "name": "ix_atletas_busqueda"},
+            # cada palabra del nombre normalizada (multikey): búsqueda por prefijo "^barr"
+            {"key": [("palabras_nombre", 1)], "name": "ix_atletas_palabras"},
             {
                 "key": [("busqueda_nombre", "text")],
                 "name": "tx_atletas_nombre",

@@ -1,0 +1,52 @@
+[2026-10-21 07:51:39] ==============================================================================
+[2026-10-21 07:51:39] FASE 3 — creación de colecciones e índices (MongoDB)
+[2026-10-21 07:51:39] Script: crear_colecciones_indices.py | Ejecutado por: pablo
+[2026-10-21 07:51:39] ==============================================================================
+[2026-10-21 07:51:39] Conectado a mongodb://admin:admin123@localhost:27017/ (MongoDB 9.0.4, ping ok=1.0)
+[2026-10-21 07:51:39] Base de datos: olimpiadas
+[2026-10-21 07:51:39] Colecciones:
+[2026-10-21 07:51:39] [atletas] Atleta con sus participaciones, resultados y medallas embebidos.
+[2026-10-21 07:51:39]   + atletas: creada con validador $jsonSchema (validationLevel=moderate)
+[2026-10-21 07:51:39]   + atletas.ix_atletas_busqueda: [["busqueda_nombre", 1]]
+[2026-10-21 07:51:39]   + atletas.ix_atletas_palabras: [["palabras_nombre", 1]]
+[2026-10-21 07:51:39]   + atletas.tx_atletas_nombre: [["busqueda_nombre", "text"]]
+[2026-10-21 07:51:39]   + atletas.ix_atletas_noc: [["noc_code", 1]]
+[2026-10-21 07:51:39]   + atletas.ix_atletas_part_anio: [["participaciones.anio", 1]]
+[2026-10-21 07:51:39]   + atletas.ix_atletas_part_deporte: [["participaciones.deporte", 1]]
+[2026-10-21 07:51:39]   + atletas.ix_atletas_part_pais: [["participaciones.pais", 1]]
+[2026-10-21 07:51:39]   + atletas.ix_atletas_part_medalla: [["participaciones.medalla", 1]]
+[2026-10-21 07:51:39] [paises] País (NOC) con participaciones, medallero, población y ediciones como sede.
+[2026-10-21 07:51:39]   + paises: creada con validador $jsonSchema (validationLevel=moderate)
+[2026-10-21 07:51:39]   + paises.ix_paises_nombre: [["nombre", 1]]
+[2026-10-21 07:51:39]   + paises.ix_paises_part_anio: [["participaciones.anio", 1]]
+[2026-10-21 07:51:39]   + paises.ix_paises_part_deporte: [["participaciones.deporte", 1]]
+[2026-10-21 07:51:40]   + paises.ix_paises_part_atleta: [["participaciones.busqueda_atleta", 1]]
+[2026-10-21 07:51:40]   + paises.ix_paises_part_medalla: [["participaciones.medalla", 1]]
+[2026-10-21 07:51:40]   + paises.ix_paises_sede_anio: [["ediciones_sede.anio", 1]]
+[2026-10-21 07:51:40]   + paises.ix_paises_medallas_anio: [["medallero.por_anio.anio", 1]]
+[2026-10-21 07:51:40] [disciplinas] Catálogo de disciplinas (deporte + evento) usadas en las participaciones.
+[2026-10-21 07:51:40]   + disciplinas: creada con validador $jsonSchema (validationLevel=moderate)
+[2026-10-21 07:51:40]   + disciplinas.ix_disciplinas_deporte_evento: [["deporte", 1], ["evento", 1]]
+[2026-10-21 07:51:40] [ediciones] Edición de Juegos Olímpicos (año + temporada) con su sede.
+[2026-10-21 07:51:40]   + ediciones: creada con validador $jsonSchema (validationLevel=moderate)
+[2026-10-21 07:51:40]   + ediciones.ix_ediciones_anio: [["anio", 1]]
+[2026-10-21 07:51:40]   + ediciones.ix_ediciones_sede: [["noc_sede", 1]]
+[2026-10-21 07:51:40]   + ediciones.ix_ediciones_ciudad: [["ciudad", 1]]
+[2026-10-21 07:51:40] [roles] Catálogo de roles (competidor, medallista, etc.) asociados a los atletas.
+[2026-10-21 07:51:40]   + roles: creada con validador $jsonSchema (validationLevel=moderate)
+[2026-10-21 07:51:40]   + roles.ix_roles_nombre: [["nombre", 1]] (único)
+[2026-10-21 07:51:40] 
+[2026-10-21 07:51:40] Conteos finales:
+[2026-10-21 07:51:40]   atletas: 0 documentos
+[2026-10-21 07:51:40]   paises: 0 documentos
+[2026-10-21 07:51:40]   disciplinas: 0 documentos
+[2026-10-21 07:51:40]   ediciones: 0 documentos
+[2026-10-21 07:51:40]   roles: 0 documentos
+[2026-10-21 07:51:40] 
+[2026-10-21 07:51:40] Verificación de integridad básica (los conteos deben coincidir con la Fase 1):
+[2026-10-21 07:51:40]   atletas: 0 vs worked_datasets/tabla_atletas.csv -> REVISAR (esperado 153,325)
+[2026-10-21 07:51:40]   paises: 0 vs worked_datasets/tabla_nocs.csv -> REVISAR (esperado 234)
+[2026-10-21 07:51:40]   disciplinas: 0 vs worked_datasets/tabla_disciplina.csv -> REVISAR (esperado 2,087)
+[2026-10-21 07:51:40]   ediciones: 0 vs worked_datasets/tabla_edicion_juego.csv -> REVISAR (esperado 63)
+[2026-10-21 07:51:40]   roles: 0 vs worked_datasets/tabla_rol.csv -> REVISAR (esperado 11)
+[2026-10-21 07:51:40] --- Fin de la ejecución (OK) en 0.5s ---
